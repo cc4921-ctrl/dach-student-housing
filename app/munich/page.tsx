@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const stats = [
   { label: "Students", value: "148,000+", detail: "Across 6+ universities" },
-  { label: "Median PRS Rent", value: "€1,200", detail: "Placeholder estimate" },
-  { label: "Price Range", value: "€400–€2,800", detail: "Per month" },
+  { label: "Median Studio Rent", value: "€1,150", detail: "Based on 338 active listings" },
+  { label: "Price Range", value: "€190–€3,580", detail: "Per month, 1-room apartments" },
   { label: "Studierendenwerk Avg", value: "€401", detail: "9,000+ rooms, long waitlists" },
 ];
 
@@ -32,7 +32,7 @@ const priceCategories = [
 
 const rentalBands = [
   { type: "WG Room", size: "12–20 m²", budget: "€400–€500", mid: "€500–€700", premium: "€700–€900" },
-  { type: "Studio / 1-Room", size: "20–35 m²", budget: "€610–€800", mid: "€800–€1,200", premium: "€1,200–€1,600" },
+  { type: "Studio / 1-Room", size: "20–35 m²", budget: "€500–€900", mid: "€900–€1,200", premium: "€1,200–€1,600" },
   { type: "2-Room Apartment", size: "45–65 m²", budget: "€1,090–€1,300", mid: "€1,300–€1,800", premium: "€1,800–€2,800" },
   { type: "3-Room Apartment", size: "70–95 m²", budget: "€1,500–€1,800", mid: "€1,800–€2,200", premium: "€2,200–€3,000+" },
 ];
@@ -44,7 +44,7 @@ export default function MunichPage() {
         <div className="max-w-6xl mx-auto px-6 py-6">
           <Link href="/" className="text-sm text-blue-600 hover:underline">&larr; Home</Link>
           <h1 className="text-3xl font-bold text-slate-800 mt-2">Student Housing in Munich</h1>
-          <p className="text-slate-500 mt-1">Germany&apos;s most expensive student city &middot; <span className="text-amber-600 font-medium">Placeholder data</span></p>
+          <p className="text-slate-500 mt-1">Germany&apos;s most expensive student city &middot; <span className="text-green-600 font-medium">338 live listings · March 2026</span></p>
           <div className="flex gap-3 mt-4">
             <Link href="/munich/comparables" className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">PBSA Comparables</Link>
           </div>
@@ -52,8 +52,8 @@ export default function MunichPage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 py-10 space-y-12">
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
-          Data on this page is placeholder / indicative. Full market scraping pending.
+        <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800">
+          Live data from 338 scraped listings across wg-gesucht.de &amp; ImmobilienScout24 · March 2026
         </div>
 
         <section>

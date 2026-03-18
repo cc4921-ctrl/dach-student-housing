@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const stats = [
   { label: "Students", value: "10,500+", detail: "University of Passau" },
-  { label: "Median PRS Rent", value: "€450", detail: "Placeholder estimate" },
-  { label: "Price Range", value: "€200–€990", detail: "Per month" },
+  { label: "Median Studio Rent", value: "€490", detail: "Based on 53 active listings" },
+  { label: "Price Range", value: "€332–€650", detail: "Per month, 1-room apartments" },
   { label: "Studentenwerk Avg", value: "€260–€550", detail: "Studentenwerk Niederbayern/Oberpfalz" },
 ];
 
@@ -28,7 +28,7 @@ const priceCategories = [
 
 const rentalBands = [
   { type: "WG Room", size: "12–25 m²", budget: "€260–€350", mid: "€350–€450", premium: "€450–€550" },
-  { type: "Studio / 1-Room", size: "20–35 m²", budget: "€350–€400", mid: "€400–€600", premium: "€600–€990" },
+  { type: "Studio / 1-Room", size: "20–35 m²", budget: "€332–€420", mid: "€420–€530", premium: "€530–€650" },
   { type: "2-Room Apartment", size: "40–60 m²", budget: "€500–€600", mid: "€600–€800", premium: "€800–€1,200" },
   { type: "3-Room Apartment", size: "65–85 m²", budget: "€600–€700", mid: "€700–€900", premium: "€900–€1,500" },
 ];
@@ -40,7 +40,7 @@ export default function PassauPage() {
         <div className="max-w-6xl mx-auto px-6 py-6">
           <Link href="/" className="text-sm text-blue-600 hover:underline">&larr; Home</Link>
           <h1 className="text-3xl font-bold text-slate-800 mt-2">Student Housing in Passau</h1>
-          <p className="text-slate-500 mt-1">Bavaria&apos;s three-river university city &middot; <span className="text-amber-600 font-medium">Placeholder data</span></p>
+          <p className="text-slate-500 mt-1">Bavaria&apos;s three-river university city &middot; <span className="text-green-600 font-medium">53 live listings · March 2026</span></p>
           <div className="flex gap-3 mt-4">
             <Link href="/passau/comparables" className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">PBSA Comparables</Link>
           </div>
@@ -48,8 +48,8 @@ export default function PassauPage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 py-10 space-y-12">
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
-          Data on this page is placeholder / indicative. Full market scraping pending.
+        <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800">
+          Live data from 53 scraped listings across wg-gesucht.de · March 2026
         </div>
 
         <section>

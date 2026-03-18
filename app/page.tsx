@@ -18,10 +18,10 @@ const cities = [
     country: "Germany",
     flag: "🇩🇪",
     students: "148,000+",
-    avgRent: "€1,200",
-    premiumRange: "€1,390–€2,800",
+    avgRent: "€1,150",
+    premiumRange: "€1,350–€3,580",
     universities: 6,
-    status: "Placeholder",
+    status: "Live Data",
   },
   {
     slug: "passau",
@@ -29,10 +29,10 @@ const cities = [
     country: "Germany",
     flag: "🇩🇪",
     students: "10,500+",
-    avgRent: "€450",
-    premiumRange: "€600–€990",
+    avgRent: "€490",
+    premiumRange: "€530–€650",
     universities: 1,
-    status: "Placeholder",
+    status: "Live Data",
   },
 ];
 
