@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const universities = [
   { name: "University of Passau (Universität Passau)", total: "10,568", intl: "1,916", pctIntl: "18%", founded: "1978", focus: "Compact research university — law, business, computer science, humanities, cultural studies. Known for strong law and business faculties with international focus." },
 ];
@@ -7,15 +5,11 @@ const universities = [
 export default function PassauUniversities() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 py-6">
-          <Link href="/passau" className="text-sm text-blue-600 hover:underline">&larr; Passau</Link>
-          <h1 className="text-3xl font-bold text-slate-800 mt-2">Universities</h1>
+      <main className="max-w-5xl mx-auto px-6 py-8">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-800">Universities</h1>
           <p className="text-slate-500 mt-1">Passau &middot; 10,568 students &middot; 18% international</p>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-6 py-8">
         <div className="space-y-4">
           {universities.map(u => (
             <div key={u.name} className="bg-white rounded-xl border border-slate-200 p-6">

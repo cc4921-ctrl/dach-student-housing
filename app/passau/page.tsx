@@ -16,15 +16,11 @@ const maxCount = Math.max(...histogram.map(h => h.count));
 export default function PassauPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 py-6">
-          <Link href="/" className="text-sm text-blue-600 hover:underline">&larr; Home</Link>
-          <h1 className="text-3xl font-bold text-slate-800 mt-2">Passau</h1>
+      <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">Passau</h1>
           <p className="text-slate-500 mt-1">53 listings &middot; Median &euro;490/mo &middot; March 2026</p>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         <section>
           <h2 className="text-lg font-semibold text-slate-800 mb-1">Price Distribution</h2>
           <p className="text-sm text-slate-500 mb-6">Monthly rent across 53 active 1-room listings (wg-gesucht.de)</p>

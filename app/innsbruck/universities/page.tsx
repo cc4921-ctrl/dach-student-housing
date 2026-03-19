@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const universities = [
   { name: "University of Innsbruck (Leopold-Franzens-Universität)", total: "28,000", intl: "~5,600", pctIntl: "20%", founded: "1669", focus: "Full-spectrum research university — law, medicine, humanities, sciences, engineering" },
   { name: "Medical University of Innsbruck", total: "3,500", intl: "~700", pctIntl: "20%", founded: "2004", focus: "Dedicated medical sciences — human medicine, dentistry, molecular medicine" },
@@ -12,15 +10,11 @@ const totals = { students: "36,400+", intl: "~7,375", pctIntl: "~20%" };
 export default function InnsbruckUniversities() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 py-6">
-          <Link href="/innsbruck" className="text-sm text-blue-600 hover:underline">&larr; Innsbruck</Link>
-          <h1 className="text-3xl font-bold text-slate-800 mt-2">Universities</h1>
+      <main className="max-w-5xl mx-auto px-6 py-8">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-800">Universities</h1>
           <p className="text-slate-500 mt-1">Innsbruck &middot; {totals.students} students &middot; {totals.pctIntl} international</p>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-6 py-8">
         <div className="space-y-4">
           {universities.map(u => (
             <div key={u.name} className="bg-white rounded-xl border border-slate-200 p-6">

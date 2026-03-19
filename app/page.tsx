@@ -39,14 +39,9 @@ const cities = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <h1 className="text-2xl font-bold text-slate-800">DACH Student Housing Market</h1>
-          <p className="text-slate-500 mt-1">Market data and rent estimation for Austrian & German cities</p>
-        </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto px-6 py-10">
+      <main className="max-w-5xl mx-auto px-6 py-10">
+        <h1 className="text-2xl font-bold text-slate-800">DACH Student Housing Market</h1>
+        <p className="text-slate-500 mt-1 mb-8">Market data and rent estimation for Austrian &amp; German cities</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cities.map((city) => (
             <Link
@@ -101,10 +96,8 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white mt-16">
-        <div className="max-w-6xl mx-auto px-6 py-6 text-center text-sm text-slate-400">
-          &copy; 2026 Student Housing DACH &middot; Data as of March 2026
-        </div>
+      <footer className="mt-16 pb-8 text-center text-xs text-slate-400">
+        Data as of March 2026
       </footer>
     </div>
   );

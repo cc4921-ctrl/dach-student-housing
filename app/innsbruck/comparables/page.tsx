@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
 
 type Category = "All" | "University Subsidised" | "Non-Profit" | "Private PBSA" | "Premium PBSA";
@@ -109,15 +108,11 @@ export default function InnsbruckComparables() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 py-6">
-          <Link href="/innsbruck" className="text-sm text-blue-600 hover:underline">&larr; Innsbruck</Link>
-          <h1 className="text-3xl font-bold text-slate-800 mt-2">PBSA Comparables</h1>
+      <main className="max-w-5xl mx-auto px-6 py-8 space-y-6">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-800">PBSA Comparables</h1>
           <p className="text-slate-500 mt-1">Innsbruck &middot; {pbsa.length} properties &middot; ~977 beds</p>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-6 py-8 space-y-6">
         <div className="flex flex-wrap gap-2">
           {categories.map(cat => (
             <button key={cat} onClick={() => setFilter(cat)}

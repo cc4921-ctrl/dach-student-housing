@@ -19,15 +19,11 @@ const maxCount = Math.max(...histogram.map(h => h.count));
 export default function MunichPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 py-6">
-          <Link href="/" className="text-sm text-blue-600 hover:underline">&larr; Home</Link>
-          <h1 className="text-3xl font-bold text-slate-800 mt-2">Munich</h1>
+      <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">Munich</h1>
           <p className="text-slate-500 mt-1">338 listings &middot; Median &euro;1,150/mo &middot; March 2026</p>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         <section>
           <h2 className="text-lg font-semibold text-slate-800 mb-1">Price Distribution</h2>
           <p className="text-sm text-slate-500 mb-6">Monthly rent across 338 active 1-room listings (wg-gesucht.de &amp; ImmobilienScout24)</p>
