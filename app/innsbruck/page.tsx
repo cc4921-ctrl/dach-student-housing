@@ -4,16 +4,40 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 
 
 const histogram = [
   { range: "€250", count: 1 },
-  { range: "€500", count: 4 },
-  { range: "€750", count: 13 },
-  { range: "€1k", count: 8 },
-  { range: "€1.25k", count: 16 },
-  { range: "€1.5k", count: 9 },
+  { range: "€500", count: 5 },
+  { range: "€750", count: 18 },
+  { range: "€1k", count: 16 },
+  { range: "€1.25k", count: 20 },
+  { range: "€1.5k", count: 12 },
   { range: "€1.75k", count: 4 },
   { range: "€2k", count: 4 },
   { range: "€2.25k", count: 4 },
   { range: "€2.5k", count: 2 },
   { range: "€3k+", count: 3 },
+];
+
+const recentListings = [
+  { title: "Garconniere Innsbruck", rent: 920, sqm: 23, location: "Innsbruck", source: "wohnungsboerse.net" },
+  { title: "Sonnige Garconniere", rent: 820, sqm: 27, location: "Pradler Straße", source: "wohnungsboerse.net" },
+  { title: "Top-Lage Garconniere Klinik / Hauptuni", rent: 900, sqm: 30, location: "Innerkoflerstraße", source: "wohnungsboerse.net" },
+  { title: "Möblierte 1-Zimmer Altbauwohnung", rent: 850, sqm: 39, location: "Innsbruck", source: "wohnungsboerse.net" },
+  { title: "Gemütliche 1-Zimmer Museumstraße", rent: 850, sqm: 18, location: "Museumstraße 33", source: "wohnungsboerse.net" },
+  { title: "Exklusive Neubauwohnung (Erstbezug)", rent: 1390, sqm: 30, location: "Zentrum", source: "wohnungsboerse.net" },
+  { title: "Helle 1-Zimmer mit Loggia", rent: 1420, sqm: 48, location: "Zentrum", source: "wohnungsboerse.net" },
+  { title: "Helle Garçonniere", rent: 1050, sqm: 32, location: "Innsbruck", source: "wohnungsboerse.net" },
+  { title: "Garconniere Dr. Stumpf Straße", rent: 890, sqm: 28, location: "Dr. Stumpf Str. 65", source: "wohnungsboerse.net" },
+  { title: "Garconniere mit Aufzug & Einbauküche", rent: 1030, sqm: 37, location: "Andreas-Hofer-Str. 39a", source: "wohnungsboerse.net" },
+  { title: "Neu renovierte 1-Schlafzimmer-Wohnung", rent: 1350, sqm: 49, location: "Innsbruck", source: "wohnungsboerse.net" },
+  { title: "Voll ausgestattete Kleinwohnung", rent: 1400, sqm: 40, location: "Wilten", source: "wohnungsboerse.net" },
+  { title: "Bergblick am Innufer – Großgarconniere", rent: 1100, sqm: 42, location: "Innpromenade", source: "wohnungsboerse.net" },
+  { title: "Kleingarconniere Mitterweg", rent: 750, sqm: 17, location: "Mitterweg 87", source: "wohnungsboerse.net" },
+  { title: "Komplett sanierte Wohnung", rent: 1215, sqm: 35, location: "Fürstenweg 20", source: "wohnungsboerse.net" },
+  { title: "Gemütliche Garconniere", rent: 850, sqm: 30, location: "Höttinger Au", source: "wohnungsboerse.net" },
+  { title: "Attraktive Garconniere + TG + Terrasse", rent: 1250, sqm: 32, location: "Innsbruck", source: "wohnungsboerse.net" },
+  { title: "Garconniere mit Südbalkon, Pradl", rent: 950, sqm: 35, location: "Wetterherrenweg", source: "willhaben.at" },
+  { title: "Garconniere Andreas-Hofer-Straße 55", rent: 910, sqm: 26, location: "Andreas-Hofer-Str. 55", source: "willhaben.at" },
+  { title: "Tauschwohnung Mühlau", rent: 530, sqm: 35, location: "Mühlau", source: "wohnungsboerse.net" },
+  { title: "2-Zimmer-Wohnung, frei ab Mai", rent: 1350, sqm: 53, location: "Innsbruck", source: "willhaben.at" },
 ];
 
 const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ value: number; payload: { range: string } }> }) => {
@@ -46,9 +70,9 @@ export default function InnsbruckPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl font-serif text-snow tracking-tight">Innsbruck</h1>
           <div className="flex items-center gap-4 mt-3">
-            <span className="text-sm text-silver">68 listings</span>
+            <span className="text-sm text-silver">89 listings</span>
             <span className="w-1 h-1 rounded-full bg-silver/40" />
-            <span className="text-sm text-silver">Median €1,380/mo</span>
+            <span className="text-sm text-silver">Median €1,250/mo</span>
             <span className="w-1 h-1 rounded-full bg-silver/40" />
             <span className="text-sm text-silver">March 2026</span>
           </div>
@@ -61,7 +85,7 @@ export default function InnsbruckPage() {
           <div className="flex items-center gap-3 mb-2">
             <h2 className="text-xl font-bold text-snow">Price Distribution</h2>
           </div>
-          <p className="text-sm text-silver mb-8">Monthly rent across 68 active PRS listings (willhaben.at &amp; ImmobilienScout24)</p>
+          <p className="text-sm text-silver mb-8">Monthly rent across 89 active PRS listings (willhaben.at, wohnungsboerse.net &amp; ImmobilienScout24)</p>
 
           <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6 sm:p-8">
             <ResponsiveContainer width="100%" height={300}>
@@ -93,9 +117,9 @@ export default function InnsbruckPage() {
             {/* Stats row */}
             <div className="mt-6 pt-6 border-t border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { label: "Median", value: "€1,380" },
-                { label: "Q25", value: "€920" },
-                { label: "Q75", value: "€1,870" },
+                { label: "Median", value: "€1,250" },
+                { label: "Q25", value: "€850" },
+                { label: "Q75", value: "€1,480" },
                 { label: "Range", value: "€450–€4,169" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center sm:text-left">
@@ -103,6 +127,43 @@ export default function InnsbruckPage() {
                   <div className="text-lg font-bold text-snow font-serif">{stat.value}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recent 1-Bedroom Listings */}
+        <section>
+          <div className="flex items-center gap-3 mb-2">
+            <h2 className="text-xl font-bold text-snow">Recent 1-Bedroom Listings</h2>
+            <span className="text-xs text-emerald-accent bg-emerald-accent/10 border border-emerald-accent/20 px-2.5 py-0.5 rounded-full font-semibold">{recentListings.length} scraped</span>
+          </div>
+          <p className="text-sm text-silver mb-6">Live listings from willhaben.at &amp; wohnungsboerse.net · March 2026</p>
+          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-white/[0.06]">
+                    <th className="text-left text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3">Listing</th>
+                    <th className="text-right text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3">Rent</th>
+                    <th className="text-right text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3">Size</th>
+                    <th className="text-right text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3 hidden sm:table-cell">€/m²</th>
+                    <th className="text-left text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3 hidden md:table-cell">Location</th>
+                    <th className="text-left text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3 hidden lg:table-cell">Source</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentListings.map((l, i) => (
+                    <tr key={i} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
+                      <td className="px-6 py-3 text-silver-bright font-medium">{l.title}</td>
+                      <td className="px-6 py-3 text-right text-emerald-accent font-bold font-serif">€{l.rent.toLocaleString()}</td>
+                      <td className="px-6 py-3 text-right text-silver">{l.sqm} m²</td>
+                      <td className="px-6 py-3 text-right text-silver hidden sm:table-cell">€{(l.rent / l.sqm).toFixed(1)}</td>
+                      <td className="px-6 py-3 text-silver/70 hidden md:table-cell">{l.location}</td>
+                      <td className="px-6 py-3 text-silver/50 text-xs hidden lg:table-cell">{l.source}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>

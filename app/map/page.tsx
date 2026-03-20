@@ -121,6 +121,8 @@ export default function MapPage() {
   const [filter, setFilter] = useState<FilterKey>("all");
   const [cityFilter, setCityFilter] = useState<string>("all");
   const [loaded, setLoaded] = useState(false);
+  const [lightMode, setLightMode] = useState(false);
+  const tileLayerRef = useRef<unknown>(null);
 
   useEffect(() => {
     if (loaded) return;
@@ -132,6 +134,7 @@ export default function MapPage() {
 
     // Inject dark popup styles
     const style = document.createElement("style");
+    style.id = "map-theme-style";
     style.textContent = `
       .leaflet-popup-content-wrapper { background: #131b2e !important; color: #f1f5f9 !important; border-radius: 12px !important; border: 1px solid rgba(255,255,255,0.06) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important; }
       .leaflet-popup-tip { background: #131b2e !important; }
@@ -159,10 +162,12 @@ export default function MapPage() {
 
     if (!mapInstance.current) {
       const map = L.map(mapRef.current, { center: [47.8, 12.3], zoom: 7, zoomControl: true });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      const darkTiles = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+      const tile = L.tileLayer(darkTiles, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
         maxZoom: 19,
       }).addTo(map);
+      tileLayerRef.current = tile;
       mapInstance.current = map;
       markersLayer.current = L.layerGroup().addTo(map);
     }
@@ -182,16 +187,16 @@ export default function MapPage() {
       const marker = L.circleMarker([m.lat, m.lng], {
         radius: isUni ? 10 : 7,
         fillColor: markerColors[m.type],
-        color: "#0c1220",
+        color: lightMode ? "#ffffff" : "#0c1220",
         weight: 2,
         opacity: 1,
         fillOpacity: 0.9,
       });
       marker.bindPopup(
         `<div style="font-family:system-ui;min-width:200px">` +
-        `<div style="font-weight:700;font-size:14px;margin-bottom:4px;color:#f1f5f9">${m.name}</div>` +
+        `<div style="font-weight:700;font-size:14px;margin-bottom:4px;color:${lightMode ? '#1e293b' : '#f1f5f9'}">${m.name}</div>` +
         `<div style="font-size:11px;color:#00bc7d;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">${markerLabels[m.type]} · ${m.city}</div>` +
-        `<div style="font-size:12px;margin-top:6px;color:#cbd5e1">${m.detail}</div>` +
+        `<div style="font-size:12px;margin-top:6px;color:${lightMode ? '#475569' : '#cbd5e1'}">${m.detail}</div>` +
         (m.detail2 ? `<div style="font-size:11px;color:#64748b;margin-top:2px">${m.detail2}</div>` : ``) +
         `</div>`,
         { maxWidth: 280 }
@@ -204,7 +209,54 @@ export default function MapPage() {
       (mapInstance.current as any).setView([view.lat, view.lng], view.zoom);
     }
     /* eslint-enable @typescript-eslint/no-explicit-any */
-  }, [loaded, filter, cityFilter]);
+  }, [loaded, filter, cityFilter, lightMode]);
+
+  // Handle light/dark tile switching
+  useEffect(() => {
+    if (!loaded || !mapInstance.current || !tileLayerRef.current) return;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const L = (window as any).L;
+    const map = mapInstance.current as any;
+    const oldTile = tileLayerRef.current as any;
+    map.removeLayer(oldTile);
+    const url = lightMode
+      ? "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+      : "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+    const newTile = L.tileLayer(url, {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19,
+    }).addTo(map);
+    tileLayerRef.current = newTile;
+
+    // Update popup/control styles
+    const styleEl = document.getElementById("map-theme-style");
+    if (styleEl) {
+      if (lightMode) {
+        styleEl.textContent = `
+          .leaflet-popup-content-wrapper { background: #ffffff !important; color: #1e293b !important; border-radius: 12px !important; border: 1px solid rgba(0,0,0,0.08) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important; }
+          .leaflet-popup-tip { background: #ffffff !important; }
+          .leaflet-popup-close-button { color: #64748b !important; }
+          .leaflet-popup-close-button:hover { color: #00bc7d !important; }
+          .leaflet-control-zoom a { background: #ffffff !important; color: #1e293b !important; border-color: rgba(0,0,0,0.1) !important; }
+          .leaflet-control-zoom a:hover { background: #f1f5f9 !important; color: #00bc7d !important; }
+          .leaflet-control-attribution { background: rgba(255,255,255,0.8) !important; color: #64748b !important; }
+          .leaflet-control-attribution a { color: #475569 !important; }
+        `;
+      } else {
+        styleEl.textContent = `
+          .leaflet-popup-content-wrapper { background: #131b2e !important; color: #f1f5f9 !important; border-radius: 12px !important; border: 1px solid rgba(255,255,255,0.06) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important; }
+          .leaflet-popup-tip { background: #131b2e !important; }
+          .leaflet-popup-close-button { color: #94a3b8 !important; }
+          .leaflet-popup-close-button:hover { color: #00bc7d !important; }
+          .leaflet-control-zoom a { background: #131b2e !important; color: #f1f5f9 !important; border-color: rgba(255,255,255,0.06) !important; }
+          .leaflet-control-zoom a:hover { background: #1a2540 !important; color: #00bc7d !important; }
+          .leaflet-control-attribution { background: rgba(12,18,32,0.8) !important; color: #64748b !important; }
+          .leaflet-control-attribution a { color: #94a3b8 !important; }
+        `;
+      }
+    }
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+  }, [lightMode, loaded]);
 
   const jumpToCity = (city: string) => {
     setCityFilter(city);
@@ -228,7 +280,7 @@ export default function MapPage() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-3 mb-6">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
           <div className="flex gap-1.5">
             {["all", "Innsbruck", "Munich", "Passau"].map(c => (
               <button key={c} onClick={() => jumpToCity(c)}
@@ -254,6 +306,22 @@ export default function MapPage() {
               </button>
             ))}
           </div>
+          <div className="w-px h-8 bg-white/[0.06] self-center mx-1" />
+          <button
+            onClick={() => setLightMode(!lightMode)}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-medium border transition-all duration-200 ${
+              lightMode
+                ? "bg-amber-400/10 border-amber-400/30 text-amber-400"
+                : "bg-transparent border-white/[0.06] text-silver/70 hover:text-silver hover:border-white/[0.12]"
+            }`}
+          >
+            {lightMode ? (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            )}
+            {lightMode ? "Light" : "Dark"}
+          </button>
         </div>
 
         {/* Map container */}
