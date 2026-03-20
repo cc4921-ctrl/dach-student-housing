@@ -80,6 +80,9 @@ export default function MunichPage() {
           <Link href="/munich/universities" className="inline-flex items-center justify-center gap-2 bg-white text-[#314158] border border-[#e2e8f0] px-6 py-3 rounded-lg hover:bg-[#f8fafc] transition-colors font-medium">
             Universities
           </Link>
+          <Link href="/munich/gallery" className="inline-flex items-center justify-center gap-2 bg-white text-[#314158] border border-[#e2e8f0] px-6 py-3 rounded-lg hover:bg-[#f8fafc] transition-colors font-medium">
+            THE FIZZ Gallery
+          </Link>
           <a href="https://www.wg-gesucht.de/1-zimmer-wohnungen-in-Muenchen.90.1.1.0.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-[#e2e8f0] text-[#314158] px-6 py-3 rounded-lg hover:bg-[#f8fafc] transition-colors font-medium">
             Source Data &uarr;
           </a>
