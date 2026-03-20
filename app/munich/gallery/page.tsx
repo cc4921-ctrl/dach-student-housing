@@ -102,9 +102,9 @@ export default function MunichGallery() {
           onClick={() => setLightbox(null)}
         >
           <button className="absolute top-4 right-4 text-white text-3xl font-light hover:text-[#00bc7d]">&times;</button>
-          <img src={lightbox} alt="" className="max-w-full max-h-[90vh]" rounded-lg />
+          <img src={lightbox} alt="" className="max-w-full max-h-[90vh] rounded-lg" />
         </div>
       )}
     </div>
-  
-  
+  );
+}
