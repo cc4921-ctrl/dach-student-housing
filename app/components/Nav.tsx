@@ -41,6 +41,7 @@ export default function Nav() {
                     <Link href={`/${c.slug}`} className="block px-4 py-2 text-sm text-navy hover:bg-accent-bg">Overview</Link>
                     <Link href={`/${c.slug}/comparables`} className="block px-4 py-2 text-sm text-navy hover:bg-accent-bg">PBSA Comparables</Link>
                     <Link href={`/${c.slug}/universities`} className="block px-4 py-2 text-sm text-navy hover:bg-accent-bg">Universities</Link>
+                    {c.slug !== "passau" && <Link href={`/${c.slug}/gallery`} className="block px-4 py-2 text-sm text-navy hover:bg-accent-bg">Gallery</Link>}
                   </div>
                 </div>
               </div>
@@ -75,6 +76,7 @@ export default function Nav() {
                 <div className="pl-6 space-y-1">
                   <Link href={`/${c.slug}/comparables`} onClick={() => setOpen(false)} className="block px-3 py-1.5 text-xs text-navy-light hover:text-white">PBSA Comparables</Link>
                   <Link href={`/${c.slug}/universities`} onClick={() => setOpen(false)} className="block px-3 py-1.5 text-xs text-navy-light hover:text-white">Universities</Link>
+                  {c.slug !== "passau" && <Link href={`/${c.slug}/gallery`} onClick={() => setOpen(false)} className="block px-3 py-1.5 text-xs text-navy-light hover:text-white">Gallery</Link>}
                 </div>
               </div>
             ))}
