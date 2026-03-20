@@ -23,7 +23,7 @@ const markers: MapMarker[] = [
 
   // === INNSBRUCK RESIDENCES ===
   { lat: 47.26647, lng: 11.38342, type: "non-profit", city: "Innsbruck", name: "Home4students Höttinger Au 34", detail: "~120 beds · from €324/mo", detail2: "Höttinger Au 34, 6020 Innsbruck" },
-  { lat: 47.26440, lng: 11.35006, type: "non-profit", city: "Innsbruck", name: "Home4students Technikerstraše 7", detail: "~100 beds · from €314/mo", detail2: "Technikerstraše 7, 6020 Innsbruck" },
+  { lat: 47.26440, lng: 11.35006, type: "non-profit", city: "Innsbruck", name: "Home4students Technikerstraše 7", detail: "~100 beds · from €314/mo", detail2: "Technikerstraše 7, 6020 Innsbruck" },
   { lat: 47.26406, lng: 11.37806, type: "non-profit", city: "Innsbruck", name: "OeAD GreenINN", detail: "~200 beds · €425–€535/mo", detail2: "Fürstenweg, 6020 Innsbruck · Passivhaus standard" },
   { lat: 47.27083, lng: 11.41295, type: "non-profit", city: "Innsbruck", name: "OeAD Reichenauer Straße", detail: "~100 beds · from €488/mo", detail2: "Reichenauer Straße, 6020 Innsbruck" },
   { lat: 47.27479, lng: 11.40203, type: "non-profit", city: "Innsbruck", name: "Studentenheim Saggen", detail: "~60 beds · €380–€450/mo", detail2: "Gänsbacherstraße 4, 6020 Innsbruck" },
@@ -37,7 +37,7 @@ const markers: MapMarker[] = [
   { lat: 47.26485, lng: 11.33082, type: "non-profit", city: "Innsbruck", name: "Studentenheim Rapoldi (OeAD/WIST)", detail: "Non-profit residence", detail2: "Hans Untermüllerstr. 6, 6020 Innsbruck" },
   { lat: 47.25349, lng: 11.35485, type: "non-profit", city: "Innsbruck", name: "Campus Sieglanger 1 & 2 (OeAD/WIST)", detail: "Non-profit residence", detail2: "Weingartnerstr. 129 & 131, 6020 Innsbruck" },
   { lat: 47.26525, lng: 11.37194, type: "non-profit", city: "Innsbruck", name: "Studentenheim Karwendel 1 & 2 (OeAD)", detail: "Non-profit residence", detail2: "Höttinger Au 84 & 84a, 6020 Innsbruck" },
-  { lat: 47.26492, lng: 11.34617, type: "non-profit", city: "Innsbruck", name: "Europaheim", detail: "Non-profit residence", detail2: "Technikerstraše 9b, 6020 Innsbruck" },
+  { lat: 47.26492, lng: 11.34617, type: "non-profit", city: "Innsbruck", name: "Europaheim", detail: "Non-profit residence", detail2: "Technikerstraše 9b, 6020 Innsbruck" },
   { lat: 47.26199, lng: 11.38268, type: "non-profit", city: "Innsbruck", name: "Internationales Studentenhaus (ÖAD)", detail: "Non-profit residence", detail2: "Rechengasse 7, 6020 Innsbruck" },
   { lat: 47.26100, lng: 11.39057, type: "non-profit", city: "Innsbruck", name: "Müllerheim (Akademikerhilfe)", detail: "Non-profit · €344–€580/mo", detail2: "Müllerstraße 29, 6020 Innsbruck" },
   { lat: 47.26255, lng: 11.39027, type: "non-profit", city: "Innsbruck", name: "Haus Maximilianstraße 8 (Akademikerhilfe)", detail: "Non-profit · €344–€580/mo", detail2: "Maximilianstraße 8, 6020 Innsbruck" },
@@ -92,11 +92,11 @@ const markers: MapMarker[] = [
 ];
 
 const markerColors: Record<MarkerType, string> = {
-  "university": "#dc2626",
-  "university-subsidised": "#2563eb",
-  "non-profit": "#059669",
-  "private-pbsa": "#475569",
-  "premium-pbsa": "#7c3aed",
+  "university": "#ef4444",
+  "university-subsidised": "#3b82f6",
+  "non-profit": "#10b981",
+  "private-pbsa": "#f59e0b",
+  "premium-pbsa": "#8b5cf6",
 };
 
 const markerLabels: Record<MarkerType, string> = {
@@ -130,6 +130,20 @@ export default function MapPage() {
     link.href = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
     document.head.appendChild(link);
 
+    // Inject dark popup styles
+    const style = document.createElement("style");
+    style.textContent = `
+      .leaflet-popup-content-wrapper { background: #131b2e !important; color: #f1f5f9 !important; border-radius: 12px !important; border: 1px solid rgba(255,255,255,0.06) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important; }
+      .leaflet-popup-tip { background: #131b2e !important; }
+      .leaflet-popup-close-button { color: #94a3b8 !important; }
+      .leaflet-popup-close-button:hover { color: #00bc7d !important; }
+      .leaflet-control-zoom a { background: #131b2e !important; color: #f1f5f9 !important; border-color: rgba(255,255,255,0.06) !important; }
+      .leaflet-control-zoom a:hover { background: #1a2540 !important; color: #00bc7d !important; }
+      .leaflet-control-attribution { background: rgba(12,18,32,0.8) !important; color: #64748b !important; }
+      .leaflet-control-attribution a { color: #94a3b8 !important; }
+    `;
+    document.head.appendChild(style);
+
     const script = document.createElement("script");
     script.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
     script.onload = () => {
@@ -145,7 +159,7 @@ export default function MapPage() {
 
     if (!mapInstance.current) {
       const map = L.map(mapRef.current, { center: [47.8, 12.3], zoom: 7, zoomControl: true });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
         maxZoom: 19,
       }).addTo(map);
@@ -168,16 +182,16 @@ export default function MapPage() {
       const marker = L.circleMarker([m.lat, m.lng], {
         radius: isUni ? 10 : 7,
         fillColor: markerColors[m.type],
-        color: "#fff",
+        color: "#0c1220",
         weight: 2,
         opacity: 1,
-        fillOpacity: 0.85,
+        fillOpacity: 0.9,
       });
       marker.bindPopup(
         `<div style="font-family:system-ui;min-width:200px">` +
-        `<div style="font-weight:700;font-size:14px;margin-bottom:4px">${m.name}</div>` +
-        `<div style="font-size:11px;color:#64748b;margin-bottom:2px">${markerLabels[m.type]} · ${m.city}</div>` +
-        `<div style="font-size:12px;margin-top:6px">${m.detail}</div>` +
+        `<div style="font-weight:700;font-size:14px;margin-bottom:4px;color:#f1f5f9">${m.name}</div>` +
+        `<div style="font-size:11px;color:#00bc7d;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">${markerLabels[m.type]} · ${m.city}</div>` +
+        `<div style="font-size:12px;margin-top:6px;color:#cbd5e1">${m.detail}</div>` +
         (m.detail2 ? `<div style="font-size:11px;color:#64748b;margin-top:2px">${m.detail2}</div>` : ``) +
         `</div>`,
         { maxWidth: 280 }
@@ -201,41 +215,58 @@ export default function MapPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-slate-800">Map</h1>
-          <p className="text-slate-500 mt-1">All universities and student residences across Innsbruck, Munich &amp; Passau</p>
+    <div className="min-h-screen bg-midnight">
+      <main className="max-w-7xl mx-auto px-6 py-10">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-6 h-px bg-emerald-accent" />
+            <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Interactive Map</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Universities &amp; Residences</h1>
+          <p className="text-sm text-silver mt-2">All universities and student residences across Innsbruck, Munich &amp; Passau</p>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-          <div className="flex gap-1 mr-4">
+        {/* Filters */}
+        <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex gap-1.5">
             {["all", "Innsbruck", "Munich", "Passau"].map(c => (
               <button key={c} onClick={() => jumpToCity(c)}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium border transition-all ${cityFilter === c ? "bg-slate-800 text-white border-slate-800" : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"}`}>
+                className={`px-4 py-2 rounded-lg text-[13px] font-medium border transition-all duration-200 ${
+                  cityFilter === c
+                    ? "bg-emerald-accent/10 border-emerald-accent/30 text-emerald-accent"
+                    : "bg-transparent border-white/[0.06] text-silver/70 hover:text-silver hover:border-white/[0.12]"
+                }`}>
                 {c === "all" ? "All Cities" : c}
               </button>
             ))}
           </div>
-          <div className="flex gap-1">
+          <div className="w-px h-8 bg-white/[0.06] self-center mx-1" />
+          <div className="flex gap-1.5">
             {(["all", "universities", "residences"] as FilterKey[]).map(f => (
               <button key={f} onClick={() => setFilter(f)}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium border transition-all ${filter === f ? "bg-slate-800 text-white border-slate-800" : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"}`}>
-                {f === "all" ? "All" : f === "universities" ? "Universities" : "Residences"}
+                className={`px-4 py-2 rounded-lg text-[13px] font-medium border transition-all duration-200 ${
+                  filter === f
+                    ? "bg-white/10 border-white/20 text-snow"
+                    : "bg-transparent border-white/[0.06] text-silver/70 hover:text-silver hover:border-white/[0.12]"
+                }`}>
+                {f === "all" ? "All Types" : f === "universities" ? "Universities" : "Residences"}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden" style={{ height: "65vh" }}>
+        {/* Map container */}
+        <div className="bg-midnight-light rounded-2xl border border-white/[0.06] overflow-hidden" style={{ height: "65vh" }}>
           <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-4 text-xs text-slate-500">
+        {/* Legend */}
+        <div className="mt-6 flex flex-wrap gap-5 text-xs">
           {Object.entries(markerLabels).map(([type, label]) => (
-            <div key={type} className="flex items-center gap-1.5">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: markerColors[type as MarkerType] }} />
-              {label}
+            <div key={type} className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full border border-midnight" style={{ backgroundColor: markerColors[type as MarkerType] }} />
+              <span className="text-silver/70">{label}</span>
             </div>
           ))}
         </div>
