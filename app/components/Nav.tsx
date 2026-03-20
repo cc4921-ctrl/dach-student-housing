@@ -21,7 +21,7 @@ export default function Nav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <img src="/images/stonehill-logo.svg" alt="Stonehill" className="h-5 opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
+            <img src="/images/stonehill-logo.svg" alt="Stonehill" className="h-8 opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
 
           {/* Desktop nav */}
