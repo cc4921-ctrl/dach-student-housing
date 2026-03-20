@@ -112,7 +112,13 @@ export default function PassauPage() {
             <h2 className="text-xl font-bold text-snow">Recent 1-Bedroom Listings</h2>
             <span className="text-xs text-emerald-accent bg-emerald-accent/10 border border-emerald-accent/20 px-2.5 py-0.5 rounded-full font-semibold">{recentListings.length} scraped</span>
           </div>
-          <p className="text-sm text-silver mb-6">Live listings from WG-gesucht.de · March 2026</p>
+          <div className="flex items-center gap-4 mb-6">
+            <p className="text-sm text-silver">Live listings from WG-gesucht.de · March 2026</p>
+            <a href="/data/passau-listings.csv" download className="inline-flex items-center gap-1.5 text-xs text-emerald-accent hover:text-emerald-glow transition-colors font-semibold whitespace-nowrap">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M6 1v8M3 6l3 3 3-3M1 10h10" /></svg>
+              Raw CSV
+            </a>
+          </div>
           <div className="bg-midnight-light border border-white/[0.06] rounded-2xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
