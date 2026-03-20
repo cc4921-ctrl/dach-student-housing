@@ -15,25 +15,25 @@ const catColors: Record<string, { bg: string; text: string; dot: string }> = {
 };
 
 const residences: Residence[] = [
-  { name: "Studierendenwerk Studentenstadt Freimann", category: "University Subsidised", beds: "~2,500", rooms: [{ type: "Single", price: "€280-400" }], photos: [] },
-  { name: "Studierendenwerk Felsennelkenanger", category: "University Subsidised", beds: "~800", rooms: [], photos: [] },
-  { name: "Studierendenwerk Agnes-/Adelheidstraße", category: "University Subsidised", beds: "~450", rooms: [], photos: [] },
-  { name: "Studierendenwerk Kaulbachstraße", category: "University Subsidised", beds: "~200", rooms: [], photos: [] },
-  { name: "Studierendenwerk Chiemgaustraße", category: "University Subsidised", beds: "~600", rooms: [], photos: [] },
-  { name: "Studierendenwerk Max-Bill-Straße", category: "University Subsidised", beds: "~400", rooms: [], photos: [] },
-  { name: "Studierendenwerk Heidemannstraße", category: "University Subsidised", beds: "~350", rooms: [], photos: [] },
-  { name: "Ludwigskolleg (Erzdiözese)", category: "Non-Profit", beds: "170", rooms: [], photos: [] },
-  { name: "Roncalli-Kolleg (Erzdiözese)", category: "Non-Profit", beds: "124", rooms: [], photos: [] },
-  { name: "Sophie-Barat-Haus (Erzdiözese)", category: "Non-Profit", beds: "104", rooms: [], photos: [] },
-  { name: "Theresianum (Erzdiözese)", category: "Non-Profit", beds: "63", rooms: [], photos: [] },
-  { name: "Kolpinghaus Kardinal-Wendel-Haus", category: "Non-Profit", beds: "~200", rooms: [], photos: [] },
-  { name: "ESWM Evangelische Studentenwohnheime", category: "Non-Profit", beds: "~300", rooms: [], photos: [] },
-  { name: "Campus Viva München V", category: "Private PBSA", beds: "~300", rooms: [{ type: "Standard", price: "€610" }, { type: "Premium", price: "€750" }], photos: [] },
-  { name: "Campus Viva München VI", category: "Private PBSA", beds: "~280", rooms: [{ type: "Standard", price: "€620" }], photos: [] },
-  { name: "Youniq Munich", category: "Private PBSA", beds: "~250", rooms: [{ type: "Standard", price: "€704" }], photos: [] },
-  { name: "Studio M2", category: "Private PBSA", beds: "~400", rooms: [{ type: "Small", price: "€560" }, { type: "Medium", price: "€670" }, { type: "Large", price: "€845" }], photos: ["https://studentenappartements-muenchen.de/wp-content/uploads/2022/06/studenten-apartments-muenchen.jpg", "https://studentenappartements-muenchen.de/wp-content/uploads/2022/06/studenten-apartment-muenchen-lage.jpg"] },
-  { name: "THE FIZZ Munich", category: "Premium PBSA", beds: "218", rooms: [{ type: "Comfort", price: "€1,086-1,424" }, { type: "Premium", price: "€1,424-1,919" }], photos: ["https://www.the-fizz.com/wp-content/uploads/facade-munich.jpg.webp", "https://www.the-fizz.com/wp-content/uploads/RooftopTerraceMunich-13-cut.jpg.webp", "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-student-ap2_single-L-web-18-600x690.jpg.webp"] },
-  { name: "Die Zimmerei", category: "Premium PBSA", beds: "287", rooms: [{ type: "Shared", price: "€840" }, { type: "Basic", price: "€1,060" }, { type: "Bigger", price: "€1,080" }, { type: "Large", price: "€1,200-1,520" }], photos: [] },
+  { name: "Studierendenwerk Studentenstadt Freimann", category: "University Subsidised", beds: "~2,500", rooms: [{ type: "Single", price: "€280-400" }], photos: ["/images/residences/munich/generic-student-dorm-1.jpg"] },
+  { name: "Studierendenwerk Felsennelkenanger", category: "University Subsidised", beds: "~800", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-2.jpg"] },
+  { name: "Studierendenwerk Agnes-/Adelheidstraße", category: "University Subsidised", beds: "~450", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-3.jpg"] },
+  { name: "Studierendenwerk Kaulbachstraße", category: "University Subsidised", beds: "~200", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-4.jpg"] },
+  { name: "Studierendenwerk Chiemgaustraße", category: "University Subsidised", beds: "~600", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-1.jpg"] },
+  { name: "Studierendenwerk Max-Bill-Straße", category: "University Subsidised", beds: "~400", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-2.jpg"] },
+  { name: "Studierendenwerk Heidemannstraße", category: "University Subsidised", beds: "~350", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-3.jpg"] },
+  { name: "Ludwigskolleg (Erzdiözese)", category: "Non-Profit", beds: "170", rooms: [], photos: ["/images/residences/munich/generic-student-room-1.jpg"] },
+  { name: "Roncalli-Kolleg (Erzdiözese)", category: "Non-Profit", beds: "124", rooms: [], photos: ["/images/residences/munich/generic-student-room-2.jpg"] },
+  { name: "Sophie-Barat-Haus (Erzdiözese)", category: "Non-Profit", beds: "104", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-4.jpg"] },
+  { name: "Theresianum (Erzdiözese)", category: "Non-Profit", beds: "63", rooms: [], photos: ["/images/residences/munich/generic-student-room-1.jpg"] },
+  { name: "Kolpinghaus Kardinal-Wendel-Haus", category: "Non-Profit", beds: "~200", rooms: [], photos: ["/images/residences/munich/generic-student-room-2.jpg"] },
+  { name: "ESWM Evangelische Studentenwohnheime", category: "Non-Profit", beds: "~300", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-1.jpg"] },
+  { name: "Campus Viva München V", category: "Private PBSA", beds: "~300", rooms: [{ type: "Standard", price: "€610" }, { type: "Premium", price: "€750" }], photos: ["/images/residences/munich/generic-student-dorm-2.jpg"] },
+  { name: "Campus Viva München VI", category: "Private PBSA", beds: "~280", rooms: [{ type: "Standard", price: "€620" }], photos: ["/images/residences/munich/generic-student-dorm-3.jpg"] },
+  { name: "Youniq Munich", category: "Private PBSA", beds: "~250", rooms: [{ type: "Standard", price: "€704" }], photos: ["/images/residences/munich/generic-student-dorm-4.jpg"] },
+  { name: "Studio M2", category: "Private PBSA", beds: "~400", rooms: [{ type: "Small", price: "€560" }, { type: "Medium", price: "€670" }, { type: "Large", price: "€845" }], photos: ["/images/residences/munich/studio-m2-1.jpg", "/images/residences/munich/studio-m2-2.jpg"] },
+  { name: "THE FIZZ Munich", category: "Premium PBSA", beds: "218", rooms: [{ type: "Comfort", price: "€1,086-1,424" }, { type: "Premium", price: "€1,424-1,919" }], photos: ["/images/residences/munich/the-fizz-1.webp", "/images/residences/munich/the-fizz-2.webp", "/images/residences/munich/the-fizz-3.webp"] },
+  { name: "Die Zimmerei", category: "Premium PBSA", beds: "287", rooms: [{ type: "Shared", price: "€840" }, { type: "Basic", price: "€1,060" }, { type: "Bigger", price: "€1,080" }, { type: "Large", price: "€1,200-1,520" }], photos: ["/images/residences/munich/generic-student-room-1.jpg"] },
 ];
 
 function extractPriceRange(rooms: Room[]): { min: number; max: number } | null {
@@ -100,7 +100,7 @@ export default function MunichComparablesPage() {
   return (
     <div className="min-h-screen bg-midnight">
       <div className="relative w-full h-64 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1595867818082-083862f3d630?w=1400&q=80" alt="Munich" className="w-full h-full object-cover" />
+        <img src="/images/banners/munich.jpg" alt="Munich" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">

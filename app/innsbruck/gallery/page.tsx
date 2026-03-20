@@ -6,34 +6,34 @@ const categories = [
   {
     name: "Rooms",
     photos: [
-      { src: "https://www.stuwo.at/wp-content/uploads/2020/07/STUWO-Innsbruck-Kategorie-A-2-1030x674.jpg", label: "Category A Room" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Zimmer_Kat.B_4-1030x686.jpg", label: "Category B Room" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2020/07/STUWO-Innsbruck-Apartment-mit-K%C3%BCche-1030x687.jpg", label: "Apartment with Kitchen" },
+      { src: "/images/gallery/innsbruck/room-cat-a.jpg", label: "Category A Room" },
+      { src: "/images/gallery/innsbruck/room-cat-b.jpg", label: "Category B Room" },
+      { src: "/images/gallery/innsbruck/apartment-kitchen.jpg", label: "Apartment with Kitchen" },
     ],
   },
   {
     name: "Kitchen & Bath",
     photos: [
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Vorraum_mit_K%C3%BCche_5-1030x686.jpg", label: "Kitchenette" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Badezimmer_1-1030x686.jpg", label: "Bathroom" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Gemeinschaftsk%C3%BCche_2-1030x686.jpg", label: "Community Kitchen" },
+      { src: "/images/gallery/innsbruck/kitchenette.jpg", label: "Kitchenette" },
+      { src: "/images/gallery/innsbruck/bathroom.jpg", label: "Bathroom" },
+      { src: "/images/gallery/innsbruck/community-kitchen.jpg", label: "Community Kitchen" },
     ],
   },
   {
     name: "Amenities",
     photos: [
-      { src: "https://www.stuwo.at/wp-content/uploads/2020/07/STUWO-Innsbruck-Gym-1030x687.jpg", label: "Gym" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Sauna_3-1030x686.jpg", label: "Sauna" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Musikraum_3-1030x686.jpg", label: "Music Room" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Fahrradabstellraum_1-1030x686.jpg", label: "Bike Storage" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2020/07/STUWO-Innsbruck-Fahrradanbindung-1030x687.jpg", label: "Bike Parking" },
+      { src: "/images/gallery/innsbruck/gym.jpg", label: "Gym" },
+      { src: "/images/gallery/innsbruck/sauna.jpg", label: "Sauna" },
+      { src: "/images/gallery/innsbruck/music-room.jpg", label: "Music Room" },
+      { src: "/images/gallery/innsbruck/bike-storage.jpg", label: "Bike Storage" },
+      { src: "/images/gallery/innsbruck/bike-parking.jpg", label: "Bike Parking" },
     ],
   },
   {
     name: "Building",
     photos: [
-      { src: "https://www.stuwo.at/wp-content/uploads/2024/07/H23_Aussenansicht%C2%AEchristian_flatscher26_Small-1030x709.jpg", label: "Exterior" },
-      { src: "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Au%C3%9Fenbereich_4-1030x686.jpg", label: "Outdoor Area" },
+      { src: "/images/gallery/innsbruck/exterior.jpg", label: "Exterior" },
+      { src: "/images/gallery/innsbruck/outdoor-area.jpg", label: "Outdoor Area" },
     ],
   },
 ];
@@ -46,7 +46,7 @@ export default function InnsbruckGallery() {
     <div className="min-h-screen bg-midnight">
       {/* Header */}
       <div className="relative w-full h-56 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1400&q=80" alt="Innsbruck" className="w-full h-full object-cover" />
+        <img src="/images/banners/innsbruck.jpg" alt="Innsbruck" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">

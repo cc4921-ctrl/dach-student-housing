@@ -6,33 +6,33 @@ const categories = [
   {
     name: "Single Apartments",
     photos: [
-      { src: "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-student-ap2_single-L-web-18-600x690.jpg.webp", label: "Single L Apartment" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-student-ap1_single-XXL-web-19-1024x683.jpg.webp", label: "Single XXL Living Area" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-student-ap1_single-XXL-web-9-1024x683.jpg.webp", label: "Single XXL Workspace" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/THEFIZZMunich_Apartment-Single-XS_7J0A4746-1024x683.jpg.webp", label: "Single XS Apartment" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/THEFIZZMunich_Apartment_Bathroom_7J0A4674_1-1024x683.jpg.webp", label: "Bathroom" },
+      { src: "/images/gallery/munich/single-l.webp", label: "Single L Apartment" },
+      { src: "/images/gallery/munich/single-xxl-living.webp", label: "Single XXL Living Area" },
+      { src: "/images/gallery/munich/single-xxl-workspace.webp", label: "Single XXL Workspace" },
+      { src: "/images/gallery/munich/single-xs.webp", label: "Single XS Apartment" },
+      { src: "/images/gallery/munich/bathroom.webp", label: "Bathroom" },
     ],
   },
   {
     name: "Flex Apartments",
     photos: [
-      { src: "https://www.the-fizz.com/wp-content/uploads/3-THEFIZZMunich-Business-Terrasse-600x690.jpg.webp", label: "Flex Terrace" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-business-ap1_XXL-web-11-1024x683.jpg.webp", label: "Business XXL Apartment" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-business-ap2_L-web-23-683x1024.jpg.webp", label: "Business L Apartment" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/the-fizz-muenchen-business-AP1-1-1024x683.jpg.webp", label: "Business AP1" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/MGP-2021-05-the-fizz-student-ap1_single-XXL-web-14-1024x683.jpg.webp", label: "Student XXL Interior" },
+      { src: "/images/gallery/munich/flex-terrace.webp", label: "Flex Terrace" },
+      { src: "/images/gallery/munich/business-xxl.webp", label: "Business XXL Apartment" },
+      { src: "/images/gallery/munich/business-l.webp", label: "Business L Apartment" },
+      { src: "/images/gallery/munich/business-ap1.webp", label: "Business AP1" },
+      { src: "/images/gallery/munich/student-xxl-interior.webp", label: "Student XXL Interior" },
     ],
   },
   {
     name: "Building & Facilities",
     photos: [
-      { src: "https://www.the-fizz.com/wp-content/uploads/facade-munich.jpg.webp", label: "Building Facade" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/RooftopTerraceMunich-13-cut.jpg.webp", label: "Rooftop Terrace" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/RooftopTerraceMunich-7-768x576.jpg.webp", label: "Rooftop View" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/the-fizz-muenchen-gamingroom-3-768x512.jpg.webp", label: "Gaming Room" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/the-fizz-muenchen-kitchen-4-460x307.jpg.webp", label: "Community Kitchen" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/munich-outdoor-community-460x259.jpg.webp", label: "Outdoor Community Area" },
-      { src: "https://www.the-fizz.com/wp-content/uploads/facility4-1.jpg.webp", label: "Facilities" },
+      { src: "/images/gallery/munich/facade.webp", label: "Building Facade" },
+      { src: "/images/gallery/munich/rooftop-terrace.webp", label: "Rooftop Terrace" },
+      { src: "/images/gallery/munich/rooftop-view.webp", label: "Rooftop View" },
+      { src: "/images/gallery/munich/gaming-room.webp", label: "Gaming Room" },
+      { src: "/images/gallery/munich/community-kitchen.webp", label: "Community Kitchen" },
+      { src: "/images/gallery/munich/outdoor-community.webp", label: "Outdoor Community Area" },
+      { src: "/images/gallery/munich/facilities.webp", label: "Facilities" },
     ],
   },
 ];
@@ -44,7 +44,7 @@ export default function MunichGallery() {
   return (
     <div className="min-h-screen bg-midnight">
       <div className="relative w-full h-56 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1595867818082-083862f3d630?w=1400&q=80" alt="Munich" className="w-full h-full object-cover" />
+        <img src="/images/banners/munich.jpg" alt="Munich" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">

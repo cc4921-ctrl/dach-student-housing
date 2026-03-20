@@ -13,7 +13,7 @@ const cities = [
     premiumRange: "€1,850–€4,169",
     universities: 4,
     listings: 68,
-    image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80",
+    image: "/images/cities/innsbruck.jpg",
     tagline: "Alpine university city with historic charm",
   },
   {
@@ -26,7 +26,7 @@ const cities = [
     premiumRange: "€1,350–€3,580",
     universities: 6,
     listings: 338,
-    image: "https://images.unsplash.com/photo-1595867818082-083862f3d630?w=800&q=80",
+    image: "/images/cities/munich.jpg",
     tagline: "Germany's premium student market",
   },
   {
@@ -39,7 +39,7 @@ const cities = [
     premiumRange: "€530–€650",
     universities: 1,
     listings: 53,
-    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80",
+    image: "/images/cities/passau.jpg",
     tagline: "Three-river city, emerging PBSA opportunity",
   },
 ];

@@ -14,17 +14,17 @@ const catColors: Record<string, { bg: string; text: string; dot: string }> = {
 };
 
 const residences: Residence[] = [
-  { name: "Studentenwerk Bräugasse", category: "University Subsidised", beds: 95, rooms: [{ type: "Single", priceRange: "€260-550" }], photos: [], website: "https://www.studentenwerk-passau.de" },
-  { name: "Studentenwerk Donau-Schwaben-Straße", category: "University Subsidised", beds: 242, rooms: [{ type: "2-bed flat", priceRange: "€260-320" }, { type: "3-bed", priceRange: "€280-350" }, { type: "8-bed", priceRange: "€260-300" }], photos: ["https://stwno.de/images/phocagallery/donau-schwaben/1_donau-schwaben-strasse.jpg"], website: "https://www.studentenwerk-passau.de" },
-  { name: "Studentenwerk Leonhard-Paminger-Str. (New 2025)", category: "University Subsidised", beds: 356, rooms: [{ type: "Single Apt", priceRange: "€368-386" }], photos: [], website: "https://www.studentenwerk-passau.de" },
-  { name: "Studentenwerk Maierhofstraße", category: "University Subsidised", beds: 20, rooms: [{ type: "Studio", priceRange: "€260-550" }], photos: [], website: "https://www.studentenwerk-passau.de" },
-  { name: "Wohnbauwerk Marienheim", category: "Non-Profit", beds: 198, rooms: [{ type: "1-bed", priceRange: "€350-550" }, { type: "2-bed per person", priceRange: "€200-300" }], photos: ["https://www.wohnbauwerk-passau.de/wp-content/uploads/2016/09/marienheim-wohnanlage2-gr.jpg"], website: "https://www.wohnbauwerk-passau.de" },
-  { name: "Wohnbauwerk Haus St. Severin", category: "Non-Profit", beds: 160, rooms: [{ type: "Single", priceRange: "€260-290" }, { type: "Double", priceRange: "€200-230" }], photos: ["https://www.wohnbauwerk-passau.de/wp-content/uploads/2016/09/st_severin_2.jpg"], website: "https://www.wohnbauwerk-passau.de" },
-  { name: "Boni Studentenwohnheim", category: "Non-Profit", beds: 165, rooms: [{ type: "Single", priceRange: "€250-400" }], photos: [] },
-  { name: "Kloster Hamberg", category: "Non-Profit", beds: 250, rooms: [{ type: "Single", priceRange: "€246-521" }], photos: [] },
-  { name: "Vegis St. Nicola / Kapfinger Wohnheim", category: "Private PBSA", beds: 209, rooms: [{ type: "Single Studio", priceRange: "€349" }, { type: "Double", priceRange: "€698 total" }], photos: [] },
-  { name: "River Living Passau", category: "Private PBSA", beds: 155, rooms: [{ type: "Furnished", priceRange: "€450-650" }, { type: "Subsidised", priceRange: "€350-450" }], photos: [] },
-  { name: "UNILIFE Passau (ZS Wohnbau)", category: "Private PBSA", beds: 45, rooms: [{ type: "Single", priceRange: "€350-450" }, { type: "2-Person", priceRange: "€500-600" }], photos: [] },
+  { name: "Studentenwerk Bräugasse", category: "University Subsidised", beds: 95, rooms: [{ type: "Single", priceRange: "€260-550" }], photos: ["/images/residences/passau/generic-student-dorm-1.jpg"], website: "https://www.studentenwerk-passau.de" },
+  { name: "Studentenwerk Donau-Schwaben-Straße", category: "University Subsidised", beds: 242, rooms: [{ type: "2-bed flat", priceRange: "€260-320" }, { type: "3-bed", priceRange: "€280-350" }, { type: "8-bed", priceRange: "€260-300" }], photos: ["/images/residences/passau/donau-schwaben.jpg"], website: "https://www.studentenwerk-passau.de" },
+  { name: "Studentenwerk Leonhard-Paminger-Str. (New 2025)", category: "University Subsidised", beds: 356, rooms: [{ type: "Single Apt", priceRange: "€368-386" }], photos: ["/images/residences/passau/generic-student-dorm-2.jpg"], website: "https://www.studentenwerk-passau.de" },
+  { name: "Studentenwerk Maierhofstraße", category: "University Subsidised", beds: 20, rooms: [{ type: "Studio", priceRange: "€260-550" }], photos: ["/images/residences/passau/generic-student-dorm-3.jpg"], website: "https://www.studentenwerk-passau.de" },
+  { name: "Wohnbauwerk Marienheim", category: "Non-Profit", beds: 198, rooms: [{ type: "1-bed", priceRange: "€350-550" }, { type: "2-bed per person", priceRange: "€200-300" }], photos: ["/images/residences/passau/marienheim.jpg"], website: "https://www.wohnbauwerk-passau.de" },
+  { name: "Wohnbauwerk Haus St. Severin", category: "Non-Profit", beds: 160, rooms: [{ type: "Single", priceRange: "€260-290" }, { type: "Double", priceRange: "€200-230" }], photos: ["/images/residences/passau/st-severin.jpg"], website: "https://www.wohnbauwerk-passau.de" },
+  { name: "Boni Studentenwohnheim", category: "Non-Profit", beds: 165, rooms: [{ type: "Single", priceRange: "€250-400" }], photos: ["/images/residences/passau/generic-student-dorm-4.jpg"] },
+  { name: "Kloster Hamberg", category: "Non-Profit", beds: 250, rooms: [{ type: "Single", priceRange: "€246-521" }], photos: ["/images/residences/passau/generic-student-dorm-1.jpg"] },
+  { name: "Vegis St. Nicola / Kapfinger Wohnheim", category: "Private PBSA", beds: 209, rooms: [{ type: "Single Studio", priceRange: "€349" }, { type: "Double", priceRange: "€698 total" }], photos: ["/images/residences/passau/generic-student-dorm-2.jpg"] },
+  { name: "River Living Passau", category: "Private PBSA", beds: 155, rooms: [{ type: "Furnished", priceRange: "€450-650" }, { type: "Subsidised", priceRange: "€350-450" }], photos: ["/images/residences/passau/generic-student-dorm-3.jpg"] },
+  { name: "UNILIFE Passau (ZS Wohnbau)", category: "Private PBSA", beds: 45, rooms: [{ type: "Single", priceRange: "€350-450" }, { type: "2-Person", priceRange: "€500-600" }], photos: ["/images/residences/passau/generic-student-dorm-4.jpg"] },
 ];
 
 function extractPriceRange(rooms: RoomOption[]): string {
@@ -88,7 +88,7 @@ export default function PassauComparablesPage() {
   return (
     <div className="min-h-screen bg-midnight">
       <div className="relative w-full h-64 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1400&q=80" alt="Passau" className="w-full h-full object-cover" />
+        <img src="/images/banners/passau.jpg" alt="Passau" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">

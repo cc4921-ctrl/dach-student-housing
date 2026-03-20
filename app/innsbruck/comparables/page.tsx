@@ -19,64 +19,64 @@ const pbsa: Residence[] = [
   {
     name: "Home4students Höttinger Au 34", category: "University Subsidised", operator: "Home4students / OeAD", beds: "~120", location: "Höttinger Au 34",
     source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/hoettinger-au-34/",
-    photos: ["https://oeadstudenthousing-public-production.s3.amazonaws.com/images/hoettinger_au_34_header.2e16d0ba.fill-1580x240.jpg"],
+    photos: ["/images/residences/innsbruck/hoettinger-au-34.jpg"],
     rooms: [{ type: "Single Room", price: "from €324/mo" }, { type: "Single (higher category)", price: "€505/mo" }],
   },
   {
     name: "Home4students Technikerstraße 7", category: "University Subsidised", operator: "Home4students / OeAD", beds: "~100", location: "Technikerstraße 7",
     source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/technikerstrasse/",
-    photos: ["https://oeadstudenthousing-public-production.s3.amazonaws.com/images/technikerstrasse_header.2e16d0ba.fill-1580x240.jpg"],
+    photos: ["/images/residences/innsbruck/technikerstrasse.jpg"],
     rooms: [{ type: "Single Room", price: "from €314/mo" }, { type: "Single (higher category)", price: "€455/mo" }],
   },
   {
     name: "Home4students Euregio-Campus", category: "University Subsidised", operator: "Home4students", beds: "~80", location: "Erzherzog-Eugen-Str. 39",
     source: "https://www.home4students.at/en/our-dormitories/dormitories-innsbruck/dorm-euregio-campus/",
-    photos: ["https://www.home4students.at/wp-content/uploads/2024/04/%C2%A9-IIG-Martin-Vandory-2-scaled-e1712062727471.jpg"],
+    photos: ["/images/residences/innsbruck/euregio-campus.jpg"],
     rooms: [{ type: "Single Room", price: "€480–€500/mo" }],
   },
   {
     name: "OeAD GreenINN", category: "Non-Profit", operator: "OeAD Housing", beds: "~200", location: "Near university",
-    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/", photos: [],
+    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/", photos: ["/images/residences/innsbruck/greeninn.jpg", "/images/residences/innsbruck/greeninn-exterior.jpg"],
     rooms: [{ type: "Standard Single", price: "from €425/mo" }, { type: "Premium Single", price: "€535/mo" }],
   },
   {
     name: "OeAD Reichenauer Straße", category: "Non-Profit", operator: "OeAD Housing", beds: "~100", location: "Reichenauer Straße",
-    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/", photos: [],
+    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/", photos: ["/images/residences/innsbruck/reichenauer-strasse.jpg"],
     rooms: [{ type: "Single Room", price: "from €488/mo" }],
   },
   {
     name: "Studentenheim Saggen", category: "Non-Profit", operator: "Ev. Studentenheim", beds: "~60", location: "Saggen district",
-    source: "https://www.studentenwohnheim-saggen.at/", photos: [],
+    source: "https://www.studentenwohnheim-saggen.at/", photos: ["/images/residences/innsbruck/generic-student-housing-1.jpg"],
     rooms: [{ type: "Single Room", price: "€380–€450/mo" }, { type: "Shared Room", price: "€300–€350/mo" }],
   },
   {
     name: "Studentenhaus Sillgraben", category: "Non-Profit", operator: "Sillgraben e.V.", beds: "~50", location: "Rennweg 34, Saggen",
-    source: "https://www.sillgraben.at/", photos: [],
+    source: "https://www.sillgraben.at/", photos: ["/images/residences/innsbruck/generic-student-housing-2.jpg"],
     rooms: [{ type: "Single (ensuite)", price: "€380–€420/mo" }],
   },
   {
     name: "Canisianum", category: "Non-Profit", operator: "Akademikerhilfe", beds: "~80", location: "Central Innsbruck",
     source: "https://www.akademikerhilfe.at/en/canisianum",
     photos: [
-      "https://www.akademikerhilfe.at/sites/default/files/2022-11/001_canisianum-innsbruck-2022_wga-zt_foto_kurt.hoerbst_2211082119.jpg",
-      "https://www.akademikerhilfe.at/sites/default/files/2022-11/004_canisianum-innsbruck-2022_wga-zt_foto_kurt.hoerbst_2211085651.jpg",
-      "https://www.akademikerhilfe.at/sites/default/files/2022-03/kurt.hoerbst%20-%20Blick%20auf%20Einheiten.jpg",
+      "/images/residences/innsbruck/canisianum-1.jpg",
+      "/images/residences/innsbruck/canisianum-2.jpg",
+      "/images/residences/innsbruck/canisianum-3.jpg",
     ],
     rooms: [{ type: "Single Room", price: "€350–€450/mo" }],
   },
   {
     name: "Studentenheim Innsbruck (Reichenau)", category: "Non-Profit", operator: "Studentenheim Innsbruck", beds: "~100", location: "Reichenauerstr. 147",
-    source: "https://www.studentenheim-innsbruck.at/", photos: [],
+    source: "https://www.studentenheim-innsbruck.at/", photos: ["/images/residences/innsbruck/generic-student-housing-3.jpg"],
     rooms: [{ type: "Single Room", price: "€380/mo" }],
   },
   {
     name: "STUWO Innsbruck", category: "Premium PBSA", operator: "STUWO", beds: "87", location: "Pradl",
     source: "https://www.stuwo.at/en/dormitories/innsbruck/",
     photos: [
-      "https://www.stuwo.at/wp-content/uploads/2024/07/H23_Aussenansicht%C2%AEchristian_flatscher26_Small-1030x709.jpg",
-      "https://www.stuwo.at/wp-content/uploads/2019/07/H23_Au%C3%9Fenbereich_4-1030x686.jpg",
-      "https://www.stuwo.at/wp-content/uploads/2020/07/STUWO-Innsbruck-Kategorie-A-2-1030x674.jpg",
-      "https://www.stuwo.at/wp-content/uploads/2020/07/STUWO-Innsbruck-Gym-1030x687.jpg",
+      "/images/residences/innsbruck/stuwo-1.jpg",
+      "/images/residences/innsbruck/stuwo-2.jpg",
+      "/images/residences/innsbruck/stuwo-3.jpg",
+      "/images/residences/innsbruck/stuwo-4.jpg",
     ],
     rooms: [{ type: "Cat. A Studio (21–23 m², ensuite)", price: "€789/mo" }, { type: "Cat. B Shared Apt (11–12 m²)", price: "€729/mo" }],
   },
@@ -96,7 +96,7 @@ function extractPriceRange(rooms: Room[]): { min: number; max: number } {
 function PhotoCarousel({ photos, name }: { photos: string[]; name: string }) {
   const [idx, setIdx] = useState(0);
   const [hover, setHover] = useState(false);
-  const imgs = photos.length > 0 ? photos : ["https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=60"];
+  const imgs = photos.length > 0 ? photos : ["/images/cities/innsbruck.jpg"];
 
   useEffect(() => {
     if (hover || imgs.length <= 1) return;
@@ -136,7 +136,7 @@ export default function InnsbruckComparablesPage() {
     <div className="min-h-screen bg-midnight">
       {/* Header */}
       <div className="relative w-full h-64 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1400&q=80" alt="Innsbruck" className="w-full h-full object-cover" />
+        <img src="/images/banners/innsbruck.jpg" alt="Innsbruck" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">

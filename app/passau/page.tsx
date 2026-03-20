@@ -30,7 +30,7 @@ export default function PassauPage() {
     <div className="min-h-screen bg-midnight">
       <div className="relative w-full h-72 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1400&q=80"
+          src="/images/banners/passau.jpg"
           alt="Passau"
           className="w-full h-full object-cover"
         />

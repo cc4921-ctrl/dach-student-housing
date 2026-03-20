@@ -34,7 +34,7 @@ export default function MunichPage() {
       {/* Hero banner */}
       <div className="relative w-full h-72 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1595867818082-083862f3d630?w=1400&q=80"
+          src="/images/banners/munich.jpg"
           alt="Munich"
           className="w-full h-full object-cover"
         />

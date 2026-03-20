@@ -34,7 +34,7 @@ export default function InnsbruckPage() {
       {/* Hero banner */}
       <div className="relative w-full h-72 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=1400&q=80"
+          src="/images/banners/innsbruck.jpg"
           alt="Innsbruck"
           className="w-full h-full object-cover"
         />
