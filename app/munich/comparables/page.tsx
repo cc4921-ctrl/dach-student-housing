@@ -15,8 +15,8 @@ const catColors: Record<string, { bg: string; text: string; dot: string }> = {
 };
 
 const residences: Residence[] = [
-  { name: "Studierendenwerk Studentenstadt Freimann", category: "University Subsidised", beds: "~2,500", rooms: [{ type: "Single", price: "€280-400" }], photos: ["/images/residences/munich/generic-student-dorm-1.jpg"] },
-  { name: "Studierendenwerk Felsennelkenanger", category: "University Subsidised", beds: "~800", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-2.jpg"] },
+  { name: "Studierendenwerk Studentenstadt Freimann", category: "University Subsidised", beds: "~2,500", rooms: [{ type: "Single", price: "€280-400" }], photos: ["/images/residences/munich/freimann/building-highrise.jpg", "/images/residences/munich/freimann/building-brutalist.jpg", "/images/residences/munich/freimann/building-renovated.jpg", "/images/residences/munich/freimann/room-single-1.jpg", "/images/residences/munich/freimann/room-desk.jpg", "/images/residences/munich/freimann/room-furnished.jpg", "/images/residences/munich/freimann/room-single-2.jpg", "/images/residences/munich/freimann/common-sink-area.jpg"] },
+  { name: "Studierendenwerk Felsennelkenanger", category: "University Subsidised", beds: "~800", rooms: [], photos: ["/images/residences/munich/felsennelkenanger/building-garden.jpg", "/images/residences/munich/felsennelkenanger/building-facade.jpg", "/images/residences/munich/felsennelkenanger/room-desk-view.jpg", "/images/residences/munich/felsennelkenanger/room-wardrobe.jpg", "/images/residences/munich/felsennelkenanger/room-balcony.jpg", "/images/residences/munich/felsennelkenanger/room-partial-apt.jpg"] },
   { name: "Studierendenwerk Agnes-/Adelheidstraße", category: "University Subsidised", beds: "~450", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-3.jpg"] },
   { name: "Studierendenwerk Kaulbachstraße", category: "University Subsidised", beds: "~200", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-4.jpg"] },
   { name: "Studierendenwerk Chiemgaustraße", category: "University Subsidised", beds: "~600", rooms: [], photos: ["/images/residences/munich/generic-student-dorm-1.jpg"] },
@@ -33,7 +33,7 @@ const residences: Residence[] = [
   { name: "Youniq Munich", category: "Private PBSA", beds: "~250", rooms: [{ type: "Standard", price: "€704" }], photos: ["/images/residences/munich/generic-student-dorm-4.jpg"] },
   { name: "Studio M2", category: "Private PBSA", beds: "~400", rooms: [{ type: "Small", price: "€560" }, { type: "Medium", price: "€670" }, { type: "Large", price: "€845" }], photos: ["/images/residences/munich/studio-m2-1.jpg", "/images/residences/munich/studio-m2-2.jpg"] },
   { name: "THE FIZZ Munich", category: "Premium PBSA", beds: "218", rooms: [{ type: "Comfort", price: "€1,086-1,424" }, { type: "Premium", price: "€1,424-1,919" }], photos: ["/images/residences/munich/the-fizz-1.webp", "/images/residences/munich/the-fizz-2.webp", "/images/residences/munich/the-fizz-3.webp"] },
-  { name: "Die Zimmerei", category: "Premium PBSA", beds: "287", rooms: [{ type: "Shared", price: "€840" }, { type: "Basic", price: "€1,060" }, { type: "Bigger", price: "€1,080" }, { type: "Large", price: "€1,200-1,520" }], photos: ["/images/residences/munich/generic-student-room-1.jpg"] },
+  { name: "Die Zimmerei", category: "Premium PBSA", beds: "287", rooms: [{ type: "Shared", price: "€840" }, { type: "Basic", price: "€1,060" }, { type: "Bigger", price: "€1,080" }, { type: "Large", price: "€1,200-1,520" }], photos: ["/images/residences/munich/die-zimmerei/building-aerial.jpg", "/images/residences/munich/die-zimmerei/room-basic.jpg", "/images/residences/munich/die-zimmerei/room-desk.jpg", "/images/residences/munich/die-zimmerei/room-bed.jpg"] },
 ];
 
 function extractPriceRange(rooms: Room[]): { min: number; max: number } | null {
