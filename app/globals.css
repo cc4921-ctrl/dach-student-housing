@@ -1,23 +1,90 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #0f172a;
-  --color-primary-light: #1d293d;
-  --color-accent: #009966;
-  --color-accent-light: #00bc7d;
-  --color-accent-bg: #dbfce7;
-  --color-navy: #314158;
-  --color-navy-mid: #45556c;
-  --color-navy-light: #62748e;
-  --color-silver: #90a1b9;
-  --color-premium: #007595;
-  --color-teal: #00786f;
-  --color-success: #009966;
-  --color-warning: #d97706;
+  --color-midnight: #0c1220;
+  --color-midnight-light: #131b2e;
+  --color-midnight-surface: #1a2540;
+  --color-slate-deep: #243352;
+  --color-emerald-accent: #00bc7d;
+  --color-emerald-dim: #009966;
+  --color-emerald-glow: #00e89b;
+  --color-silver: #94a3b8;
+  --color-silver-bright: #cbd5e1;
+  --color-glacier: #e2e8f0;
+  --color-snow: #f1f5f9;
+  --color-amber-warm: #f59e0b;
+  --color-cat-blue: #3b82f6;
+  --color-cat-green: #10b981;
+  --color-cat-amber: #f59e0b;
+  --color-cat-purple: #8b5cf6;
+}
+
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('/fonts/InstrumentSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('/fonts/InstrumentSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #f8fafc;
-  color: #1d293d;
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  background: #0c1220;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0c1220;
+}
+::-webkit-scrollbar-thumb {
+  background: #243352;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b5278;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 188, 125, 0.3);
+  color: #fff;
 }

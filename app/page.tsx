@@ -1,174 +1,171 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 
 const cities = [
   {
     slug: "innsbruck",
     name: "Innsbruck",
     country: "Austria",
-    flag: "\u{1F1E6}\u{1F1F9}",
+    flag: "🇦🇹",
     students: "28,000+",
-    avgRent: "\u20AC1,380",
-    premiumRange: "\u20AC1,850\u2013\u20AC4,169",
+    avgRent: "€1,380",
+    premiumRange: "€1,850–€4,169",
     universities: 4,
-    status: "Live Data",
-    photo: "https://images.unsplash.com/photo-1573599852326-2d4da0bbe613?w=800&q=80",
-    caption: "The Golden Roof & Alpine skyline",
+    listings: 68,
+    image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80",
+    tagline: "Alpine university city with historic charm",
   },
   {
     slug: "munich",
     name: "Munich",
     country: "Germany",
-    flag: "\u{1F1E9}\u{1F1EA}",
+    flag: "🇩🇪",
     students: "148,000+",
-    avgRent: "\u20AC1,150",
-    premiumRange: "\u20AC1,350\u2013\u20AC3,580",
+    avgRent: "€1,150",
+    premiumRange: "€1,350–€3,580",
     universities: 6,
-    status: "Live Data",
-    photo: "https://images.unsplash.com/photo-1595867818082-083862f3d630?w=800&q=80",
-    caption: "Marienplatz & the New Town Hall",
+    listings: 338,
+    image: "https://images.unsplash.com/photo-1595867818082-083862f3d630?w=800&q=80",
+    tagline: "Germany's premium student market",
   },
   {
     slug: "passau",
     name: "Passau",
     country: "Germany",
-    flag: "\u{1F1E9}\u{1F1EA}",
+    flag: "🇩🇪",
     students: "10,500+",
-    avgRent: "\u20AC490",
-    premiumRange: "\u20AC530\u2013\u20AC650",
+    avgRent: "€490",
+    premiumRange: "€530–€650",
     universities: 1,
-    status: "Live Data",
-    photo: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80",
-    caption: "Three-river city at the Danube",
+    listings: 53,
+    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80",
+    tagline: "Three-river city, emerging PBSA opportunity",
   },
 ];
 
 export default function Home() {
-  const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const next = useCallback(() => setCurrent(i => (i + 1) % cities.length), []);
-  const prev = useCallback(() => setCurrent(i => (i - 1 + cities.length) % cities.length), []);
-
-  useEffect(() => {
-    if (paused) return;
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [paused, next]);
-
-  const city = cities[current];
+  const [hoveredCity, setHoveredCity] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]">
-      {/* Hero Carousel */}
-      <div
-        className="relative w-full h-[420px] overflow-hidden"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {cities.map((c, i) => (
-          <div
-            key={c.slug}
-            className="absolute inset-0 transition-opacity duration-700"
-            style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
-          >
-            <img
-              src={c.photo}
-              alt={c.name}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/40 to-transparent" />
-          </div>
-        ))}
+    <div className="min-h-screen bg-midnight">
+      {/* Hero section */}
+      <section className="relative overflow-hidden">
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-midnight via-midnight-light to-slate-deep" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-emerald-accent/[0.04] blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-cat-blue/[0.03] blur-[100px]" />
 
-        <div className="absolute inset-0 z-10 flex flex-col justify-end max-w-6xl mx-auto px-6 pb-10">
-          <p className="text-[#00bc7d] text-sm font-semibold tracking-wider uppercase mb-2">DACH Student Housing Market</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">{city.name}</h1>
-          <p className="text-[#90a1b9] text-lg mb-6">{city.caption}</p>
-
-          <div className="flex flex-wrap gap-6 text-white text-sm">
-            <div><span className="text-[#90a1b9]">Students</span> <span className="font-semibold ml-1">{city.students}</span></div>
-            <div><span className="text-[#90a1b9]">Median Rent</span> <span className="font-semibold ml-1">{city.avgRent}/mo</span></div>
-            <div><span className="text-[#90a1b9]">Premium</span> <span className="font-semibold text-[#00bc7d] ml-1">{city.premiumRange}</span></div>
-          </div>
-        </div>
-
-        {/* Arrows */}
-        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-[#0f172a]/60 hover:bg-[#0f172a]/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-[#0f172a]/60 hover:bg-[#0f172a]/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        {/* Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {cities.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? "bg-[#00bc7d] w-6" : "bg-white/40 hover:bg-white/60"}`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* City Cards */}
-      <main className="max-w-6xl mx-auto px-6 py-10">
-        <h2 className="text-xl font-bold text-[#0f172a] mb-1">Explore Markets</h2>
-        <p className="text-[#62748e] text-sm mb-8">Market data and rent estimation for Austrian & German cities</p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cities.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/${c.slug}`}
-              className="bg-white rounded-xl border border-[#e2e8f0] overflow-hidden hover:shadow-lg hover:border-[#009966]/40 transition-all group"
-            >
-              <div className="h-40 overflow-hidden">
-                <img src={c.photo} alt={c.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-16">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="w-8 h-px bg-emerald-accent" />
+              <span className="text-emerald-accent text-xs font-bold tracking-[0.2em] uppercase">Market Intelligence</span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-snow leading-[1.1] tracking-tight">
+              Student Housing<br />
+              <span className="text-emerald-accent italic">across the DACH</span>
+            </h1>
+            <p className="mt-6 text-lg text-silver leading-relaxed max-w-lg">
+              Real-time rent data, PBSA comparables, and university analytics across Austria &amp; Germany&rsquo;s key student markets.
+            </p>
+            <div className="mt-8 flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-accent animate-pulse" />
+                <span className="text-xs text-silver font-medium tracking-wide">Live Data &middot; March 2026</span>
               </div>
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-bold text-[#0f172a] group-hover:text-[#009966] transition-colors">
-                    {c.flag} {c.name}
-                  </h3>
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#dbfce7] text-[#009966]">
-                    {c.status}
-                  </span>
+              <span className="text-xs text-silver/40">459 listings &middot; 3 cities</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* City cards */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {cities.map((city) => (
+            <Link
+              key={city.slug}
+              href={`/${city.slug}`}
+              onMouseEnter={() => setHoveredCity(city.slug)}
+              onMouseLeave={() => setHoveredCity(null)}
+              className="group relative bg-midnight-light border border-white/[0.06] rounded-2xl overflow-hidden hover:border-emerald-accent/30 transition-all duration-500"
+            >
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={city.image}
+                  alt={city.name}
+                  className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-midnight-light via-midnight-light/40 to-transparent" />
+                <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-midnight/70 backdrop-blur-sm border border-white/[0.08] rounded-full px-3 py-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-accent" />
+                  <span className="text-[10px] text-silver-bright font-medium tracking-wide">LIVE</span>
                 </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-[#62748e]">Students</span>
-                    <span className="font-semibold text-[#314158]">{c.students}</span>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h2 className="text-xl font-bold text-snow group-hover:text-emerald-accent transition-colors duration-300">
+                      {city.name}
+                    </h2>
+                    <p className="text-xs text-silver mt-0.5">{city.tagline}</p>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#62748e]">Median Rent</span>
-                    <span className="font-semibold text-[#314158]">{c.avgRent}</span>
+                  <span className="text-2xl mt-0.5">{city.flag}</span>
+                </div>
+
+                {/* Key metrics */}
+                <div className="space-y-3 mb-6">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-silver/70 uppercase tracking-wider">Median Rent</span>
+                    <span className="text-lg font-bold text-snow font-serif">{city.avgRent}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#62748e]">Premium Range</span>
-                    <span className="font-semibold text-[#007595]">{c.premiumRange}</span>
+                  <div className="h-px bg-white/[0.04]" />
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-silver/70 uppercase tracking-wider">Premium</span>
+                    <span className="text-sm font-semibold text-cat-purple">{city.premiumRange}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#62748e]">Universities</span>
-                    <span className="font-semibold text-[#314158]">{c.universities}</span>
+                  <div className="h-px bg-white/[0.04]" />
+                  <div className="grid grid-cols-3 gap-3 pt-1">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-snow">{city.listings}</div>
+                      <div className="text-[10px] text-silver/60 uppercase tracking-wider mt-0.5">Listings</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-snow">{city.universities}</div>
+                      <div className="text-[10px] text-silver/60 uppercase tracking-wider mt-0.5">Unis</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-snow">{city.students.replace('+', '')}</div>
+                      <div className="text-[10px] text-silver/60 uppercase tracking-wider mt-0.5">Students</div>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[#e2e8f0]">
-                  <span className="text-sm text-[#009966] font-medium flex items-center gap-1">
-                    City Overview <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+
+                {/* CTA */}
+                <div className="flex items-center justify-between pt-4 border-t border-white/[0.04]">
+                  <span className="text-xs font-semibold text-emerald-accent tracking-wide uppercase">Explore market</span>
+                  <span className="w-8 h-8 rounded-full bg-emerald-accent/10 flex items-center justify-center text-emerald-accent group-hover:bg-emerald-accent group-hover:text-midnight transition-all duration-300">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 7h12M8 2l5 5-5 5" />
+                    </svg>
                   </span>
                 </div>
               </div>
             </Link>
           ))}
         </div>
-      </main>
+      </section>
 
-      <footer className="mt-8 pb-8 text-center text-xs text-[#90a1b9]">
-        Data as of March 2026
+      {/* Footer */}
+      <footer className="border-t border-white/[0.04] py-8">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <span className="text-xs text-silver/40">Data as of March 2026</span>
+          <span className="text-xs text-silver/40">Sources: willhaben.at, ImmobilienScout24, operator websites</span>
+        </div>
       </footer>
     </div>
   );
