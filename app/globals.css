@@ -19,40 +19,8 @@
   --color-cat-purple: #8b5cf6;
 }
 
-@font-face {
-  font-family: 'Instrument Sans';
-  src: url('/fonts/InstrumentSans-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instrument Sans';
-  src: url('/fonts/InstrumentSans-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instrument Serif';
-  src: url('/fonts/InstrumentSerif-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Instrument Serif';
-  src: url('/fonts/InstrumentSerif-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
 body {
-  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   background: #0c1220;
   color: #e2e8f0;
   -webkit-font-smoothing: antialiased;
@@ -60,7 +28,7 @@ body {
 }
 
 .font-serif {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 /* Scrollbar styling */

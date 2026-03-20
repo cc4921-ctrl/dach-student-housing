@@ -64,11 +64,8 @@ export default function Home() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-snow leading-[1.1] tracking-tight">
               Student Housing<br />
-              <span className="text-emerald-accent italic">across the DACH</span>
+              <span className="text-emerald-accent italic">Market</span>
             </h1>
-            <p className="mt-6 text-lg text-silver leading-relaxed max-w-lg">
-              Real-time rent data, PBSA comparables, and university analytics across Austria &amp; Germany&rsquo;s key student markets.
-            </p>
             <div className="mt-8 flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-accent animate-pulse" />
