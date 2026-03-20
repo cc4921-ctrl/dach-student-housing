@@ -20,14 +20,8 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <span className="relative w-8 h-8 rounded-lg bg-emerald-accent flex items-center justify-center text-midnight font-bold text-sm tracking-tight overflow-hidden">
-              D
-              <span className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300" />
-            </span>
-            <span className="text-sm font-bold text-snow tracking-wide uppercase">
-              DACH<span className="text-silver font-normal ml-1.5 normal-case tracking-normal hidden sm:inline">Student Housing</span>
-            </span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <img src="/images/stonehill-logo.svg" alt="Stonehill" className="h-5 opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
 
           {/* Desktop nav */}

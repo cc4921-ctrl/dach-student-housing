@@ -3,8 +3,11 @@ import "./globals.css";
 import Nav from "./components/Nav";
 
 export const metadata: Metadata = {
-  title: "DACH Student Housing Market",
+  title: "Stonehill | DACH Student Housing",
   description: "Student housing analytics for Austria and Germany — Innsbruck, Munich, Passau",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
