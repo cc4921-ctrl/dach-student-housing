@@ -65,7 +65,7 @@ export default function InnsbruckPage() {
             </ResponsiveContainer>
 
             <div className="mt-4 pt-4 border-t border-[#e2e8f0] flex flex-wrap items-center gap-6 text-sm text-[#62748e]">
-              <div>Median <span className="font-semibold text-[#0f172a]">&euro;1,380</span></div>
+              <div>Median <span className="font-semibold text-[#0f172a]">&euro;4,380</span></div>
               <div>Q25 <span className="font-semibold text-[#0f172a]">&euro;920</span></div>
               <div>Q75 <span className="font-semibold text-[#0f172a]">&euro;1,870</span></div>
               <div>Range <span className="font-semibold text-[#0f172a]">&euro;450&ndash;&euro;4,169</span></div>
