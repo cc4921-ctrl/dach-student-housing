@@ -80,11 +80,14 @@ export default function InnsbruckPage() {
           <Link href="/innsbruck/universities" className="inline-flex items-center justify-center gap-2 bg-white text-[#314158] border border-[#e2e8f0] px-6 py-3 rounded-lg hover:bg-[#f8fafc] transition-colors font-medium">
             Universities
           </Link>
+          <Link href="/innsbruck/gallery" className="inline-flex items-center justify-center gap-2 bg-white text-[#314158] border border-[#e2e8f0] px-6 py-3 rounded-lg hover:bg-[#f8fafc] transition-colors font-medium">
+            STUWO Gallery
+          </Link>
           <a href="https://www.willhaben.at/iad/immobilien/mietwohnungen/mietwohnung-angebote?areaId=70101" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-[#e2e8f0] text-[#314158] px-6 py-3 rounded-lg hover:bg-[#f8fafc] transition-colors font-medium">
             Source Data &uarr;
           </a>
         </div>
       </main>
     </div>
-  );
-}
+  
+  
