@@ -46,11 +46,6 @@ export default function Nav() {
                     <Link href={`/${c.slug}/comparables`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
                       PBSA Comparables
                     </Link>
-                    {c.slug === "innsbruck" && (
-                      <Link href={`/${c.slug}/comparables/justifications`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors pl-7">
-                        Justifications
-                      </Link>
-                    )}
                     <Link href={`/${c.slug}/universities`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
                       Universities
                     </Link>
@@ -63,6 +58,16 @@ export default function Nav() {
                 </div>
               </div>
             ))}
+            <Link
+              href="/justifications"
+              className={`px-4 py-2 rounded-lg text-[13px] font-medium tracking-wide transition-all duration-200 ${
+                isActive("/justifications")
+                  ? "text-emerald-accent bg-emerald-accent/10"
+                  : "text-silver hover:text-snow hover:bg-white/[0.04]"
+              }`}
+            >
+              Justifications
+            </Link>
             <Link
               href="/map"
               className={`px-4 py-2 rounded-lg text-[13px] font-medium tracking-wide transition-all duration-200 ${
@@ -94,12 +99,15 @@ export default function Nav() {
                 </Link>
                 <div className="pl-6 space-y-0.5">
                   <Link href={`/${c.slug}/comparables`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">PBSA Comparables</Link>
-                  {c.slug === "innsbruck" && <Link href={`/${c.slug}/comparables/justifications`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors pl-4">Justifications</Link>}
                   <Link href={`/${c.slug}/universities`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Universities</Link>
                   {c.slug !== "passau" && <Link href={`/${c.slug}/gallery`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Gallery</Link>}
                 </div>
               </div>
             ))}
+            <Link href="/justifications" onClick={() => setOpen(false)}
+              className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/justifications") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
+              Justifications
+            </Link>
             <Link href="/map" onClick={() => setOpen(false)}
               className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/map") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
               Map
