@@ -47,15 +47,39 @@ const pbsaComps: PBSAComp[] = [
   { name: "River Living Passau", city: "Passau", category: "Private PBSA", min: 350, max: 650, beds: 155, operator: "River Living", address: "Spitalhofstraße 30, 94032 Passau", lat: 48.57168, lng: 13.44152 },
 ];
 
-/* Stonehill target / reference properties */
+/* Stonehill target / reference properties — CORRECT ADDRESSES */
 interface TargetProperty {
   name: string; city: string; address: string; lat: number; lng: number; detail: string;
 }
 
 const targetProperties: TargetProperty[] = [
-  { name: "Höttinger Au (Target)", city: "Innsbruck", address: "Höttinger Au, 6020 Innsbruck", lat: 47.26647, lng: 11.38342, detail: "Adjacent to Home4students — prime university corridor" },
-  { name: "Hafen (Target)", city: "Innsbruck", address: "Innsbruck Hafen area, 6020 Innsbruck", lat: 47.26200, lng: 11.40500, detail: "Emerging student quarter near Inn river & campus" },
-  { name: "Untergiesserstraße (Target)", city: "Munich", address: "Untergiesserstraße, 81541 München", lat: 48.12200, lng: 11.58900, detail: "Munich premium micro-living benchmark location" },
+  { name: "Höttinger Au (Target)", city: "Innsbruck", address: "Höttinger Au / Bachlechnerstraße, 6020 Innsbruck, Austria", lat: 47.26647, lng: 11.38342, detail: "Adjacent to Home4students — prime university corridor" },
+  { name: "Hafen (Target)", city: "Innsbruck", address: "Areal \"Hafen\", Innrain area, 6020 Innsbruck, Austria", lat: 47.26200, lng: 11.40500, detail: "Emerging student quarter near Inn river & campus — area designation" },
+  { name: "Ungererstraße (Target)", city: "Munich", address: "Ungererstraße 71, 80805 Munich (Schwabing), Germany", lat: 48.17100, lng: 11.58850, detail: "Schwabing premium micro-living — near Studentenstadt Freimann & LMU" },
+  { name: "Haitzingerstraße (Target)", city: "Passau", address: "Haitzingerstraße 4, 94032 Passau, Germany", lat: 48.57250, lng: 13.44800, detail: "Central Passau location — walking distance to University of Passau" },
+];
+
+/* University locations per city */
+interface University {
+  name: string; city: string; address: string; lat: number; lng: number;
+  students: string; shortName: string;
+}
+
+const universities: University[] = [
+  // ── Innsbruck ──
+  { name: "University of Innsbruck (LFUI)", city: "Innsbruck", address: "Innrain 52, 6020 Innsbruck, Austria", lat: 47.26380, lng: 11.38470, students: "28,000", shortName: "Uni Innsbruck" },
+  { name: "Medical University of Innsbruck", city: "Innsbruck", address: "Christoph-Probst-Platz, Innrain 52, 6020 Innsbruck, Austria", lat: 47.26350, lng: 11.38800, students: "3,500", shortName: "Med Uni IBK" },
+  { name: "MCI | The Entrepreneurial School", city: "Innsbruck", address: "Universitätsstraße 15, 6020 Innsbruck, Austria", lat: 47.26440, lng: 11.39250, students: "3,400", shortName: "MCI" },
+  { name: "UMIT TIROL", city: "Innsbruck", address: "Eduard-Wallnöfer-Zentrum 1, 6060 Hall in Tirol, Austria", lat: 47.28900, lng: 11.50500, students: "1,500", shortName: "UMIT" },
+  // ── Munich ──
+  { name: "Ludwig-Maximilians-Universität (LMU)", city: "Munich", address: "Geschwister-Scholl-Platz 1, 80539 München, Germany", lat: 48.15060, lng: 11.58020, students: "52,600", shortName: "LMU" },
+  { name: "Technical University of Munich (TUM)", city: "Munich", address: "Arcisstraße 21, 80333 München, Germany", lat: 48.14870, lng: 11.56870, students: "51,900", shortName: "TUM" },
+  { name: "Hochschule München (HM)", city: "Munich", address: "Lothstraße 34, 80335 München, Germany", lat: 48.15410, lng: 11.55360, students: "18,000", shortName: "HM" },
+  { name: "Universität der Bundeswehr", city: "Munich", address: "Werner-Heisenberg-Weg 39, 85579 Neubiberg, Germany", lat: 48.08060, lng: 11.63720, students: "3,500", shortName: "UniBwM" },
+  { name: "Hochschule für Musik und Theater", city: "Munich", address: "Arcisstraße 12, 80333 München, Germany", lat: 48.14960, lng: 11.57020, students: "1,200", shortName: "HMTM" },
+  { name: "Akademie der Bildenden Künste", city: "Munich", address: "Akademiestraße 2, 80799 München, Germany", lat: 48.15450, lng: 11.58040, students: "750", shortName: "AdBK" },
+  // ── Passau ──
+  { name: "University of Passau", city: "Passau", address: "Innstraße 41, 94032 Passau, Germany", lat: 48.56680, lng: 13.45180, students: "10,568", shortName: "Uni Passau" },
 ];
 
 /* PRS benchmarks per city */
@@ -72,7 +96,21 @@ const demandByCity: Record<string, { students: string; population: string; ratio
   Passau: { students: "~10,600", population: "~54,000", ratio: "~20%", pbsaBeds: "~1,895", coverage: "~17.9%", bedGap: "~230" },
 };
 
-const cities = ["Innsbruck", "Munich", "Passau"] as const;
+/* Travel time radii config — minutes by transport mode */
+const travelRadii = [
+  { minutes: 5, color: "#00bc7d", opacity: 0.18, label: "5 min" },
+  { minutes: 10, color: "#3b82f6", opacity: 0.14, label: "10 min" },
+  { minutes: 15, color: "#8b5cf6", opacity: 0.10, label: "15 min" },
+  { minutes: 20, color: "#f59e0b", opacity: 0.08, label: "20 min" },
+];
+
+/* Approximate cycling radius in meters for each travel time (avg 15 km/h cycling speed) */
+function travelRadiusMeters(minutes: number): number {
+  const cyclingSpeedKmH = 14;
+  return (cyclingSpeedKmH * 1000 / 60) * minutes;
+}
+
+const cityList = ["Innsbruck", "Munich", "Passau"] as const;
 
 const catColors: Record<string, string> = {
   "University Subsidised": "#3b82f6",
@@ -125,13 +163,12 @@ function cityDiscountData(city: string) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MAP COMPONENT
+   MAP COMPONENT — with university markers & travel radii
    ═══════════════════════════════════════════════════════════════ */
 
-function PropertyMap({ city }: { city: string | "all" }) {
+function PropertyMap({ city, showRadii, darkMode }: { city: string | "all"; showRadii: boolean; darkMode: boolean }) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<unknown>(null);
-  const markersLayer = useRef<unknown>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -144,14 +181,22 @@ function PropertyMap({ city }: { city: string | "all" }) {
     const style = document.createElement("style");
     style.id = "just-map-style";
     style.textContent = `
-      .just-map .leaflet-popup-content-wrapper { background: #131b2e !important; color: #f1f5f9 !important; border-radius: 12px !important; border: 1px solid rgba(255,255,255,0.06) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important; }
-      .just-map .leaflet-popup-tip { background: #131b2e !important; }
-      .just-map .leaflet-popup-close-button { color: #94a3b8 !important; }
-      .just-map .leaflet-popup-close-button:hover { color: #00bc7d !important; }
-      .just-map .leaflet-control-zoom a { background: #131b2e !important; color: #f1f5f9 !important; border-color: rgba(255,255,255,0.06) !important; }
-      .just-map .leaflet-control-zoom a:hover { background: #1a2540 !important; color: #00bc7d !important; }
-      .just-map .leaflet-control-attribution { background: rgba(12,18,32,0.8) !important; color: #64748b !important; font-size: 10px !important; }
-      .just-map .leaflet-control-attribution a { color: #94a3b8 !important; }
+      .just-map.map-dark .leaflet-popup-content-wrapper { background: #131b2e !important; color: #f1f5f9 !important; border-radius: 12px !important; border: 1px solid rgba(255,255,255,0.06) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important; }
+      .just-map.map-dark .leaflet-popup-tip { background: #131b2e !important; }
+      .just-map.map-dark .leaflet-popup-close-button { color: #94a3b8 !important; }
+      .just-map.map-dark .leaflet-popup-close-button:hover { color: #00bc7d !important; }
+      .just-map.map-dark .leaflet-control-zoom a { background: #131b2e !important; color: #f1f5f9 !important; border-color: rgba(255,255,255,0.06) !important; }
+      .just-map.map-dark .leaflet-control-zoom a:hover { background: #1a2540 !important; color: #00bc7d !important; }
+      .just-map.map-dark .leaflet-control-attribution { background: rgba(12,18,32,0.8) !important; color: #64748b !important; font-size: 10px !important; }
+      .just-map.map-dark .leaflet-control-attribution a { color: #94a3b8 !important; }
+      .just-map.map-light .leaflet-popup-content-wrapper { background: #ffffff !important; color: #1e293b !important; border-radius: 12px !important; border: 1px solid rgba(0,0,0,0.08) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important; }
+      .just-map.map-light .leaflet-popup-tip { background: #ffffff !important; }
+      .just-map.map-light .leaflet-popup-close-button { color: #64748b !important; }
+      .just-map.map-light .leaflet-popup-close-button:hover { color: #00bc7d !important; }
+      .just-map.map-light .leaflet-control-zoom a { background: #ffffff !important; color: #1e293b !important; border-color: rgba(0,0,0,0.1) !important; }
+      .just-map.map-light .leaflet-control-zoom a:hover { background: #f1f5f9 !important; color: #00bc7d !important; }
+      .just-map.map-light .leaflet-control-attribution { background: rgba(255,255,255,0.9) !important; color: #64748b !important; font-size: 10px !important; }
+      .just-map.map-light .leaflet-control-attribution a { color: #475569 !important; }
     `;
     document.head.appendChild(style);
     const script = document.createElement("script");
@@ -179,43 +224,94 @@ function PropertyMap({ city }: { city: string | "all" }) {
 
     const [lat, lng, zoom] = views[city] || views.all;
     const map = L.map(mapRef.current, { center: [lat, lng], zoom, zoomControl: true, scrollWheelZoom: false });
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    const tileUrl = darkMode
+      ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+      : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+    L.tileLayer(tileUrl, {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
       maxZoom: 19,
     }).addTo(map);
     mapInstance.current = map;
     const layer = L.layerGroup().addTo(map);
-    markersLayer.current = layer;
 
+    // University travel radii (drawn first so they appear behind markers)
+    if (showRadii) {
+      const unis = city === "all" ? universities : universities.filter(u => u.city === city);
+      unis.forEach(u => {
+        // Draw concentric circles from largest to smallest
+        [...travelRadii].reverse().forEach(r => {
+          L.circle([u.lat, u.lng], {
+            radius: travelRadiusMeters(r.minutes),
+            fillColor: r.color,
+            fillOpacity: r.opacity,
+            color: r.color,
+            weight: 1,
+            opacity: 0.35,
+            dashArray: "4 4",
+          }).addTo(layer);
+        });
+      });
+    }
+
+    // PBSA comparables
     const comps = city === "all" ? pbsaComps : pbsaComps.filter(c => c.city === city);
+    const borderColor = darkMode ? "#0c1220" : "#ffffff";
     comps.forEach(m => {
       const color = catColors[m.category] || "#009966";
       const marker = L.circleMarker([m.lat, m.lng], {
-        radius: 7, fillColor: color, color: "#0c1220", weight: 2, opacity: 1, fillOpacity: 0.85,
+        radius: 7, fillColor: color, color: borderColor, weight: 2, opacity: 1, fillOpacity: 0.85,
       });
+      const popTitle = darkMode ? "#f1f5f9" : "#1e293b";
+      const popBody = darkMode ? "#cbd5e1" : "#475569";
+      const popMuted = darkMode ? "#64748b" : "#94a3b8";
       marker.bindPopup(
         `<div style="font-family:system-ui;min-width:200px">` +
-        `<div style="font-weight:700;font-size:13px;color:#f1f5f9">${m.name}</div>` +
+        `<div style="font-weight:700;font-size:13px;color:${popTitle}">${m.name}</div>` +
         `<div style="font-size:10px;color:#00bc7d;margin:3px 0;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">${m.category} · ${m.city}</div>` +
-        `<div style="font-size:12px;color:#cbd5e1">€${m.min}–€${m.max}/mo · ${m.beds} beds</div>` +
-        `<div style="font-size:11px;color:#64748b;margin-top:2px">${m.address}</div>` +
+        `<div style="font-size:12px;color:${popBody}">€${m.min}–€${m.max}/mo · ${m.beds} beds</div>` +
+        `<div style="font-size:11px;color:${popMuted};margin-top:2px">${m.address}</div>` +
         `</div>`, { maxWidth: 280 }
       );
       layer.addLayer(marker);
     });
 
+    const popTitle = darkMode ? "#f1f5f9" : "#1e293b";
+    const popBody = darkMode ? "#cbd5e1" : "#475569";
+    const popMuted = darkMode ? "#64748b" : "#94a3b8";
+
     // Stonehill targets
     const targets = city === "all" ? targetProperties : targetProperties.filter(t => t.city === city);
     targets.forEach(t => {
       const marker = L.circleMarker([t.lat, t.lng], {
-        radius: 10, fillColor: "#ef4444", color: "#ffffff", weight: 3, opacity: 1, fillOpacity: 0.9,
+        radius: 10, fillColor: "#ef4444", color: darkMode ? "#ffffff" : "#ffffff", weight: 3, opacity: 1, fillOpacity: 0.9,
       });
       marker.bindPopup(
         `<div style="font-family:system-ui;min-width:200px">` +
-        `<div style="font-weight:700;font-size:13px;color:#f1f5f9">${t.name}</div>` +
+        `<div style="font-weight:700;font-size:13px;color:${popTitle}">${t.name}</div>` +
         `<div style="font-size:10px;color:#ef4444;margin:3px 0;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">STONEHILL TARGET · ${t.city}</div>` +
-        `<div style="font-size:12px;color:#cbd5e1">${t.detail}</div>` +
-        `<div style="font-size:11px;color:#64748b;margin-top:2px">${t.address}</div>` +
+        `<div style="font-size:12px;color:${popBody}">${t.detail}</div>` +
+        `<div style="font-size:11px;color:${popMuted};margin-top:2px">${t.address}</div>` +
+        `</div>`, { maxWidth: 280 }
+      );
+      layer.addLayer(marker);
+    });
+
+    // University markers (diamond-shaped via DivIcon)
+    const unis = city === "all" ? universities : universities.filter(u => u.city === city);
+    unis.forEach(u => {
+      const icon = L.divIcon({
+        className: "",
+        html: `<div style="width:16px;height:16px;background:#facc15;border:2px solid ${borderColor};border-radius:2px;transform:rotate(45deg);box-shadow:0 0 8px rgba(250,204,21,0.4)"></div>`,
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+      });
+      const marker = L.marker([u.lat, u.lng], { icon });
+      marker.bindPopup(
+        `<div style="font-family:system-ui;min-width:200px">` +
+        `<div style="font-weight:700;font-size:13px;color:${popTitle}">${u.name}</div>` +
+        `<div style="font-size:10px;color:#facc15;margin:3px 0;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">UNIVERSITY · ${u.city}</div>` +
+        `<div style="font-size:12px;color:${popBody}">${u.students} students</div>` +
+        `<div style="font-size:11px;color:${popMuted};margin-top:2px">${u.address}</div>` +
         `</div>`, { maxWidth: 280 }
       );
       layer.addLayer(marker);
@@ -228,10 +324,10 @@ function PropertyMap({ city }: { city: string | "all" }) {
       }
     };
     /* eslint-enable @typescript-eslint/no-explicit-any */
-  }, [loaded, city]);
+  }, [loaded, city, showRadii, darkMode]);
 
   return (
-    <div className="just-map bg-midnight-light rounded-2xl border border-white/[0.06] overflow-hidden" style={{ height: "420px" }}>
+    <div className={`just-map ${darkMode ? "map-dark" : "map-light"} bg-midnight-light rounded-2xl border border-white/[0.06] overflow-hidden`} style={{ height: "480px" }}>
       <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
     </div>
   );
@@ -261,6 +357,8 @@ const CompTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ 
 export default function JustificationsPage() {
   const [activeCity, setActiveCity] = useState<string>("Innsbruck");
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const [showRadii, setShowRadii] = useState(true);
+  const [mapDark, setMapDark] = useState(true);
 
   const toggleRow = (name: string) => {
     setExpandedRows(prev => {
@@ -274,6 +372,8 @@ export default function JustificationsPage() {
   const demand = demandByCity[activeCity];
   const comparison = cityComparisonData(activeCity);
   const discounts = cityDiscountData(activeCity);
+  const cityUnis = universities.filter(u => u.city === activeCity);
+  const cityTargets = targetProperties.filter(t => t.city === activeCity);
 
   return (
     <div className="min-h-screen bg-midnight">
@@ -294,7 +394,7 @@ export default function JustificationsPage() {
 
         {/* ── City Selector ── */}
         <div className="flex flex-wrap gap-2">
-          {cities.map(c => (
+          {cityList.map(c => (
             <button key={c} onClick={() => setActiveCity(c)}
               className={`px-5 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200 ${
                 activeCity === c
@@ -306,24 +406,62 @@ export default function JustificationsPage() {
           ))}
         </div>
 
-        {/* ── Target Properties Map ── */}
+        {/* ── Target Properties Map with Uni Radii ── */}
         <section>
-          <h2 className="text-xl font-bold text-snow mb-2">Property Locations — {activeCity}</h2>
-          <p className="text-sm text-silver mb-4">PBSA comparables (colored by category) and Stonehill target properties (red markers)</p>
-          <PropertyMap city={activeCity} />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+            <div>
+              <h2 className="text-xl font-bold text-snow">Property &amp; University Locations — {activeCity}</h2>
+              <p className="text-sm text-silver mt-1">PBSA comparables, Stonehill targets, universities with cycling travel radii</p>
+            </div>
+            <div className="flex gap-2 self-start">
+              <button
+                onClick={() => setMapDark(!mapDark)}
+                className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${
+                  mapDark
+                    ? "bg-transparent border-white/[0.08] text-silver/60 hover:text-silver"
+                    : "bg-cat-amber/10 border-cat-amber/30 text-cat-amber"
+                }`}
+              >
+                {mapDark ? "Light Map" : "Dark Map"}
+              </button>
+              <button
+                onClick={() => setShowRadii(!showRadii)}
+                className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${
+                  showRadii
+                    ? "bg-emerald-accent/10 border-emerald-accent/30 text-emerald-accent"
+                    : "bg-transparent border-white/[0.08] text-silver/60 hover:text-silver"
+                }`}
+              >
+                {showRadii ? "Hide" : "Show"} Travel Radii
+              </button>
+            </div>
+          </div>
+          <PropertyMap city={activeCity} showRadii={showRadii} darkMode={mapDark} />
           <div className="mt-4 flex flex-wrap gap-4 text-xs text-silver/70">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-[#ef4444] border-2 border-white" /> Stonehill Target</span>
-            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-blue" /> University Subsidised</span>
+            <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-[#facc15] border-2 border-[#0c1220] rounded-sm" style={{ transform: "rotate(45deg)" }} /> University</span>
+            <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-blue" /> Uni. Subsidised</span>
             <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-green" /> Non-Profit</span>
             <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-amber" /> Private PBSA</span>
             <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-purple" /> Premium PBSA</span>
           </div>
+          {showRadii && (
+            <div className="mt-2 flex flex-wrap gap-3 text-xs text-silver/60">
+              <span className="font-semibold text-silver/70">Cycling radii (~14 km/h):</span>
+              {travelRadii.map(r => (
+                <span key={r.minutes} className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded-full border" style={{ borderColor: r.color, backgroundColor: `${r.color}33` }} />
+                  {r.label}
+                </span>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* ── Target Property Details ── */}
         <section>
           <h2 className="text-xl font-bold text-snow mb-4">Stonehill Target Properties</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {targetProperties.map(t => (
               <div key={t.name} className={`bg-midnight-light border rounded-2xl p-5 transition-colors ${t.city === activeCity ? "border-red-500/30" : "border-white/[0.06] opacity-50"}`}>
                 <div className="flex items-center gap-2 mb-2">
@@ -333,6 +471,53 @@ export default function JustificationsPage() {
                 <div className="text-xs text-silver mb-1">{t.address}</div>
                 <div className="text-xs text-silver/70">{t.detail}</div>
                 <div className="mt-2 text-[10px] text-emerald-accent/70 uppercase tracking-wider font-semibold">{t.city}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── University Locations ── */}
+        <section>
+          <h2 className="text-xl font-bold text-snow mb-4">Universities — {activeCity}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {cityUnis.map(u => (
+              <div key={u.name} className="bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-yellow-500/20 transition-colors">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-3 h-3 bg-[#facc15] border-2 border-[#0c1220] rounded-sm flex-shrink-0" style={{ transform: "rotate(45deg)" }} />
+                  <h3 className="text-sm font-bold text-snow">{u.shortName}</h3>
+                </div>
+                <div className="text-xs text-silver font-medium mb-1">{u.name}</div>
+                <div className="text-xs text-silver/60 mb-2">{u.address}</div>
+                <div className="text-xs text-snow font-bold">{u.students} students</div>
+                <div className="mt-3 pt-3 border-t border-white/[0.04]">
+                  <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">Cycling travel times</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {travelRadii.map(r => (
+                      <span key={r.minutes} className="text-[10px] px-2 py-0.5 rounded-full border" style={{ borderColor: `${r.color}50`, color: r.color, backgroundColor: `${r.color}15` }}>
+                        {r.label} — {((travelRadiusMeters(r.minutes)) / 1000).toFixed(1)} km
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {/* Proximity to Stonehill targets */}
+                {cityTargets.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-white/[0.04]">
+                    <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">Distance to Stonehill targets</div>
+                    {cityTargets.map(t => {
+                      const distKm = Math.sqrt(
+                        Math.pow((u.lat - t.lat) * 111.32, 2) +
+                        Math.pow((u.lng - t.lng) * 111.32 * Math.cos(u.lat * Math.PI / 180), 2)
+                      );
+                      const cycleMin = Math.round(distKm / 14 * 60);
+                      return (
+                        <div key={t.name} className="flex justify-between items-center text-xs mt-1">
+                          <span className="text-silver/60">{t.name.replace(" (Target)", "")}</span>
+                          <span className="text-snow font-medium">{distKm.toFixed(1)} km · ~{cycleMin} min</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -444,7 +629,7 @@ export default function JustificationsPage() {
         <section>
           <h2 className="text-xl font-bold text-snow mb-6">Cross-City Summary</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {cities.map(c => {
+            {cityList.map(c => {
               const p = prsBenchmarks[c];
               const d = demandByCity[c];
               const comps = cityComps(c);
@@ -479,14 +664,15 @@ export default function JustificationsPage() {
           <div className="text-sm text-silver/80 space-y-3 leading-relaxed">
             <p><span className="text-snow font-semibold">Private Rental Data:</span> Innsbruck: 21 listings (willhaben.at, wohnungsboerse.net). Munich: 35 listings (ImmobilienScout24, immowelt). Passau: 17 listings (WG-gesucht.de). All scraped March 2026. Rents are warm/gross where stated.</p>
             <p><span className="text-snow font-semibold">PBSA Comparables:</span> {pbsaComps.length} purpose-built residences across 4 pricing tiers. Rent data from operator websites (OeAD, Studierendenwerk, STUWO, THE FIZZ, etc.) as of March 2026.</p>
-            <p><span className="text-snow font-semibold">Target Properties:</span> Höttinger Au and Hafen (Innsbruck) and Untergiesserstraße (Munich) are Stonehill acquisition/development targets. Addresses shown are approximate locations for mapping purposes.</p>
+            <p><span className="text-snow font-semibold">Target Properties:</span> Höttinger Au / Bachlechnerstraße and Areal Hafen / Innrain (Innsbruck), Ungererstraße 71 (Munich Schwabing), and Haitzingerstraße 4 (Passau). Stonehill acquisition/development targets.</p>
+            <p><span className="text-snow font-semibold">University Locations:</span> {universities.length} institutions mapped with approximate cycling travel radii (5, 10, 15, 20 min at ~14 km/h average cycling speed). Addresses from official university websites.</p>
             <p><span className="text-snow font-semibold">Student Population:</span> Enrollment from university annual reports (2024/25). City population from Statistik Austria / Bayerisches Landesamt für Statistik (2025).</p>
           </div>
         </section>
 
         {/* ── Nav links ── */}
         <section className="flex flex-wrap gap-4">
-          {cities.map(c => (
+          {cityList.map(c => (
             <Link key={c} href={`/${c.toLowerCase()}/comparables`}
               className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-6 py-3 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
               {c} Comparables

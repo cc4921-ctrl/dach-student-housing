@@ -243,7 +243,9 @@ export default function Home() {
       <footer className="border-t border-white/[0.04] py-8">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <span className="text-xs text-silver/40">Data as of March 2026</span>
-          <span className="text-xs text-silver/40">Sources: willhaben.at, ImmobilienScout24, operator websites</span>
+          <Link href="/data" className="text-xs text-emerald-accent/60 hover:text-emerald-accent transition-colors">
+            View all source data &rarr;
+          </Link>
         </div>
       </footer>
     </div>
