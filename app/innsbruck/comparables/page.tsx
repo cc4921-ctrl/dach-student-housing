@@ -19,66 +19,45 @@ const catColors: Record<string, { bg: string; text: string; dot: string }> = {
 };
 
 const pbsa: Residence[] = [
-  {
-    name: "Home4students Höttinger Au 34", category: "University Subsidised", operator: "Home4students / OeAD", beds: "~120", location: "Höttinger Au 34",
-    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/hoettinger-au-34/",
-    photos: ["/images/residences/innsbruck/hoettinger-au-34.jpg"],
-    rooms: [{ type: "Single Room", price: "from €324/mo" }, { type: "Single (higher category)", price: "€505/mo" }],
-  },
-  {
-    name: "Home4students Technikerstraße 7", category: "University Subsidised", operator: "Home4students / OeAD", beds: "~100", location: "Technikerstraße 7",
-    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/technikerstrasse/",
-    photos: ["/images/residences/innsbruck/technikerstrasse.jpg"],
-    rooms: [{ type: "Single Room", price: "from €314/mo" }, { type: "Single (higher category)", price: "€455/mo" }],
-  },
-  {
-    name: "Home4students Euregio-Campus", category: "University Subsidised", operator: "Home4students", beds: "~80", location: "Erzherzog-Eugen-Str. 39",
-    source: "https://www.home4students.at/en/our-dormitories/dormitories-innsbruck/dorm-euregio-campus/",
-    photos: ["/images/residences/innsbruck/euregio-campus.jpg"],
-    rooms: [{ type: "Single Room", price: "€480–€500/mo" }],
-  },
-  {
-    name: "OeAD GreenINN", category: "Non-Profit", operator: "OeAD Housing", beds: "~200", location: "Near university",
-    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/",
-    photos: ["/images/residences/innsbruck/greeninn.jpg", "/images/residences/innsbruck/greeninn-exterior.jpg"],
-    rooms: [{ type: "Standard Single", price: "from €425/mo" }, { type: "Premium Single", price: "€535/mo" }],
-  },
-  {
-    name: "OeAD Reichenauer Straße", category: "Non-Profit", operator: "OeAD Housing", beds: "~100", location: "Reichenauer Straße",
-    source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/",
-    photos: ["/images/residences/innsbruck/reichenauer-strasse.jpg"],
-    rooms: [{ type: "Single Room", price: "from €488/mo" }],
-  },
-  {
-    name: "Studentenheim Saggen", category: "Non-Profit", operator: "Ev. Studentenheim", beds: "~60", location: "Saggen district",
-    source: "https://www.studentenwohnheim-saggen.at/",
-    photos: ["/images/residences/innsbruck/generic-student-housing-1.jpg"],
-    rooms: [{ type: "Single Room", price: "€380–€450/mo" }, { type: "Shared Room", price: "€300–€350/mo" }],
-  },
-  {
-    name: "Studentenhaus Sillgraben", category: "Non-Profit", operator: "Sillgraben e.V.", beds: "~50", location: "Rennweg 34, Saggen",
-    source: "https://www.sillgraben.at/",
-    photos: ["/images/residences/innsbruck/generic-student-housing-2.jpg"],
-    rooms: [{ type: "Single (ensuite)", price: "€380–€420/mo" }],
-  },
-  {
-    name: "Canisianum", category: "Non-Profit", operator: "Akademikerhilfe", beds: "~80", location: "Central Innsbruck",
-    source: "https://www.akademikerhilfe.at/en/canisianum",
-    photos: ["/images/residences/innsbruck/generic-student-housing-3.jpg"],
-    rooms: [{ type: "Single Room", price: "€350–€450/mo" }],
-  },
-  {
-    name: "Studentenheim Innsbruck (Reichenau)", category: "Non-Profit", operator: "Studentenheim Innsbruck", beds: "~100", location: "Reichenauerstr. 147",
-    source: "https://www.studentenheim-innsbruck.at/",
-    photos: ["/images/residences/innsbruck/generic-student-housing-1.jpg"],
-    rooms: [{ type: "Single Room", price: "€380/mo" }],
-  },
-  {
-    name: "STUWO Innsbruck", category: "Premium PBSA", operator: "STUWO", beds: "87", location: "Pradl",
-    source: "https://www.stuwo.at/en/dormitories/innsbruck/",
-    photos: ["/images/residences/innsbruck/stuwo-innsbruck.jpg"],
-    rooms: [{ type: "Cat. A Studio (21–23 m², ensuite)", price: "€789/mo" }, { type: "Cat. B Shared Apt (11–12 m²)", price: "€729/mo" }],
-  },
+  /* ── WIST Residences ── */
+  { name: "Adolf Sollath Heim", category: "University Subsidised", operator: "WIST", beds: "75", location: "Hans-Untermüller-Str. 6-8", source: "", photos: [], rooms: [{ type: "Single Room", price: "€298–€408/mo" }, { type: "Double Room", price: "€278/mo" }] },
+  { name: "Campus Sieglanger", category: "University Subsidised", operator: "WIST", beds: "50", location: "Weingartnerstr. 129-131", source: "", photos: [], rooms: [{ type: "Single Room", price: "€388/mo" }, { type: "Double / WG", price: "€408–€558/mo" }] },
+  { name: "Karl Kunst Heim", category: "University Subsidised", operator: "WIST", beds: "100", location: "Dreiheiligenstr. 9", source: "", photos: [], rooms: [{ type: "Single Room", price: "€348–€448/mo" }, { type: "Double Room", price: "€278–€328/mo" }] },
+  { name: "Panorama Heim", category: "University Subsidised", operator: "WIST", beds: "160", location: "Fürstenweg 174A", source: "", photos: [], rooms: [{ type: "Single Room", price: "€348–€368/mo" }, { type: "Double Room", price: "€288–€308/mo" }, { type: "WG", price: "€338–€438/mo" }] },
+  { name: "Hertha Firnberg Heim", category: "University Subsidised", operator: "WIST", beds: "110", location: "Fürstenweg 174", source: "", photos: [], rooms: [{ type: "Single Room", price: "€318–€398/mo" }, { type: "Double Room", price: "€288/mo" }] },
+  { name: "Karwendel Heim 1", category: "University Subsidised", operator: "WIST", beds: "85", location: "Höttinger Au 84", source: "", photos: [], rooms: [{ type: "Single Room", price: "€318–€418/mo" }, { type: "Double Room", price: "€278/mo" }] },
+  { name: "Karwendel Heim 2", category: "University Subsidised", operator: "WIST", beds: "80", location: "Höttinger Au 84A", source: "", photos: [], rooms: [{ type: "Single Room", price: "€408–€488/mo" }, { type: "Double Room", price: "€298/mo" }] },
+  { name: "Rapoldi Heim", category: "University Subsidised", operator: "WIST", beds: "32", location: "Hans-Untermüller-Str. 6-8", source: "", photos: [], rooms: [{ type: "Single Room", price: "€268–€358/mo" }, { type: "Double Room", price: "€218/mo" }] },
+  { name: "Savoy Heim", category: "University Subsidised", operator: "WIST", beds: "25", location: "Höttinger Au 26", source: "", photos: [], rooms: [{ type: "Single Room", price: "€298–€408/mo" }, { type: "Double Room (m. Küche)", price: "€298/mo" }] },
+  /* ── Akademikerhilfe ── */
+  { name: "Canisianum", category: "Non-Profit", operator: "Akademikerhilfe", beds: "204", location: "Tschurtschenthalerstr. 7", source: "https://www.akademikerhilfe.at/en/canisianum", photos: ["/images/residences/innsbruck/canisianum-1.jpg", "/images/residences/innsbruck/canisianum-2.jpg", "/images/residences/innsbruck/canisianum-3.jpg"], rooms: [{ type: "Single Room", price: "from €477/mo" }, { type: "Double Room", price: "€410/mo" }] },
+  { name: "Frau Hitt-Campus", category: "Non-Profit", operator: "Akademikerhilfe", beds: "35", location: "Frau-Hitt-Str. 14", source: "", photos: [], rooms: [{ type: "Single Room", price: "from €432/mo" }, { type: "Double Room", price: "from €319/mo" }] },
+  { name: "Haus Am Gießen 20", category: "Non-Profit", operator: "Akademikerhilfe", beds: "54", location: "Am Gießen 20", source: "", photos: [], rooms: [{ type: "Single Room", price: "from €350/mo" }] },
+  { name: "Haus Maximilianstr. 8", category: "Non-Profit", operator: "Akademikerhilfe", beds: "96", location: "Maximilianstr. 8", source: "", photos: [], rooms: [{ type: "Single Room", price: "from €580/mo" }] },
+  { name: "Haus Schützenstr. 43", category: "Non-Profit", operator: "Akademikerhilfe", beds: "95", location: "Schützenstr. 43", source: "", photos: [], rooms: [{ type: "Single Room", price: "€438/mo" }, { type: "Double Room", price: "€356/mo p.P." }] },
+  /* ── Home4students ── */
+  { name: "Home4students Höttinger Au", category: "University Subsidised", operator: "Home4students", beds: "229", location: "Höttinger Au 34", source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/hoettinger-au-34/", photos: ["/images/residences/innsbruck/hoettinger-au-34.jpg"], rooms: [{ type: "Single Room", price: "€505/mo" }, { type: "Double Room", price: "€320/mo" }] },
+  { name: "Home4students Technikerstr.", category: "University Subsidised", operator: "Home4students", beds: "259", location: "Technikerstr. 7", source: "https://www.oeadstudenthousing.at/en/accommodation/innsbruck/technikerstrasse/", photos: ["/images/residences/innsbruck/technikerstrasse.jpg"], rooms: [{ type: "Single Room", price: "€455/mo" }, { type: "Double Room", price: "€310/mo" }] },
+  { name: "Home4students EUREGIO-Campus", category: "University Subsidised", operator: "Home4students", beds: "72", location: "Erzherzog-Eugen-Str. 25/39", source: "https://www.home4students.at/en/our-dormitories/dormitories-innsbruck/dorm-euregio-campus/", photos: ["/images/residences/innsbruck/euregio-campus.jpg"], rooms: [{ type: "Single Room", price: "€480–€500/mo" }] },
+  /* ── Large Non-Profit / Other ── */
+  { name: "in's – International Student House", category: "Non-Profit", operator: "ISH", beds: "714", location: "Rechengasse 7", source: "https://www.studentenhaus.info/en/", photos: ["/images/residences/innsbruck/generic-student-housing-4.jpg"], rooms: [{ type: "Single Room", price: "€345–€615/mo" }] },
+  { name: "Europaheim", category: "Non-Profit", operator: "Europaheim (self-managed)", beds: "269", location: "Technikerstr. 9b", source: "", photos: [], rooms: [{ type: "Single Room", price: "€593/mo" }] },
+  { name: "Südtiroler StudentInnenheim Anton Zelger", category: "Non-Profit", operator: "Südtirolerheim", beds: "190", location: "Viktor-Franz-Hess-Str. 4", source: "", photos: [], rooms: [{ type: "Single Room", price: "€300/mo" }] },
+  { name: "Kolpinghaus Innsbruck", category: "Non-Profit", operator: "Kolpinghaus", beds: "120", location: "Viktor-Franz-Hess-Str. 7", source: "", photos: [], rooms: [{ type: "Half-board only", price: "On request" }] },
+  { name: "Campushotel Hall in Tirol", category: "Non-Profit", operator: "Campushotel", beds: "152", location: "Eduard Wallnöfer-Zentrum 2, 6060 Hall", source: "", photos: [], rooms: [{ type: "Typ A", price: "€382.90/mo" }, { type: "Typ B Garçonnière", price: "€535.80/mo" }] },
+  { name: "Campus Dreiheiligen", category: "Private PBSA", operator: "Immobilien Dr. Rhomberg", beds: "93", location: "Kohlstattgasse 1 & 1a", source: "", photos: [], rooms: [{ type: "Single Room", price: "€443–€520/mo" }, { type: "Double Room", price: "€320/mo" }] },
+  { name: "Bischof Paulus Heim", category: "Non-Profit", operator: "Universitätspfarre", beds: "87", location: "Santifallerstr. 3", source: "", photos: [], rooms: [{ type: "Single Room (incl. VAT)", price: "€528/mo" }] },
+  { name: "Studentenwohnheim Saggen", category: "Non-Profit", operator: "Diakonie Tirol", beds: "58", location: "Gänsbacherstr. 4", source: "https://www.studentenwohnheim-saggen.at/", photos: ["/images/residences/innsbruck/generic-student-housing-1.jpg"], rooms: [{ type: "Single Room", price: "from €415/mo" }, { type: "Apartment", price: "from €485/mo" }, { type: "2-bed Apt", price: "from €340/mo" }] },
+  { name: "Katholisches Studentinnenheim", category: "Non-Profit", operator: "Private (Catholic)", beds: "50", location: "Speckbacherstr. 29", source: "", photos: [], rooms: [{ type: "Single Room", price: "€150–€370/mo" }, { type: "Double Room", price: "€230/mo" }] },
+  { name: "Studentenheim Tiroler Jugendherbergswerk", category: "Non-Profit", operator: "Tiroler Jugendherbergswerk", beds: "32", location: "Reichenauerstr. 147", source: "https://www.studentenheim-innsbruck.at/", photos: ["/images/residences/innsbruck/generic-student-housing-3.jpg"], rooms: [{ type: "Single Room", price: "€395/mo" }] },
+  { name: "FOX 54", category: "Premium PBSA", operator: "Edinger Tourismusberatung GmbH", beds: "30", location: "Maximilianstr. 2", source: "", photos: [], rooms: [{ type: "Single Apartment", price: "€1,000/mo" }] },
+  { name: "Ungarisches Studentenheim", category: "Non-Profit", operator: "Hungarian association", beds: "21", location: "Richard-Wagner-Str. 3", source: "", photos: [], rooms: [{ type: "Single Room", price: "€300–€480/mo" }] },
+  { name: "STUV – Studentenunterstützungsverein", category: "Non-Profit", operator: "STUV (Catholic)", beds: "19", location: "Zollerstr. 3", source: "", photos: [], rooms: [{ type: "Single (in WG)", price: "€380/mo" }] },
+  { name: "Jesuitenkolleg", category: "Non-Profit", operator: "Jesuiten", beds: "15", location: "Universitätsstr. 8", source: "", photos: [], rooms: [{ type: "Single Room", price: "€290–€480/mo" }] },
+  { name: "Studentenhaus Sillgraben", category: "Non-Profit", operator: "Private", beds: "14", location: "Rennweg 34", source: "https://www.sillgraben.at/", photos: ["/images/residences/innsbruck/generic-student-housing-2.jpg"], rooms: [{ type: "Single Room + Board", price: "€910/mo total" }] },
+  { name: "Inncampus", category: "Non-Profit", operator: "UPAD (Italian)", beds: "14", location: "Andreas-Hofer-Str. 46/4", source: "", photos: [], rooms: [{ type: "Single Room", price: "On request" }] },
+  /* ── Premium PBSA ── */
+  { name: "STUWO Raimund Pradler", category: "Premium PBSA", operator: "STUWO", beds: "87", location: "Kranebitter Allee 30", source: "https://www.stuwo.at/en/dormitories/innsbruck/", photos: ["/images/residences/innsbruck/stuwo-1.jpg", "/images/residences/innsbruck/stuwo-2.jpg", "/images/residences/innsbruck/stuwo-3.jpg", "/images/residences/innsbruck/stuwo-4.jpg"], rooms: [{ type: "Single (all-inclusive)", price: "€689–€749/mo" }] },
 ];
 
 function parseMinPrice(priceStr: string): number {
@@ -193,7 +172,7 @@ export default function InnsbruckComparablesPage() {
             <span className="text-silver text-[10px] font-bold tracking-[0.2em] uppercase">Comparables</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">PBSA Comparables</h1>
-          <p className="text-sm text-silver mt-2">10 properties &middot; ~977 beds &middot; Innsbruck student housing market</p>
+          <p className="text-sm text-silver mt-2">{pbsa.length} properties &middot; ~{pbsa.reduce((s, r) => s + parseBeds(r.beds), 0).toLocaleString()} beds &middot; Innsbruck student housing market</p>
         </div>
       </div>
 
