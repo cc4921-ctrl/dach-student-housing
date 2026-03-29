@@ -411,6 +411,52 @@ export default function DataPage() {
         {/* ═══ Sources Section ═══ */}
         {activeSection === "sources" && (
           <section className="space-y-6">
+            {/* Download cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <a href="/data/DACH_Student_Housing_Market_Data_2025.xlsx" download
+                className="group flex items-start gap-4 bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-emerald-accent/30 transition-all duration-300">
+                <div className="w-11 h-11 rounded-xl bg-emerald-accent/10 border border-emerald-accent/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-accent/20 transition-colors">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-emerald-accent"><rect x="3" y="2" width="14" height="16" rx="2" /><path d="M7 6h6M7 10h6M7 14h4" /></svg>
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-bold text-snow group-hover:text-emerald-accent transition-colors truncate">DACH Student Housing Market Data</h3>
+                  <p className="text-xs text-silver/60 mt-1">30 German + 6 Austrian cities &middot; rents, students, supply pipeline</p>
+                  <span className="inline-flex items-center gap-1.5 mt-2 text-[10px] text-emerald-accent/70 font-semibold uppercase tracking-wider">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M6 2v6M3 6l3 3 3-3M2 10h8" /></svg>
+                    Download .xlsx
+                  </span>
+                </div>
+              </a>
+              <a href="/data/innsbruck-listings.csv" download
+                className="group flex items-start gap-4 bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-emerald-accent/30 transition-all duration-300">
+                <div className="w-11 h-11 rounded-xl bg-cat-blue/10 border border-cat-blue/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cat-blue/20 transition-colors">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-cat-blue"><rect x="3" y="2" width="14" height="16" rx="2" /><path d="M7 6h6M7 10h6M7 14h4" /></svg>
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-bold text-snow group-hover:text-cat-blue transition-colors truncate">Innsbruck Listings CSV</h3>
+                  <p className="text-xs text-silver/60 mt-1">21 scraped PRS listings &middot; willhaben.at &amp; wohnungsboerse.net</p>
+                  <span className="inline-flex items-center gap-1.5 mt-2 text-[10px] text-cat-blue/70 font-semibold uppercase tracking-wider">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M6 2v6M3 6l3 3 3-3M2 10h8" /></svg>
+                    Download .csv
+                  </span>
+                </div>
+              </a>
+              <a href="/data/passau-listings.csv" download
+                className="group flex items-start gap-4 bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-emerald-accent/30 transition-all duration-300">
+                <div className="w-11 h-11 rounded-xl bg-cat-blue/10 border border-cat-blue/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cat-blue/20 transition-colors">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-cat-blue"><rect x="3" y="2" width="14" height="16" rx="2" /><path d="M7 6h6M7 10h6M7 14h4" /></svg>
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-bold text-snow group-hover:text-cat-blue transition-colors truncate">Passau Listings CSV</h3>
+                  <p className="text-xs text-silver/60 mt-1">17 scraped PRS listings &middot; WG-gesucht.de</p>
+                  <span className="inline-flex items-center gap-1.5 mt-2 text-[10px] text-cat-blue/70 font-semibold uppercase tracking-wider">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M6 2v6M3 6l3 3 3-3M2 10h8" /></svg>
+                    Download .csv
+                  </span>
+                </div>
+              </a>
+            </div>
+
             {sources.map(group => (
               <div key={group.category}>
                 <h3 className="text-lg font-bold text-snow mb-3">{group.category}</h3>
