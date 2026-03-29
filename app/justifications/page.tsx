@@ -96,20 +96,6 @@ const demandByCity: Record<string, { students: string; population: string; ratio
   Passau: { students: "~10,600", population: "~54,000", ratio: "~20%", pbsaBeds: "~1,895", coverage: "~17.9%", bedGap: "~230" },
 };
 
-/* Travel time radii config — minutes by transport mode */
-const travelRadii = [
-  { minutes: 5, color: "#00bc7d", opacity: 0.18, label: "5 min" },
-  { minutes: 10, color: "#3b82f6", opacity: 0.14, label: "10 min" },
-  { minutes: 15, color: "#8b5cf6", opacity: 0.10, label: "15 min" },
-  { minutes: 20, color: "#f59e0b", opacity: 0.08, label: "20 min" },
-];
-
-/* Approximate cycling radius in meters for each travel time (avg 15 km/h cycling speed) */
-function travelRadiusMeters(minutes: number): number {
-  const cyclingSpeedKmH = 14;
-  return (cyclingSpeedKmH * 1000 / 60) * minutes;
-}
-
 const cityList = ["Innsbruck", "Munich", "Passau"] as const;
 
 const catColors: Record<string, string> = {
@@ -166,7 +152,7 @@ function cityDiscountData(city: string) {
    MAP COMPONENT — with university markers & travel radii
    ═══════════════════════════════════════════════════════════════ */
 
-function PropertyMap({ city, showRadii, darkMode }: { city: string | "all"; showRadii: boolean; darkMode: boolean }) {
+function PropertyMap({ city, darkMode }: { city: string | "all"; darkMode: boolean }) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<unknown>(null);
   const [loaded, setLoaded] = useState(false);
@@ -233,25 +219,6 @@ function PropertyMap({ city, showRadii, darkMode }: { city: string | "all"; show
     }).addTo(map);
     mapInstance.current = map;
     const layer = L.layerGroup().addTo(map);
-
-    // University travel radii (drawn first so they appear behind markers)
-    if (showRadii) {
-      const unis = city === "all" ? universities : universities.filter(u => u.city === city);
-      unis.forEach(u => {
-        // Draw concentric circles from largest to smallest
-        [...travelRadii].reverse().forEach(r => {
-          L.circle([u.lat, u.lng], {
-            radius: travelRadiusMeters(r.minutes),
-            fillColor: r.color,
-            fillOpacity: r.opacity,
-            color: r.color,
-            weight: 1,
-            opacity: 0.35,
-            dashArray: "4 4",
-          }).addTo(layer);
-        });
-      });
-    }
 
     // PBSA comparables
     const comps = city === "all" ? pbsaComps : pbsaComps.filter(c => c.city === city);
@@ -324,7 +291,7 @@ function PropertyMap({ city, showRadii, darkMode }: { city: string | "all"; show
       }
     };
     /* eslint-enable @typescript-eslint/no-explicit-any */
-  }, [loaded, city, showRadii, darkMode]);
+  }, [loaded, city, darkMode]);
 
   return (
     <div className={`just-map ${darkMode ? "map-dark" : "map-light"} bg-midnight-light rounded-2xl border border-white/[0.06] overflow-hidden`} style={{ height: "480px" }}>
@@ -357,7 +324,6 @@ const CompTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ 
 export default function JustificationsPage() {
   const [activeCity, setActiveCity] = useState<string>("Innsbruck");
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
-  const [showRadii, setShowRadii] = useState(true);
   const [mapDark, setMapDark] = useState(true);
 
   const toggleRow = (name: string) => {
@@ -411,7 +377,7 @@ export default function JustificationsPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
             <div>
               <h2 className="text-xl font-bold text-snow">Property &amp; University Locations — {activeCity}</h2>
-              <p className="text-sm text-silver mt-1">PBSA comparables, Stonehill targets, universities with cycling travel radii</p>
+              <p className="text-sm text-silver mt-1">PBSA comparables, Stonehill targets &amp; universities</p>
             </div>
             <div className="flex gap-2 self-start">
               <button
@@ -424,19 +390,9 @@ export default function JustificationsPage() {
               >
                 {mapDark ? "Light Map" : "Dark Map"}
               </button>
-              <button
-                onClick={() => setShowRadii(!showRadii)}
-                className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${
-                  showRadii
-                    ? "bg-emerald-accent/10 border-emerald-accent/30 text-emerald-accent"
-                    : "bg-transparent border-white/[0.08] text-silver/60 hover:text-silver"
-                }`}
-              >
-                {showRadii ? "Hide" : "Show"} Travel Radii
-              </button>
             </div>
           </div>
-          <PropertyMap city={activeCity} showRadii={showRadii} darkMode={mapDark} />
+          <PropertyMap city={activeCity} darkMode={mapDark} />
           <div className="mt-4 flex flex-wrap gap-4 text-xs text-silver/70">
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-[#ef4444] border-2 border-white" /> Stonehill Target</span>
             <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-[#facc15] border-2 border-[#0c1220] rounded-sm" style={{ transform: "rotate(45deg)" }} /> University</span>
@@ -445,17 +401,6 @@ export default function JustificationsPage() {
             <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-amber" /> Private PBSA</span>
             <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-cat-purple" /> Premium PBSA</span>
           </div>
-          {showRadii && (
-            <div className="mt-2 flex flex-wrap gap-3 text-xs text-silver/60">
-              <span className="font-semibold text-silver/70">Cycling radii (~14 km/h):</span>
-              {travelRadii.map(r => (
-                <span key={r.minutes} className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full border" style={{ borderColor: r.color, backgroundColor: `${r.color}33` }} />
-                  {r.label}
-                </span>
-              ))}
-            </div>
-          )}
         </section>
 
         {/* ── Target Property Details ── */}
@@ -489,16 +434,6 @@ export default function JustificationsPage() {
                 <div className="text-xs text-silver font-medium mb-1">{u.name}</div>
                 <div className="text-xs text-silver/60 mb-2">{u.address}</div>
                 <div className="text-xs text-snow font-bold">{u.students} students</div>
-                <div className="mt-3 pt-3 border-t border-white/[0.04]">
-                  <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">Cycling travel times</div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {travelRadii.map(r => (
-                      <span key={r.minutes} className="text-[10px] px-2 py-0.5 rounded-full border" style={{ borderColor: `${r.color}50`, color: r.color, backgroundColor: `${r.color}15` }}>
-                        {r.label} — {((travelRadiusMeters(r.minutes)) / 1000).toFixed(1)} km
-                      </span>
-                    ))}
-                  </div>
-                </div>
                 {/* Proximity to Stonehill targets */}
                 {cityTargets.length > 0 && (
                   <div className="mt-3 pt-3 border-t border-white/[0.04]">
@@ -662,10 +597,10 @@ export default function JustificationsPage() {
         <section className="bg-midnight-light border border-white/[0.06] rounded-2xl p-8">
           <h2 className="text-lg font-bold text-snow mb-3">Methodology &amp; Sources</h2>
           <div className="text-sm text-silver/80 space-y-3 leading-relaxed">
-            <p><span className="text-snow font-semibold">Private Rental Data:</span> Innsbruck: 21 listings (willhaben.at, wohnungsboerse.net). Munich: 35 listings (ImmobilienScout24, immowelt). Passau: 17 listings (WG-gesucht.de). All scraped March 2026. Rents are warm/gross where stated.</p>
+            <p><span className="text-snow font-semibold">Private Rental Data:</span> Innsbruck: 179 listings (willhaben.at &amp; ImmobilienScout24). Munich: 2,832 listings (wg-gesucht.de &amp; ImmobilienScout24). Passau: 276 listings (WG-gesucht.de &amp; ImmobilienScout24). All scraped March 2026. Rents are warm/gross where stated.</p>
             <p><span className="text-snow font-semibold">PBSA Comparables:</span> {pbsaComps.length} purpose-built residences across 4 pricing tiers. Rent data from operator websites (OeAD, Studierendenwerk, STUWO, THE FIZZ, etc.) as of March 2026.</p>
             <p><span className="text-snow font-semibold">Target Properties:</span> Höttinger Au / Bachlechnerstraße and Areal Hafen / Innrain (Innsbruck), Ungererstraße 71 (Munich Schwabing), and Haitzingerstraße 4 (Passau). Stonehill acquisition/development targets.</p>
-            <p><span className="text-snow font-semibold">University Locations:</span> {universities.length} institutions mapped with approximate cycling travel radii (5, 10, 15, 20 min at ~14 km/h average cycling speed). Addresses from official university websites.</p>
+            <p><span className="text-snow font-semibold">University Locations:</span> {universities.length} institutions mapped. Addresses from official university websites.</p>
             <p><span className="text-snow font-semibold">Student Population:</span> Enrollment from university annual reports (2024/25). City population from Statistik Austria / Bayerisches Landesamt für Statistik (2025).</p>
           </div>
         </section>
