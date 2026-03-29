@@ -1,161 +1,70 @@
-"use client";
 import Link from "next/link";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
 const histogram = [
   { range: "€200", count: 2 },
-  { range: "€300", count: 8 },
-  { range: "€400", count: 19 },
-  { range: "€500", count: 18 },
-  { range: "€600", count: 14 },
-  { range: "€700", count: 4 },
-  { range: "€800", count: 3 },
-  { range: "€900+", count: 2 },
+  { range: "€300", count: 12 },
+  { range: "€400", count: 32 },
+  { range: "€500", count: 40 },
+  { range: "€600", count: 34 },
+  { range: "€700", count: 22 },
+  { range: "€800", count: 14 },
+  { range: "€900+", count: 11 },
 ];
 
-const recentListings = [
-  { title: "Helle 1-Zimmer mit Dachterrasse", rent: 595, sqm: 31, location: "Haidenhof-Süd", source: "WG-gesucht" },
-  { title: "Renoviertes Studentenappartement", rent: 390, sqm: 22, location: "Haidenhof-Nord", source: "WG-gesucht" },
-  { title: "1,5-Zimmer Nähe Uni & Klinikum", rent: 520, sqm: 39, location: "St. Anton", source: "WG-gesucht" },
-  { title: "Furnished 1-Room Apartment Innstadt", rent: 400, sqm: 25, location: "Innstadt", source: "WG-gesucht" },
-  { title: "Möblierte 1-Zimmer Hacklberg", rent: 510, sqm: 35, location: "Hacklberg", source: "WG-gesucht" },
-  { title: "Studentenapartment mit Aussicht", rent: 530, sqm: 26, location: "Innstadt", source: "WG-gesucht" },
-  { title: "Modernes Wohnheimzimmer UniLife", rent: 560, sqm: 18, location: "Haidenhof", source: "WG-gesucht" },
-  { title: "Apartment Nähe Uni, Krankenhaus", rent: 420, sqm: 20, location: "Haidenhof-Süd", source: "WG-gesucht" },
-  { title: "Apartment TOP Lage Altstadt", rent: 575, sqm: 34, location: "Altstadt", source: "WG-gesucht" },
-  { title: "Neu renoviertes Appartement Innstadt", rent: 550, sqm: 29, location: "Innstadt", source: "WG-gesucht" },
-  { title: "Vollmöblierte Wohnung für Studierende", rent: 500, sqm: 26, location: "Innstadt", source: "WG-gesucht" },
-  { title: "Möblierte 1-Zimmer, 260€ Kaltmiete", rent: 370, sqm: 20, location: "Haidenhof-Nord", source: "WG-gesucht" },
-  { title: "Warm rental, central location", rent: 420, sqm: 23, location: "Haidenhof-Süd", source: "WG-gesucht" },
-  { title: "Gemütliches Appartement + TG-Stellplatz", rent: 500, sqm: 25, location: "Haidenhof-Süd", source: "WG-gesucht" },
-  { title: "Uninahe 1-Zimmer Innstadt", rent: 550, sqm: 32, location: "Innstadt", source: "WG-gesucht" },
-  { title: "Wunderschöne 1-Zimmer Wohnung", rent: 600, sqm: 31, location: "Haidenhof-Nord", source: "WG-gesucht" },
-  { title: "1-Zimmer-Appartement Altbau", rent: 481, sqm: 34, location: "Altstadt", source: "WG-gesucht" },
-];
-
-const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ value: number; payload: { range: string } }> }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-midnight-surface border border-white/[0.08] text-snow px-4 py-2.5 rounded-xl shadow-xl text-sm">
-        <p className="font-bold">{payload[0].payload.range}</p>
-        <p className="text-emerald-accent text-xs mt-0.5">{payload[0].value} listings</p>
-      </div>
-    );
-  }
-  return null;
-};
+const maxCount = Math.max(...histogram.map(h => h.count));
 
 export default function PassauPage() {
   return (
-    <div className="min-h-screen bg-midnight">
-      <div className="relative w-full h-72 overflow-hidden">
-        <img
-          src="/images/banners/passau.jpg"
-          alt="Passau"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
-        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-6 h-px bg-emerald-accent" />
-            <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Germany</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-serif text-snow tracking-tight">Passau</h1>
-          <div className="flex items-center gap-4 mt-3">
-            <span className="text-sm text-silver">70 listings</span>
-            <span className="w-1 h-1 rounded-full bg-silver/40" />
-            <span className="text-sm text-silver">Median €500/mo</span>
-            <span className="w-1 h-1 rounded-full bg-silver/40" />
-            <span className="text-sm text-silver">March 2026</span>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">Passau</h1>
+          <p className="text-slate-500 mt-1">167 listings &middot; Median &euro;515/mo &middot; March 2026</p>
         </div>
-      </div>
-
-      <main className="max-w-7xl mx-auto px-6 py-12 space-y-12">
         <section>
-          <h2 className="text-xl font-bold text-snow mb-2">Price Distribution</h2>
-          <p className="text-sm text-silver mb-8">Monthly rent across 70 active PRS listings (WG-gesucht, ImmobilienScout24 &amp; immowelt)</p>
+          <h2 className="text-lg font-semibold text-slate-800 mb-1">Price Distribution</h2>
+          <p className="text-sm text-slate-500 mb-6">Monthly rent across 167 active PRS listings (WG-gesucht, ImmobilienScout24 & immowelt)</p>
 
-          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6 sm:p-8">
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={histogram} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                <XAxis dataKey="range" tick={{ fill: "#94a3b8", fontSize: 11 }} axisLine={{ stroke: "rgba(255,255,255,0.06)" }} tickLine={false} />
-                <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.02)" }} />
-                <Bar dataKey="count" radius={[8, 8, 0, 0]}>
-                  {histogram.map((_, index) => (
-                    <Cell key={index} fill={index === 2 ? "#00bc7d" : "#009966"} fillOpacity={index === 2 ? 1 : 0.6} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-
-            <div className="mt-6 pt-6 border-t border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {[
-                { label: "Median", value: "€500" },
-                { label: "Q25", value: "€400" },
-                { label: "Q75", value: "€580" },
-                { label: "Range", value: "€240–€950" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center sm:text-left">
-                  <div className="text-[10px] text-silver/60 uppercase tracking-wider mb-1">{stat.label}</div>
-                  <div className="text-lg font-bold text-snow font-serif">{stat.value}</div>
+          <div className="bg-white rounded-xl border border-slate-200 p-6 pb-4">
+            <div className="flex items-end gap-1.5 h-52">
+              {histogram.map((bar) => (
+                <div key={bar.range} className="flex-1 flex flex-col items-center justify-end h-full">
+                  <span className="text-xs font-medium text-slate-500 mb-1">{bar.count}</span>
+                  <div
+                    className="w-full rounded-t-md bg-gradient-to-t from-blue-600 to-blue-400"
+                    style={{ height: `${(bar.count / maxCount) * 100}%`, minHeight: bar.count > 0 ? '4px' : '0' }}
+                  />
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+            <div className="flex gap-1.5 mt-2 border-t border-slate-100 pt-2">
+              {histogram.map((bar) => (
+                <div key={bar.range} className="flex-1 text-center">
+                  <span className="text-[10px] text-slate-400 leading-tight">{bar.range}</span>
+                </div>
+              ))}
+            </div>
 
-        {/* Recent 1-Bedroom Listings */}
-        <section>
-          <div className="flex items-center gap-3 mb-2">
-            <h2 className="text-xl font-bold text-snow">Recent 1-Bedroom Listings</h2>
-            <span className="text-xs text-emerald-accent bg-emerald-accent/10 border border-emerald-accent/20 px-2.5 py-0.5 rounded-full font-semibold">{recentListings.length} scraped</span>
-          </div>
-          <div className="flex items-center gap-4 mb-6">
-            <p className="text-sm text-silver">Live listings from WG-gesucht.de · March 2026</p>
-            <a href="/data/passau-listings.csv" download className="inline-flex items-center gap-1.5 text-xs text-emerald-accent hover:text-emerald-glow transition-colors font-semibold whitespace-nowrap">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M6 1v8M3 6l3 3 3-3M1 10h10" /></svg>
-              Raw CSV
-            </a>
-          </div>
-          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-white/[0.06]">
-                    <th className="text-left text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3">Listing</th>
-                    <th className="text-right text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3">Rent</th>
-                    <th className="text-right text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3">Size</th>
-                    <th className="text-right text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3 hidden sm:table-cell">€/m²</th>
-                    <th className="text-left text-[10px] text-silver/50 uppercase tracking-wider font-semibold px-6 py-3 hidden md:table-cell">District</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {recentListings.map((l, i) => (
-                    <tr key={i} className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors">
-                      <td className="px-6 py-3 text-silver-bright font-medium">{l.title}</td>
-                      <td className="px-6 py-3 text-right text-emerald-accent font-bold font-serif">€{l.rent}</td>
-                      <td className="px-6 py-3 text-right text-silver">{l.sqm} m²</td>
-                      <td className="px-6 py-3 text-right text-silver hidden sm:table-cell">€{(l.rent / l.sqm).toFixed(1)}</td>
-                      <td className="px-6 py-3 text-silver/70 hidden md:table-cell">{l.location}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-6 text-sm text-slate-500">
+              <div>Median <span className="font-semibold text-slate-800">&euro;515</span></div>
+              <div>Q25 <span className="font-semibold text-slate-800">&euro;420</span></div>
+              <div>Q75 <span className="font-semibold text-slate-800">&euro;660</span></div>
+              <div>Range <span className="font-semibold text-slate-800">&euro;270&ndash;&euro;995</span></div>
             </div>
           </div>
         </section>
 
-        <section className="flex flex-col sm:flex-row gap-4">
-          <Link href="/passau/comparables" className="group inline-flex items-center justify-center gap-3 bg-emerald-accent text-midnight px-8 py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-emerald-glow transition-colors duration-300">
-            PBSA Comparables
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:translate-x-1 transition-transform"><path d="M1 8h14M9 2l6 6-6 6" /></svg>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/passau/comparables" className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            PBSA Comparables &rarr;
           </Link>
-          <Link href="/passau/universities" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
+          <Link href="/passau/universities" className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-6 py-3 rounded-lg hover:bg-slate-50 transition-colors font-medium">
             Universities
           </Link>
-        </section>
+          <a href="https://www.wg-gesucht.de/1-zimmer-wohnungen-in-Passau.87.1.1.0.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 px-6 py-3 rounded-lg hover:bg-slate-50 transition-colors font-medium">
+            Source Data &uarr;
+          </a>
+        </div>
       </main>
     </div>
   );
