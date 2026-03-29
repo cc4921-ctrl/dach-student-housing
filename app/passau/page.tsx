@@ -1,14 +1,13 @@
 import Link from "next/link";
 
 const histogram = [
-  { range: "€200", count: 2 },
-  { range: "€300", count: 12 },
-  { range: "€400", count: 32 },
-  { range: "€500", count: 40 },
-  { range: "€600", count: 34 },
-  { range: "€700", count: 22 },
-  { range: "€800", count: 14 },
-  { range: "€900+", count: 11 },
+  { label: "300", count: 12 },
+  { label: "400", count: 39 },
+  { label: "500", count: 54 },
+  { label: "600", count: 47 },
+  { label: "700", count: 28 },
+  { label: "800", count: 23 },
+  { label: "900+", count: 73 },
 ];
 
 const maxCount = Math.max(...histogram.map(h => h.count));
@@ -19,16 +18,16 @@ export default function PassauPage() {
       <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
         <div>
           <h1 className="text-3xl font-bold text-slate-800">Passau</h1>
-          <p className="text-slate-500 mt-1">167 listings &middot; Median &euro;515/mo &middot; March 2026</p>
+          <p className="text-slate-500 mt-1">276 listings &middot; Median &euro;550/mo &middot; March 2026</p>
         </div>
         <section>
           <h2 className="text-lg font-semibold text-slate-800 mb-1">Price Distribution</h2>
-          <p className="text-sm text-slate-500 mb-6">Monthly rent across 167 active PRS listings (WG-gesucht, ImmobilienScout24 & immowelt)</p>
+          <p className="text-sm text-slate-500 mb-6">Monthly rent across 276 active PRS listings (WG-gesucht &amp; ImmobilienScout24)</p>
 
           <div className="bg-white rounded-xl border border-slate-200 p-6 pb-4">
             <div className="flex items-end gap-1.5 h-52">
               {histogram.map((bar) => (
-                <div key={bar.range} className="flex-1 flex flex-col items-center justify-end h-full">
+                <div key={bar.label} className="flex-1 flex flex-col items-center justify-end h-full">
                   <span className="text-xs font-medium text-slate-500 mb-1">{bar.count}</span>
                   <div
                     className="w-full rounded-t-md bg-gradient-to-t from-blue-600 to-blue-400"
@@ -39,17 +38,17 @@ export default function PassauPage() {
             </div>
             <div className="flex gap-1.5 mt-2 border-t border-slate-100 pt-2">
               {histogram.map((bar) => (
-                <div key={bar.range} className="flex-1 text-center">
-                  <span className="text-[10px] text-slate-400 leading-tight">{bar.range}</span>
+                <div key={bar.label} className="flex-1 text-center">
+                  <span className="text-[10px] text-slate-400 leading-tight">&euro;{bar.label}</span>
                 </div>
               ))}
             </div>
 
             <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-6 text-sm text-slate-500">
-              <div>Median <span className="font-semibold text-slate-800">&euro;515</span></div>
-              <div>Q25 <span className="font-semibold text-slate-800">&euro;420</span></div>
-              <div>Q75 <span className="font-semibold text-slate-800">&euro;660</span></div>
-              <div>Range <span className="font-semibold text-slate-800">&euro;270&ndash;&euro;995</span></div>
+              <div>Median <span className="font-semibold text-slate-800">&euro;550</span></div>
+              <div>Q25 <span className="font-semibold text-slate-800">&euro;430</span></div>
+              <div>Q75 <span className="font-semibold text-slate-800">&euro;800</span></div>
+              <div>Range <span className="font-semibold text-slate-800">&euro;200&ndash;&euro;2,000</span></div>
             </div>
           </div>
         </section>
