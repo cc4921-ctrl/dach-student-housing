@@ -84,9 +84,9 @@ const universities: University[] = [
 
 /* PRS benchmarks per city */
 const prsBenchmarks: Record<string, { median: number; mean: number; q25: number; q75: number; n: number; sources: string }> = {
-  Innsbruck: { median: 950, mean: 1016, q25: 850, q75: 1350, n: 21, sources: "willhaben.at & wohnungsboerse.net" },
-  Munich: { median: 1450, mean: 1520, q25: 1100, q75: 1850, n: 35, sources: "ImmobilienScout24 & immowelt" },
-  Passau: { median: 500, mean: 498, q25: 400, q75: 580, n: 17, sources: "WG-gesucht.de" },
+  Innsbruck: { median: 1380, mean: 1467, q25: 900, q75: 1710, n: 179, sources: "willhaben.at & ImmobilienScout24" },
+  Munich: { median: 1290, mean: 1416, q25: 950, q75: 1700, n: 2832, sources: "wg-gesucht.de & ImmobilienScout24" },
+  Passau: { median: 550, mean: 682, q25: 430, q75: 800, n: 276, sources: "WG-gesucht.de & ImmobilienScout24" },
 };
 
 /* Demand metrics per city */
