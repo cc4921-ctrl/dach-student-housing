@@ -29,16 +29,17 @@ const pages = [
 export default function MunichPage() {
   return (
     <div className="min-h-screen bg-midnight">
-      {/* Header */}
-      <div className="relative w-full h-56 overflow-hidden bg-midnight-light">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-accent/5 via-midnight to-midnight" />
+      {/* Header with city photo */}
+      <div className="relative w-full h-72 sm:h-80 overflow-hidden">
+        <img src="/images/banners/munich.jpg" alt="Munich skyline" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/70 to-midnight/30" />
         <div className="absolute bottom-0 left-0 right-0 max-w-5xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-6 h-px bg-emerald-accent" />
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">City Overview</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Munich</h1>
-          <p className="text-silver mt-1 text-sm">Bavaria, Germany &middot; 130,000 students &middot; 28.9% international &middot; March 2026</p>
+          <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight drop-shadow-lg">Munich</h1>
+          <p className="text-silver mt-1 text-sm drop-shadow-md">Bavaria, Germany &middot; 130,000 students &middot; 28.9% international &middot; March 2026</p>
         </div>
       </div>
 
