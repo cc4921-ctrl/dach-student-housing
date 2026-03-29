@@ -1,22 +1,67 @@
 title,rent_eur,size_sqm,eur_per_sqm,location,rooms,source,url,scraped_date
-"Garconniere Innsbruck",920,23,40.0,"Innsbruck",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Sonnige Garconniere",820,27,30.4,"Pradler Straße",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Top-Lage Garconniere Klinik / Hauptuni",900,30,30.0,"Innerkoflerstraße 2",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Möblierte 1-Zimmer Altbauwohnung mit Balkon",850,39,21.8,"Innsbruck",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Gemütliche 1-Zimmer-Wohnung Museumstraße",850,18,47.2,"Museumstraße 33",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Exklusive klimatisierte Neubauwohnung (Erstbezug)",1390,30,46.3,"Zentrum",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Helle 1-Zimmer-Wohnung mit Loggia",1420,48,29.6,"Zentrum",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Helle Garçonniere",1050,32,32.8,"Innsbruck",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Garconniere mit Abstellplatz in ruhiger Lage",890,28,31.8,"Dr. Stumpf Straße 65",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Garconniere mit Aufzug und Einbauküche",1030,37,27.8,"Andreas-Hofer-Str. 39a",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Neu renovierte Wohnung mit einem Schlafzimmer",1350,49,27.6,"Innsbruck",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Voll ausgestattete, zentral gelegene Kleinwohnung",1400,40,35.0,"Wilten",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Bergblick am Innufer – Großgarconniere 42m²",1100,42,26.2,"Innpromenade",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Kleingarconniere für Einzelperson Mitterweg 87",750,17,44.1,"Mitterweg 87",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Komplett neu sanierte Wohnung Innsbruck-Stadt",1215,35,34.7,"Fürstenweg 20",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Gemütliche Garconniere",850,30,28.3,"Höttinger Au",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Attraktive Garconniere + TG-Abstellplatz + Terrasse",1250,32,39.1,"Innsbruck",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"TAUSCHWOHNUNG Kleine Flat in Mühlau",530,35,15.1,"Mühlau",1,wohnungsboerse.net,https://www.wohnungsboerse.net/AT/Innsbruck/1-zimmer-wohnung-mieten,2026-03-20
-"Garconniere mit Südbalkon und TG-Stellplatz Pradl",950,35,27.1,"Wetterherrenweg, 6020 Innsbruck",1,willhaben.at,https://www.willhaben.at/iad/immobilien/d/mietwohnungen/tirol/innsbruck/provisionsfrei-von-privat-gemuetliche-garconniere-mit-suedbalkon-und-tg-stellplatz-in-pradl-1206200810/,2026-03-20
-"Garconniere Andreas-Hofer-Straße 55",910,26,35.0,"Andreas-Hofer-Straße 55, 6020 Innsbruck",1,willhaben.at,https://www.willhaben.at/iad/immobilien/d/mietwohnungen/tirol/innsbruck/innsbruck-garconniere-andreas-hofer-strasse-55-1137602424/,2026-03-20
-"2-Zimmer-Wohnung frei ab 01.05.2026",1350,53,25.5,"6020 Innsbruck",2,willhaben.at,https://www.willhaben.at/iad/immobilien/d/mietwohnungen/tirol/innsbruck/frei-ab-01-05-2026-1055397239/,2026-03-20
+Lager in Innsbruck zu vermieten,450,,,6020 Innsbruck,,willhaben.at,,2026-03-17
+TAUSCHWOHNUNG Kleine Flat in Mühlau sucht Tausch in Innsbruck,530,35,15.1,"Innenstadt, Innsbruck",1,immobilienscout24.de,,2026-03-17
+Zwischenmiete Ende März/ Anfang April,650,28,23.2,6020 Innsbruck,1,willhaben.at,,2026-03-17
+Garconniere am Mitterweg,700,24,29.2,6020 Innsbruck,1,willhaben.at,,2026-03-17
+WG-Zimmer im Loft-Stil mit eigenem Bad in 3er WG,740,22,33.6,"6020 Innsbruck, Dreiheiligenstraße 33a",,willhaben.at,,2026-03-17
+INNSBRUCK - GARCONNIERE - INNRAIN 28,750,23,32.6,"6020 Innsbruck, Innrain 28",1,willhaben.at,,2026-03-17
+Kleingarconniere für Einzelperson Mitterweg 87 (Top 97),750,17,44.1,"Mitterweg 87, Höttinger Au, Innsbruck",1,immobilienscout24.de,,2026-03-17
+"Erstbezug nach Renovierung: Schöne, helle Garconniere mit Loggia in Pradl",820,29,28.3,"6020 Innsbruck, Pembaurstraße 24",1,willhaben.at,,2026-03-17
+Cozy 1-room apartment on Museum Street,850,18,46.8,"Museumstrasse 33, city center, Innsbruck",1,ImmobilienScout24.at,https://www.immobilienscout24.de/Suche/controller/exposeNavigation/goToExpose.go?exposeId=166439203&searchUrl=%2Fat%2Ftirol%2Finnsbruck%2Fwohnung-mieten&referrer=HYBRID_VIEW_LISTING&searchType=district,2026-03-29
+890€ iBK(DEZ)-Ampass oder Mils / Garconniere,860,25,34.4,,1,willhaben.at,,2026-03-17
+Alpine Redidence for Students,895,32,28.4,"Scheuchenstuelgasse 14, Höttinger Au, Innsbruck",1,immobilienscout24.de,,2026-03-17
+Helle Garconniere mit Balkon - Hötting West (Technik),900,30,30.0,6020 Innsbruck,1,willhaben.at,,2026-03-17
+INNSBRUCK - GARCONNIERE - ANDREAS-HOFER-STRASSE 55,910,26,35.0,"6020 Innsbruck, Andreas-Hofer-Straße 55",1,willhaben.at,,2026-03-17
+Garconniere,920,23,40.0,"6020 Innsbruck, Mitterweg 80",1,willhaben.at,,2026-03-17
+"KOFFER PACKEN, EINZIEHEN und WOHLFÜHLEN",970,37,26.2,"Gewerbegebiet Mühlau / Arzl, Innsbruck",1.5,immobilienscout24.de,,2026-03-17
+"Prime location studio apartment, 30 sqm, Innsbruck Clinic / Main University with",976,30,32.5,"Innerkoflerstrasse 2, Wilten, Innsbruck",1,ImmobilienScout24.at,https://www.immobilienscout24.de/Suche/controller/exposeNavigation/goToExpose.go?exposeId=166258188&searchUrl=%2Fat%2Ftirol%2Finnsbruck%2Fwohnung-mieten&referrer=HYBRID_VIEW_LISTING&searchType=district,2026-03-29
+"Moderne 1,5-Zimmer-Wohnung in Neu-Arzl",980,34,28.8,"6020 Innsbruck, Pontlatzer Straße",2,willhaben.at,,2026-03-17
+"Schöne 2,5 - Zimmer Wohnung in Mühlau mit Bergpanorama sucht neuen Mieter",1018,50,20.4,"Haller Straße 77, Gewerbegebiet Mühlau / Arzl, Innsbruck",2.5,immobilienscout24.de,,2026-03-17
+Neubauwohnungen / Erstbezug in zentrumsnaher Lage zu vermieten! Innsbruck/Kapuzi,1040,45,23.1,"Kapuzinergasse, Dreiheiligen-Schlachthof, Innsbruck",2,immobilienscout24.de,,2026-03-17
+GARÇONNIÈRE / 1-ZIMMER-WOHNUNG,1052,24,43.9,"6020 Innsbruck, Südtiroler Platz 1",1,willhaben.at,,2026-03-17
+TAUSCHWOHNUNG Altbauwohnung,1100,75,14.7,"Wilten, Innsbruck",2,immobilienscout24.de,,2026-03-17
+PRADL - Wetterherrenweg Gemütliche 2-Zimmer-Wohnung,1122,46,24.2,"Wetterherrenweg, Pradl, Innsbruck",2,immobilienscout24.de,,2026-03-17
+Moderne Mietwohnung im Herzen von Innsbruck (provisionsfrei),1189,42,28.3,"6020 Innsbruck, Leopoldstraße 32b",2,willhaben.at,,2026-03-17
+schöne 2 Zimmerwohnung mit Westbalkon,1190,54,22.0,"6020 Innsbruck, Franz-Baumann-Weg",2,willhaben.at,,2026-03-17
+Frisch sanierte 2-Zimmer-Wohnung in der Höttinger Au - Erstbezug nach Generalsan,1200,43,27.9,6020 Innsbruck,2,willhaben.at,,2026-03-17
+Neubauwohnung mit Balkon und TG-Platz,1250,52,24.0,"6020 Innsbruck, Mitterweg 88",2,willhaben.at,,2026-03-17
+grün - grüner - salamander 0B16,1255,41,30.6,"6020 Innsbruck, Franz-Fischer-Straße 26a",2,willhaben.at,,2026-03-17
+"Wunderschöne Gartenwohnung, Neubau",1320,48,27.5,"Pradl, Innsbruck",2,immobilienscout24.de,,2026-03-17
+Neubau 2 Zimmerwohnung Erstbezug,1350,50,27.0,"6020 Innsbruck, Hunoldstraße 14 G05",2,willhaben.at,,2026-03-17
+Ca. 43m² große 2-Zimmer-NEUBAU-Wohnung mit WEST-Balkon in Innsbruck,1350,43,31.4,6020 Innsbruck,2,willhaben.at,,2026-03-17
+"Wunderschöne, neu renovierte 2-Zimmer Wohnung im Zentrum von Innsbruck",1360,47,28.9,"6020 Innsbruck, Örleyweg 18",2,willhaben.at,,2026-03-17
+wohnen über den Dächern von Saggen / 2-Zimmer Maisonette,1380,42,32.9,"6020 Innsbruck, Kohlstattgasse 4",2,willhaben.at,,2026-03-17
+2-Zimmerwohnung in Innenstadtlage (Hötting) inkl. TG-Platz - erst ab 01. Septemb,1380,43,32.1,"6020 Innsbruck, Santifallerstraße 2-4",2,willhaben.at,,2026-03-17
+Villen SAGGEN Bestlage 50m2 Dachgeschoss,1390,50,27.8,"6020 Innsbruck, Claudiastrasse 7",2,willhaben.at,,2026-03-17
+Exklusive klimatisierte Neubauwohnung (Erstbezug) im Herzen Innsbrucks,1390,32,43.4,"6020 Innsbruck, Lieberstraße 2",1,willhaben.at,,2026-03-17
+Charmante 2-Zimmer-Wohnung mit Aussicht,1392,49,28.4,6020 Innsbruck,2,willhaben.at,,2026-03-17
+"Gepflegte, möblierte 2-Zimmer-Wohnung in top Innenstadtlage",1400,52,26.9,"6020 Innsbruck, Blasius-Hueber-Straße",2,willhaben.at,,2026-03-17
+TAUSCHWOHNUNG Helle 3-Zimmer-Wohnung in Innsbruck Höttinger Au,1400,85,16.5,"Innenstadt, Innsbruck",3,immobilienscout24.de,,2026-03-17
+gemütliche 2-Zimmer-Wohnung mit ruhig gelegener Terrasse und Garten,1450,57,25.4,"6020 Innsbruck, Kranebitter Allee 98",2,willhaben.at,,2026-03-17
+Helle 2-Zimmer Neubauwohnung in Innsbruck,1450,46,31.5,"Nagillergasse 79, Höttinger Au, Innsbruck",2,immobilienscout24.de,,2026-03-17
+Dachterrassenappartement,1500,44,34.1,"Scheuchenstuelgasse 14, Höttinger Au, Innsbruck",1.5,immobilienscout24.de,,2026-03-17
+Möblierte 2-Zimmer Wohnung / Ordination nahe Altstadt & Uni - 67 m²,1539,67,23.0,"6020 Innsbruck, Innstraße 81",2,willhaben.at,,2026-03-17
+Voll möbliertes Apartment in zentraler Lage!,1545,34,45.4,"6020 Innsbruck, Innrain 2/Top 19",2,willhaben.at,,2026-03-17
+Stadthaus INNRAIN 21 - Erstbezug 2-Zi-Wohnung (Top 12),1575,58,27.2,"6020 Innsbruck, Innrain 21",2,willhaben.at,,2026-03-17
+Terrassenwohnung vom Feinsten!,1600,73,21.9,"6020 Innsbruck, Höhenstraße 20",2,willhaben.at,,2026-03-17
+Traumhafte 3-Zimmer-Wohnung direkt an der Sill,1600,70,22.9,"Sillgasse 3, Wilten, Innsbruck",3,immobilienscout24.de,,2026-03-17
+Hötting - 2 Zimmerwohnung mit 34 m² Terrasse,1634,68,24.0,"Reichenau, Innsbruck",,immobilienscout24.de,,2026-03-17
+Hochwertige 2-Zimmer-Wohnung mit modernem Flair in gefragter Lage!,1664,53,31.4,,2,willhaben.at,,2026-03-17
+Lebensqualität mit alpinem Flair,1677,75,22.4,"Vill, Innsbruck",3,immobilienscout24.de,,2026-03-17
+Panoramalage Innsbruck-Arzl / LUXURY Wohnung 70m2 + Terrasse 20m2,1850,70,26.4,"6020 Innsbruck, Diesnerstrasse 31",3,willhaben.at,,2026-03-17
+3-Zimmer-Gartenwohnung in Zentrumsnähe,1870,77,24.2,"Innenstadt, Innsbruck",,immobilienscout24.de,,2026-03-17
+Wohnen / Arbeiten am Adolf-Pichler Platz Penthouse mit Westbalkon,1934,,,"Adolf-Pichler-Platz 4/5, Innenstadt, Innsbruck",2,immobilienscout24.de,,2026-03-17
+Einzigartige Pradler Penthouse Wohnung mit Dachterrasse,1994,60,33.2,"6020 Innsbruck, Rilkestrasse",2,willhaben.at,,2026-03-17
+"3-Zimmer-Wohnung in Wilten, WG-geeignet, Kurzzeitmiete bis 6 Monate",2000,91,22.0,"6020 Innsbruck, Leopoldstraße 32B",3,willhaben.at,,2026-03-17
+Moderne 3-Zimmerwohnung mit Loggia und Garagenplatz in Innsbruck,2050,86,23.8,"Amraser Straße 87a, Pradl, Innsbruck",3,immobilienscout24.de,,2026-03-17
+"KURZZEiTmiete in Innsbruck: Sunny Apartment Innsbruck - modernes, möbliertes Stu",2108,30,70.3,"6020 Innsbruck, Philippine Welser Str. 84",1,willhaben.at,,2026-03-17
+Erstbezug: Dachgeschosswohnung in Zentraler Innenhoflage zu vermieten,2200,89,24.7,"6020 Innsbruck, Innrain 41",3,willhaben.at,,2026-03-17
+Natur pur am Stadtrand! 4-Zimmer-Wohnung in Kranebitten,2254,98,23.0,"Technikerstraße, Innsbruck",4,immobilienscout24.de,,2026-03-17
+Top 9: 4-Zi. Whg. m. Balkon,2294,73,31.4,"6020 Innsbruck, Planötzenhofstraße 29",4,willhaben.at,,2026-03-17
+"Perfekt aufgeteilte 4-Zimmerwohnung mit Garten, Terrasse und Wintergarten",2338,99,23.6,"6020 Innsbruck, Schützenstraße 49",4,willhaben.at,,2026-03-17
+"Große, sonnige 4 Zimmerwohnung in sehr guter Lage in Innsbruck",2495,117,21.3,"Kreuzgasse 19, Arzl, Innsbruck",4,immobilienscout24.de,,2026-03-17
+"Exklusives 3,5-Zimmer-Penthouse in Innsbruck - 110 m² | 30 m² Außenflächen | Neu",2695,110,24.5,6020 Innsbruck,3,willhaben.at,,2026-03-17
+I Exklusive 3-Zimmer-Wohnung über den Dächern von Innsbruck I,2958,84,35.2,"Höhenstraße 118c, Hungerburg, Innsbruck",3,immobilienscout24.de,,2026-03-17
+TOP 5: 4-Zi. Penthouse m. S/W Dachterrasse,3205,104,30.8,"6020 Innsbruck, Planötzenhofstraße 29",4,willhaben.at,,2026-03-17
+Exklusive Penthousewohnung mit 360° Bergpanorama in Innsbruck - Mühlau,3795,148,25.6,"Gewerbegebiet Mühlau / Arzl, Innsbruck",4,immobilienscout24.de,,2026-03-17
+Loftartige Designwohnung mit Office-Möglichkeit in Innsbruck,4169,137,30.4,"6020 Innsbruck, Neurauthgasse 8b",4,willhaben.at,,2026-03-17
