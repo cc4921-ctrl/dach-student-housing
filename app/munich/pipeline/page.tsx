@@ -254,6 +254,25 @@ export default function MunichPipelinePage() {
           </a>
         </section>
 
+        {/* Cross-city pipeline nav */}
+        <section className="mt-12">
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Pipeline by City</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Link href="/innsbruck/pipeline" className="group bg-midnight-light border border-white/[0.06] hover:border-emerald-accent/30 rounded-xl px-5 py-4 transition-all duration-300">
+              <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
+              <div className="text-silver group-hover:text-snow font-bold transition-colors">Innsbruck</div>
+            </Link>
+            <div className="bg-emerald-accent/10 border border-emerald-accent/30 rounded-xl px-5 py-4">
+              <div className="text-emerald-accent text-xs font-bold uppercase tracking-wider mb-1">Current</div>
+              <div className="text-snow font-bold">Munich</div>
+            </div>
+            <Link href="/passau/pipeline" className="group bg-midnight-light border border-white/[0.06] hover:border-emerald-accent/30 rounded-xl px-5 py-4 transition-all duration-300">
+              <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
+              <div className="text-silver group-hover:text-snow font-bold transition-colors">Passau</div>
+            </Link>
+          </div>
+        </section>
+
         {/* Nav links */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <Link href="/munich/comparables"
@@ -262,6 +281,10 @@ export default function MunichPipelinePage() {
               <path d="M15 8H1M7 2L1 8l6 6" />
             </svg>
             PBSA Comparables
+          </Link>
+          <Link href="/munich/universities"
+            className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
+            Universities
           </Link>
           <Link href="/munich"
             className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
