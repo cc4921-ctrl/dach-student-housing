@@ -12,16 +12,8 @@ const cityStats = [
 
 const totalListings = cityStats.reduce((a, c) => a + c.listings, 0);
 
-/* ═══════════════════════════════════════════════════════════════
-   PBSA & UNIVERSITY COUNTS
-   ═══════════════════════════════════════════════════════════════ */
-
 const pbsaCounts = { Innsbruck: 11, Munich: 7, Passau: 8, total: 26 };
 const uniCounts = { Innsbruck: 4, Munich: 6, Passau: 1, total: 11 };
-
-/* ═══════════════════════════════════════════════════════════════
-   SOURCES
-   ═══════════════════════════════════════════════════════════════ */
 
 const dataSources = [
   { category: "Private Rental (PRS)", items: [
@@ -31,7 +23,7 @@ const dataSources = [
   ]},
   { category: "PBSA Comparables", items: [
     { source: "OeAD / Home4students / STUWO", scope: "Innsbruck student housing operators", count: 11, date: "March 2026" },
-    { source: "Studierendenwerk München / THE FIZZ / Die Zimmerei / YOUNIQ / Campus Viva", scope: "Munich student residences", count: 7, date: "March 2026" },
+    { source: "Studierendenwerk / THE FIZZ / Die Zimmerei / YOUNIQ / Campus Viva", scope: "Munich student residences", count: 7, date: "March 2026" },
     { source: "Studentenwerk / Wohnbauwerk / Boni / Vegis / River Living", scope: "Passau student residences", count: 8, date: "March 2026" },
   ]},
   { category: "Student Population", items: [
@@ -43,43 +35,52 @@ const dataSources = [
 
 export default function DataPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-800">Data Overview</h1>
-          <p className="text-slate-500 mt-1">{totalListings.toLocaleString()} PRS listings &middot; {pbsaCounts.total} PBSA residences &middot; {uniCounts.total} universities</p>
+    <div className="min-h-screen bg-midnight">
+      {/* Header */}
+      <div className="relative w-full h-44 overflow-hidden bg-midnight-light">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-accent/5 via-midnight to-midnight" />
+        <div className="absolute bottom-0 left-0 right-0 max-w-5xl mx-auto px-6 pb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-6 h-px bg-emerald-accent" />
+            <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Research Data</span>
+          </div>
+          <h1 className="text-3xl font-serif text-snow tracking-tight">Data Overview</h1>
+          <p className="text-silver mt-1 text-sm">{totalListings.toLocaleString()} PRS listings &middot; {pbsaCounts.total} PBSA residences &middot; {uniCounts.total} universities</p>
         </div>
+      </div>
+
+      <main className="max-w-5xl mx-auto px-6 py-10 space-y-12">
 
         {/* ── City Summary Stats ── */}
         <section>
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Private Rental Summary</h2>
+          <h2 className="text-lg font-bold text-snow mb-4">Private Rental Summary</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {cityStats.map(c => (
-              <div key={c.city} className="bg-white rounded-xl border border-slate-200 p-6">
-                <h3 className="text-lg font-bold text-slate-800 mb-1">{c.city}</h3>
-                <p className="text-xs text-slate-400 mb-4">{c.sources}</p>
+              <div key={c.city} className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 hover:border-emerald-accent/20 transition-colors">
+                <h3 className="text-lg font-bold text-snow mb-1">{c.city}</h3>
+                <p className="text-[11px] text-silver/50 mb-4">{c.sources}</p>
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-slate-500">Listings</span>
-                    <span className="text-lg font-bold text-blue-600">{c.listings.toLocaleString()}</span>
+                    <span className="text-sm text-silver">Listings</span>
+                    <span className="text-lg font-bold text-emerald-accent">{c.listings.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-slate-500">Median</span>
-                    <span className="text-lg font-bold text-slate-800">&euro;{c.median.toLocaleString()}</span>
+                    <span className="text-sm text-silver">Median</span>
+                    <span className="text-lg font-bold text-snow">&euro;{c.median.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-slate-500">Mean</span>
-                    <span className="text-sm font-semibold text-slate-700">&euro;{c.mean.toLocaleString()}</span>
+                    <span className="text-sm text-silver">Mean</span>
+                    <span className="text-sm font-semibold text-silver-bright">&euro;{c.mean.toLocaleString()}</span>
                   </div>
-                  <div className="h-px bg-slate-100 my-1" />
+                  <div className="h-px bg-white/[0.06] my-1" />
                   <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-slate-500">Q25 &ndash; Q75</span>
-                    <span className="text-sm font-medium text-slate-600">&euro;{c.q25.toLocaleString()} &ndash; &euro;{c.q75.toLocaleString()}</span>
+                    <span className="text-sm text-silver">Q25 &ndash; Q75</span>
+                    <span className="text-sm font-medium text-silver-bright">&euro;{c.q25.toLocaleString()} &ndash; &euro;{c.q75.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-slate-500">Range</span>
-                    <span className="text-sm font-medium text-slate-600">&euro;{c.min.toLocaleString()} &ndash; &euro;{c.max.toLocaleString()}</span>
+                    <span className="text-sm text-silver">Range</span>
+                    <span className="text-sm font-medium text-silver-bright">&euro;{c.min.toLocaleString()} &ndash; &euro;{c.max.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -89,39 +90,39 @@ export default function DataPage() {
 
         {/* ── Coverage ── */}
         <section>
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Dataset Coverage</h2>
-          <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+          <h2 className="text-lg font-bold text-snow mb-4">Dataset Coverage</h2>
+          <div className="bg-midnight-light rounded-2xl border border-white/[0.06] overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-slate-50">
-                <tr>
-                  <th className="text-left px-5 py-3 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Category</th>
-                  <th className="text-right px-5 py-3 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Innsbruck</th>
-                  <th className="text-right px-5 py-3 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Munich</th>
-                  <th className="text-right px-5 py-3 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Passau</th>
-                  <th className="text-right px-5 py-3 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Total</th>
+              <thead>
+                <tr className="border-b border-white/[0.06]">
+                  <th className="text-left px-5 py-3 text-[10px] text-silver/50 uppercase tracking-wider font-semibold">Category</th>
+                  <th className="text-right px-5 py-3 text-[10px] text-silver/50 uppercase tracking-wider font-semibold">Innsbruck</th>
+                  <th className="text-right px-5 py-3 text-[10px] text-silver/50 uppercase tracking-wider font-semibold">Munich</th>
+                  <th className="text-right px-5 py-3 text-[10px] text-silver/50 uppercase tracking-wider font-semibold">Passau</th>
+                  <th className="text-right px-5 py-3 text-[10px] text-silver/50 uppercase tracking-wider font-semibold">Total</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-slate-100">
-                  <td className="px-5 py-3 text-slate-700 font-medium">PRS Listings</td>
-                  <td className="px-5 py-3 text-right text-slate-600">179</td>
-                  <td className="px-5 py-3 text-right text-slate-600">2,832</td>
-                  <td className="px-5 py-3 text-right text-slate-600">276</td>
-                  <td className="px-5 py-3 text-right text-blue-600 font-bold">{totalListings.toLocaleString()}</td>
+                <tr className="border-t border-white/[0.04]">
+                  <td className="px-5 py-3 text-silver-bright font-medium">PRS Listings</td>
+                  <td className="px-5 py-3 text-right text-silver">179</td>
+                  <td className="px-5 py-3 text-right text-silver">2,832</td>
+                  <td className="px-5 py-3 text-right text-silver">276</td>
+                  <td className="px-5 py-3 text-right text-emerald-accent font-bold">{totalListings.toLocaleString()}</td>
                 </tr>
-                <tr className="border-t border-slate-100">
-                  <td className="px-5 py-3 text-slate-700 font-medium">PBSA Residences</td>
-                  <td className="px-5 py-3 text-right text-slate-600">{pbsaCounts.Innsbruck}</td>
-                  <td className="px-5 py-3 text-right text-slate-600">{pbsaCounts.Munich}</td>
-                  <td className="px-5 py-3 text-right text-slate-600">{pbsaCounts.Passau}</td>
-                  <td className="px-5 py-3 text-right text-blue-600 font-bold">{pbsaCounts.total}</td>
+                <tr className="border-t border-white/[0.04]">
+                  <td className="px-5 py-3 text-silver-bright font-medium">PBSA Residences</td>
+                  <td className="px-5 py-3 text-right text-silver">{pbsaCounts.Innsbruck}</td>
+                  <td className="px-5 py-3 text-right text-silver">{pbsaCounts.Munich}</td>
+                  <td className="px-5 py-3 text-right text-silver">{pbsaCounts.Passau}</td>
+                  <td className="px-5 py-3 text-right text-emerald-accent font-bold">{pbsaCounts.total}</td>
                 </tr>
-                <tr className="border-t border-slate-100">
-                  <td className="px-5 py-3 text-slate-700 font-medium">Universities</td>
-                  <td className="px-5 py-3 text-right text-slate-600">{uniCounts.Innsbruck}</td>
-                  <td className="px-5 py-3 text-right text-slate-600">{uniCounts.Munich}</td>
-                  <td className="px-5 py-3 text-right text-slate-600">{uniCounts.Passau}</td>
-                  <td className="px-5 py-3 text-right text-blue-600 font-bold">{uniCounts.total}</td>
+                <tr className="border-t border-white/[0.04]">
+                  <td className="px-5 py-3 text-silver-bright font-medium">Universities</td>
+                  <td className="px-5 py-3 text-right text-silver">{uniCounts.Innsbruck}</td>
+                  <td className="px-5 py-3 text-right text-silver">{uniCounts.Munich}</td>
+                  <td className="px-5 py-3 text-right text-silver">{uniCounts.Passau}</td>
+                  <td className="px-5 py-3 text-right text-emerald-accent font-bold">{uniCounts.total}</td>
                 </tr>
               </tbody>
             </table>
@@ -130,23 +131,23 @@ export default function DataPage() {
 
         {/* ── Sources ── */}
         <section>
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Sources</h2>
+          <h2 className="text-lg font-bold text-snow mb-4">Sources</h2>
           <div className="space-y-4">
             {dataSources.map((group, gi) => (
-              <div key={gi} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                <div className="p-4 border-b border-slate-100">
-                  <h3 className="font-semibold text-slate-800">{group.category}</h3>
+              <div key={gi} className="bg-midnight-light rounded-2xl border border-white/[0.06] overflow-hidden">
+                <div className="p-4 border-b border-white/[0.06]">
+                  <h3 className="font-semibold text-snow">{group.category}</h3>
                 </div>
                 <div className="p-4 space-y-2">
                   {group.items.map((item, ii) => (
-                    <div key={ii} className="flex items-center justify-between py-1.5 border-b border-slate-50 last:border-0">
+                    <div key={ii} className="flex items-center justify-between py-1.5 border-b border-white/[0.04] last:border-0">
                       <div>
-                        <span className="text-sm font-medium text-slate-700">{item.source}</span>
-                        <span className="text-xs text-slate-400 ml-2">{item.scope}</span>
+                        <span className="text-sm font-medium text-silver-bright">{item.source}</span>
+                        <span className="text-xs text-silver/50 ml-2">{item.scope}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-semibold text-blue-600">{item.count.toLocaleString()} records</span>
-                        <span className="text-[10px] text-slate-400">{item.date}</span>
+                        <span className="text-xs font-semibold text-emerald-accent">{item.count.toLocaleString()} records</span>
+                        <span className="text-[10px] text-silver/40">{item.date}</span>
                       </div>
                     </div>
                   ))}
@@ -157,33 +158,28 @@ export default function DataPage() {
         </section>
 
         {/* ── Download ── */}
-        <section className="bg-white rounded-xl border border-slate-200 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <section className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800">Source Data Download</h2>
-            <p className="text-sm text-slate-500 mt-1">Full dataset with all {totalListings.toLocaleString()} listings across Innsbruck, Munich &amp; Passau</p>
+            <h2 className="text-lg font-bold text-snow">Source Data Download</h2>
+            <p className="text-sm text-silver mt-1">Full dataset with all {totalListings.toLocaleString()} listings across Innsbruck, Munich &amp; Passau</p>
           </div>
           <a
-            href="https://github.com/cc4921-ctrl/dach-student-housing/raw/main/public/Student_Rental_Listings_Innsbruck_Passau_Munich.xlsx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm whitespace-nowrap"
+            href="/Student_Rental_Listings_Innsbruck_Passau_Munich.xlsx"
+            download
+            className="inline-flex items-center justify-center gap-2 bg-emerald-accent text-midnight px-6 py-3 rounded-xl hover:bg-emerald-glow transition-colors font-bold text-sm tracking-wide whitespace-nowrap"
           >
             Download Excel (.xlsx)
           </a>
         </section>
 
-        {/* ── Back links ── */}
+        {/* ── Nav links ── */}
         <div className="flex flex-wrap gap-3">
-          <Link href="/innsbruck" className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-5 py-2.5 rounded-lg hover:bg-slate-50 transition-colors text-sm font-medium">
-            Innsbruck
-          </Link>
-          <Link href="/munich" className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-5 py-2.5 rounded-lg hover:bg-slate-50 transition-colors text-sm font-medium">
-            Munich
-          </Link>
-          <Link href="/passau" className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-5 py-2.5 rounded-lg hover:bg-slate-50 transition-colors text-sm font-medium">
-            Passau
-          </Link>
-          <Link href="/justifications" className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-5 py-2.5 rounded-lg hover:bg-slate-50 transition-colors text-sm font-medium">
+          {["Innsbruck", "Munich", "Passau"].map(c => (
+            <Link key={c} href={`/${c.toLowerCase()}`} className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-5 py-2.5 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all text-sm font-medium">
+              {c}
+            </Link>
+          ))}
+          <Link href="/justifications" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-5 py-2.5 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all text-sm font-medium">
             Justifications
           </Link>
         </div>
