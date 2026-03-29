@@ -1,107 +1,73 @@
-"use client";
 import Link from "next/link";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
 const histogram = [
-  { range: "€400", count: 12 },
-  { range: "€600", count: 34 },
-  { range: "€800", count: 52 },
-  { range: "€1k", count: 76 },
-  { range: "€1.2k", count: 64 },
-  { range: "€1.4k", count: 38 },
-  { range: "€1.6k", count: 24 },
-  { range: "€1.8k", count: 16 },
-  { range: "€2k", count: 10 },
-  { range: "€2.5k", count: 8 },
-  { range: "€3k+", count: 4 },
+  { label: "200", count: 3 },
+  { label: "400", count: 31 },
+  { label: "600", count: 120 },
+  { label: "800", count: 263 },
+  { label: "1k", count: 393 },
+  { label: "1.2k", count: 418 },
+  { label: "1.4k", count: 421 },
+  { label: "1.6k", count: 318 },
+  { label: "1.8k", count: 246 },
+  { label: "2k", count: 173 },
+  { label: "2.4k+", count: 446 },
 ];
 
-const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ value: number; payload: { range: string } }> }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-midnight-surface border border-white/[0.08] text-snow px-4 py-2.5 rounded-xl shadow-xl text-sm">
-        <p className="font-bold">{payload[0].payload.range}</p>
-        <p className="text-emerald-accent text-xs mt-0.5">{payload[0].value} listings</p>
-      </div>
-    );
-  }
-  return null;
-};
+const maxCount = Math.max(...histogram.map(h => h.count));
 
 export default function MunichPage() {
   return (
-    <div className="min-h-screen bg-midnight">
-      {/* Hero banner */}
-      <div className="relative w-full h-72 overflow-hidden">
-        <img
-          src="/images/banners/munich.jpg"
-          alt="Munich"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
-        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-6 h-px bg-emerald-accent" />
-            <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Germany</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-serif text-snow tracking-tight">Munich</h1>
-          <div className="flex items-center gap-4 mt-3">
-            <span className="text-sm text-silver">338 listings</span>
-            <span className="w-1 h-1 rounded-full bg-silver/40" />
-            <span className="text-sm text-silver">Median €1,150/mo</span>
-            <span className="w-1 h-1 rounded-full bg-silver/40" />
-            <span className="text-sm text-silver">March 2026</span>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">Munich</h1>
+          <p className="text-slate-500 mt-1">2,832 listings &middot; Median &euro;1,290/mo &middot; March 2026</p>
         </div>
-      </div>
-
-      <main className="max-w-7xl mx-auto px-6 py-12 space-y-12">
         <section>
-          <h2 className="text-xl font-bold text-snow mb-2">Price Distribution</h2>
-          <p className="text-sm text-silver mb-8">Monthly rent across 338 active PRS listings (ImmobilienScout24 &amp; WG-gesucht)</p>
+          <h2 className="text-lg font-semibold text-slate-800 mb-1">Price Distribution</h2>
+          <p className="text-sm text-slate-500 mb-6">Monthly rent across 2,832 active 1-room listings (wg-gesucht.de &amp; ImmobilienScout24)</p>
 
-          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6 sm:p-8">
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={histogram} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                <XAxis dataKey="range" tick={{ fill: "#94a3b8", fontSize: 11 }} axisLine={{ stroke: "rgba(255,255,255,0.06)" }} tickLine={false} />
-                <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.02)" }} />
-                <Bar dataKey="count" radius={[8, 8, 0, 0]}>
-                  {histogram.map((_, index) => (
-                    <Cell key={index} fill={index === 3 ? "#00bc7d" : "#009966"} fillOpacity={index === 3 ? 1 : 0.6} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-
-            <div className="mt-6 pt-6 border-t border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {[
-                { label: "Median", value: "€1,150" },
-                { label: "Q25", value: "€780" },
-                { label: "Q75", value: "€1,450" },
-                { label: "Range", value: "€380–€3,580" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center sm:text-left">
-                  <div className="text-[10px] text-silver/60 uppercase tracking-wider mb-1">{stat.label}</div>
-                  <div className="text-lg font-bold text-snow font-serif">{stat.value}</div>
+          <div className="bg-white rounded-xl border border-slate-200 p-6 pb-4">
+            <div className="flex items-end gap-1.5 h-52">
+              {histogram.map((bar) => (
+                <div key={bar.label} className="flex-1 flex flex-col items-center justify-end h-full">
+                  <span className="text-xs font-medium text-slate-500 mb-1">{bar.count}</span>
+                  <div
+                    className="w-full rounded-t-md bg-gradient-to-t from-blue-600 to-blue-400"
+                    style={{ height: `${(bar.count / maxCount) * 100}%`, minHeight: bar.count > 0 ? '4px' : '0' }}
+                  />
                 </div>
               ))}
+            </div>
+            <div className="flex gap-1.5 mt-2 border-t border-slate-100 pt-2">
+              {histogram.map((bar) => (
+                <div key={bar.label} className="flex-1 text-center">
+                  <span className="text-[10px] text-slate-400 leading-tight">&euro;{bar.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-6 text-sm text-slate-500">
+              <div>Median <span className="font-semibold text-slate-800">&euro;1,290</span></div>
+              <div>Q25 <span className="font-semibold text-slate-800">&euro;950</span></div>
+              <div>Q75 <span className="font-semibold text-slate-800">&euro;1,700</span></div>
+              <div>Range <span className="font-semibold text-slate-800">&euro;175&ndash;&euro;4,890</span></div>
             </div>
           </div>
         </section>
 
-        <section className="flex flex-col sm:flex-row gap-4">
-          <Link href="/munich/comparables" className="group inline-flex items-center justify-center gap-3 bg-emerald-accent text-midnight px-8 py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-emerald-glow transition-colors duration-300">
-            PBSA Comparables
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:translate-x-1 transition-transform"><path d="M1 8h14M9 2l6 6-6 6" /></svg>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/munich/comparables" className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            PBSA Comparables &rarr;
           </Link>
-          <Link href="/munich/universities" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
+          <Link href="/munich/universities" className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-6 py-3 rounded-lg hover:bg-slate-50 transition-colors font-medium">
             Universities
           </Link>
-          <Link href="/munich/gallery" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
-            THE FIZZ Gallery
-          </Link>
-        </section>
+          <a href="https://www.wg-gesucht.de/1-zimmer-wohnungen-in-Muenchen.90.1.1.0.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-slate-300 text-slate-700 px-6 py-3 rounded-lg hover:bg-slate-50 transition-colors font-medium">
+            Source Data &uarr;
+          </a>
+        </div>
       </main>
     </div>
   );
