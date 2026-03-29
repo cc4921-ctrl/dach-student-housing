@@ -46,6 +46,9 @@ export default function Nav() {
                     <Link href={`/${c.slug}/comparables`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
                       PBSA Comparables
                     </Link>
+                    <Link href={`/${c.slug}/prs-distribution`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
+                      PRS Distribution
+                    </Link>
                     <Link href={`/${c.slug}/pipeline`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
                       Pipeline
                     </Link>
@@ -122,6 +125,7 @@ export default function Nav() {
                 </Link>
                 <div className="pl-6 space-y-0.5">
                   <Link href={`/${c.slug}/comparables`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">PBSA Comparables</Link>
+                  <Link href={`/${c.slug}/prs-distribution`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">PRS Distribution</Link>
                   <Link href={`/${c.slug}/pipeline`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Pipeline</Link>
                   <Link href={`/${c.slug}/universities`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Universities</Link>
                   {c.slug !== "passau" && <Link href={`/${c.slug}/gallery`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Gallery</Link>}

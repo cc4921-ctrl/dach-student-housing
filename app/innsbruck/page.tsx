@@ -1,81 +1,96 @@
 import Link from "next/link";
 
-const histogram = [
-  { label: "500", count: 9 },
-  { label: "750", count: 19 },
-  { label: "1k", count: 27 },
-  { label: "1.25k", count: 16 },
-  { label: "1.5k", count: 38 },
-  { label: "1.75k", count: 26 },
-  { label: "2k", count: 11 },
-  { label: "2.25k", count: 7 },
-  { label: "2.5k", count: 9 },
-  { label: "3k+", count: 17 },
+const stats = [
+  { label: "Students", value: "~35,000", accent: false },
+  { label: "International %", value: "43.6%", accent: true },
+  { label: "City Population", value: "~131,000", accent: false },
+  { label: "Universities", value: "5", accent: false },
+  { label: "PBSA Beds", value: "~3,000", accent: false },
+  { label: "Provision Rate", value: "8.6%", accent: false },
+  { label: "Bed Gap", value: ">6,000", accent: true },
+  { label: "Occupancy", value: "93%", accent: false },
 ];
 
-const maxCount = Math.max(...histogram.map(h => h.count));
+const rentBenchmarks = [
+  { label: "PRS Median", value: "€1,380", sub: "179 listings" },
+  { label: "Avg PBSA", value: "€520", sub: "all operators" },
+  { label: "Premium PBSA", value: "€700", sub: "STUWO / FOX 54" },
+  { label: "Studentenwerk", value: "€374", sub: "public benchmark" },
+];
+
+const pages = [
+  { href: "/innsbruck/comparables", label: "PBSA Comparables", desc: "34 residences · pricing & photos", primary: true },
+  { href: "/innsbruck/prs-distribution", label: "PRS Distribution", desc: "179 listings · price histogram" },
+  { href: "/innsbruck/pipeline", label: "Pipeline", desc: "8 projects · development tracker" },
+  { href: "/innsbruck/universities", label: "Universities", desc: "5 institutions · 35k students" },
+  { href: "/innsbruck/gallery", label: "Gallery", desc: "Residence photo gallery" },
+];
 
 export default function InnsbruckPage() {
   return (
     <div className="min-h-screen bg-midnight">
       {/* Header */}
-      <div className="relative w-full h-44 overflow-hidden bg-midnight-light">
+      <div className="relative w-full h-56 overflow-hidden bg-midnight-light">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-accent/5 via-midnight to-midnight" />
         <div className="absolute bottom-0 left-0 right-0 max-w-5xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-6 h-px bg-emerald-accent" />
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">City Overview</span>
           </div>
-          <h1 className="text-3xl font-serif text-snow tracking-tight">Innsbruck</h1>
-          <p className="text-silver mt-1 text-sm">179 listings &middot; Median &euro;1,380/mo &middot; March 2026</p>
+          <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Innsbruck</h1>
+          <p className="text-silver mt-1 text-sm">Tyrol, Austria &middot; 35,000 students &middot; 43.6% international &middot; March 2026</p>
         </div>
       </div>
 
       <main className="max-w-5xl mx-auto px-6 py-10 space-y-10">
+
+        {/* Key Metrics */}
         <section>
-          <h2 className="text-lg font-bold text-snow mb-1">Price Distribution</h2>
-          <p className="text-sm text-silver mb-6">Monthly rent across 179 active PRS listings (willhaben.at &amp; ImmobilienScout24)</p>
-
-          <div className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 pb-4">
-            <div className="flex items-end gap-1.5 h-52">
-              {histogram.map((bar) => (
-                <div key={bar.label} className="flex-1 flex flex-col items-center justify-end h-full">
-                  <span className="text-xs font-medium text-silver/70 mb-1">{bar.count}</span>
-                  <div
-                    className="w-full rounded-t-md bg-gradient-to-t from-emerald-accent to-emerald-glow"
-                    style={{ height: `${(bar.count / maxCount) * 100}%`, minHeight: bar.count > 0 ? '4px' : '0' }}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex gap-1.5 mt-2 border-t border-white/[0.06] pt-2">
-              {histogram.map((bar) => (
-                <div key={bar.label} className="flex-1 text-center">
-                  <span className="text-[10px] text-silver/50 leading-tight">&euro;{bar.label}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-6 text-sm text-silver">
-              <div>Median <span className="font-semibold text-snow">&euro;1,380</span></div>
-              <div>Q25 <span className="font-semibold text-snow">&euro;900</span></div>
-              <div>Q75 <span className="font-semibold text-snow">&euro;1,710</span></div>
-              <div>Range <span className="font-semibold text-snow">&euro;314&ndash;&euro;4,268</span></div>
-            </div>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Key Market Metrics</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {stats.map(s => (
+              <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4 hover:border-white/[0.12] transition-colors">
+                <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">{s.label}</div>
+                <div className={`text-xl font-bold font-serif ${s.accent ? "text-emerald-accent" : "text-snow"}`}>{s.value}</div>
+              </div>
+            ))}
           </div>
         </section>
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/innsbruck/comparables" className="inline-flex items-center justify-center gap-2 bg-emerald-accent text-midnight px-6 py-3 rounded-xl hover:bg-emerald-glow transition-colors font-bold text-sm tracking-wide">
-            PBSA Comparables &rarr;
-          </Link>
-          <Link href="/innsbruck/universities" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-6 py-3 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all font-medium text-sm">
-            Universities
-          </Link>
-          <a href="https://www.willhaben.at/iad/immobilien/mietwohnungen/mietwohnung-angebote?areaId=70101" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-6 py-3 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all font-medium text-sm">
-            Source Data &uarr;
-          </a>
-        </div>
+        {/* Rent Benchmarks */}
+        <section>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Rent Benchmarks</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {rentBenchmarks.map(r => (
+              <div key={r.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4 hover:border-emerald-accent/20 transition-colors">
+                <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">{r.label}</div>
+                <div className="text-2xl font-bold text-snow font-serif">{r.value}<span className="text-xs text-silver/40 font-sans font-normal ml-1">/mo</span></div>
+                <div className="text-[11px] text-silver/40 mt-1">{r.sub}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Quick Navigation */}
+        <section>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Explore</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {pages.map(p => (
+              <Link key={p.href} href={p.href}
+                className={`group rounded-xl border p-5 transition-all duration-200 ${
+                  p.primary
+                    ? "bg-emerald-accent/5 border-emerald-accent/20 hover:border-emerald-accent/40"
+                    : "bg-midnight-light border-white/[0.06] hover:border-white/[0.15]"
+                }`}>
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className={`text-sm font-bold ${p.primary ? "text-emerald-accent" : "text-snow"}`}>{p.label}</h3>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-silver/30 group-hover:text-emerald-accent group-hover:translate-x-0.5 transition-all"><path d="M1 8h14M9 2l6 6-6 6" /></svg>
+                </div>
+                <p className="text-xs text-silver/60">{p.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
