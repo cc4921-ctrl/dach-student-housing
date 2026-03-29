@@ -51,43 +51,6 @@ export default function DataPage() {
 
       <main className="max-w-5xl mx-auto px-6 py-10 space-y-12">
 
-        {/* ── City Summary Stats ── */}
-        <section>
-          <h2 className="text-lg font-bold text-snow mb-4">Private Rental Summary</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {cityStats.map(c => (
-              <div key={c.city} className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 hover:border-emerald-accent/20 transition-colors">
-                <h3 className="text-lg font-bold text-snow mb-1">{c.city}</h3>
-                <p className="text-[11px] text-silver/50 mb-4">{c.sources}</p>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-silver">Listings</span>
-                    <span className="text-lg font-bold text-emerald-accent">{c.listings.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-silver">Median</span>
-                    <span className="text-lg font-bold text-snow">&euro;{c.median.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-silver">Mean</span>
-                    <span className="text-sm font-semibold text-silver-bright">&euro;{c.mean.toLocaleString()}</span>
-                  </div>
-                  <div className="h-px bg-white/[0.06] my-1" />
-                  <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-silver">Q25 &ndash; Q75</span>
-                    <span className="text-sm font-medium text-silver-bright">&euro;{c.q25.toLocaleString()} &ndash; &euro;{c.q75.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between items-baseline">
-                    <span className="text-sm text-silver">Range</span>
-                    <span className="text-sm font-medium text-silver-bright">&euro;{c.min.toLocaleString()} &ndash; &euro;{c.max.toLocaleString()}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* ── Coverage ── */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-4">Dataset Coverage</h2>
@@ -179,8 +142,11 @@ export default function DataPage() {
               {c}
             </Link>
           ))}
-          <Link href="/justifications" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-5 py-2.5 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all text-sm font-medium">
-            Justifications
+          <Link href="/pricing-model" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-5 py-2.5 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all text-sm font-medium">
+            Pricing Model
+          </Link>
+          <Link href="/downloads" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-5 py-2.5 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all text-sm font-medium">
+            Downloads
           </Link>
         </div>
       </main>

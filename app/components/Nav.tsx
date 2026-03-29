@@ -62,14 +62,24 @@ export default function Nav() {
               </div>
             ))}
             <Link
-              href="/justifications"
+              href="/pricing-model"
               className={`px-4 py-2 rounded-lg text-[13px] font-medium tracking-wide transition-all duration-200 ${
-                isActive("/justifications")
+                isActive("/pricing-model")
                   ? "text-emerald-accent bg-emerald-accent/10"
                   : "text-silver hover:text-snow hover:bg-white/[0.04]"
               }`}
             >
-              Justifications
+              Pricing Model
+            </Link>
+            <Link
+              href="/map"
+              className={`px-4 py-2 rounded-lg text-[13px] font-medium tracking-wide transition-all duration-200 ${
+                isActive("/map")
+                  ? "text-emerald-accent bg-emerald-accent/10"
+                  : "text-silver hover:text-snow hover:bg-white/[0.04]"
+              }`}
+            >
+              Map
             </Link>
             <Link
               href="/data"
@@ -82,14 +92,14 @@ export default function Nav() {
               Data
             </Link>
             <Link
-              href="/map"
+              href="/downloads"
               className={`px-4 py-2 rounded-lg text-[13px] font-medium tracking-wide transition-all duration-200 ${
-                isActive("/map")
+                isActive("/downloads")
                   ? "text-emerald-accent bg-emerald-accent/10"
                   : "text-silver hover:text-snow hover:bg-white/[0.04]"
               }`}
             >
-              Map
+              Downloads
             </Link>
           </div>
 
@@ -118,17 +128,21 @@ export default function Nav() {
                 </div>
               </div>
             ))}
-            <Link href="/justifications" onClick={() => setOpen(false)}
-              className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/justifications") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
-              Justifications
+            <Link href="/pricing-model" onClick={() => setOpen(false)}
+              className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/pricing-model") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
+              Pricing Model
+            </Link>
+            <Link href="/map" onClick={() => setOpen(false)}
+              className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/map") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
+              Map
             </Link>
             <Link href="/data" onClick={() => setOpen(false)}
               className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/data") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
               Data
             </Link>
-            <Link href="/map" onClick={() => setOpen(false)}
-              className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/map") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
-              Map
+            <Link href="/downloads" onClick={() => setOpen(false)}
+              className={`block px-4 py-2.5 rounded-lg text-sm font-medium ${isActive("/downloads") ? "text-emerald-accent bg-emerald-accent/10" : "text-silver"}`}>
+              Downloads
             </Link>
           </div>
         )}
