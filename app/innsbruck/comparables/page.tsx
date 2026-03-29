@@ -146,6 +146,10 @@ export default function InnsbruckComparablesPage() {
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">PBSA Comparables</h1>
           <p className="text-sm text-silver mt-2">10 properties &middot; ~977 beds &middot; Innsbruck student housing market</p>
+          <Link href="/innsbruck/comparables/justifications" className="inline-flex items-center gap-2 mt-3 text-xs text-emerald-accent hover:text-emerald-glow transition-colors font-semibold">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="7" cy="7" r="6" /><path d="M7 4v4M7 10h.01" /></svg>
+            View Rental Value Justifications
+          </Link>
         </div>
       </div>
 
