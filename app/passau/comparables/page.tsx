@@ -27,7 +27,7 @@ const residences: Residence[] = [
   { name: "Boni Studentenwohnheim", category: "Non-Profit", beds: 165, rooms: [{ type: "Single", priceRange: "€250-400" }], photos: ["/images/residences/passau/boni/boni-1.jpg"] },
   { name: "Kloster Hamberg", category: "Non-Profit", beds: 250, rooms: [{ type: "Single", priceRange: "€246-521" }], photos: ["/images/residences/passau/generic-student-dorm-1.jpg"] },
   { name: "Vegis St. Nicola / Kapfinger Wohnheim", category: "Private PBSA", beds: 209, rooms: [{ type: "Single Studio", priceRange: "€349" }, { type: "Double", priceRange: "€698 total" }], photos: ["/images/residences/passau/generic-student-dorm-2.jpg"] },
-  { name: "River Living Passau", category: "Private PBSA", beds: 155, rooms: [{ type: "Furnished", priceRange: "€450-650" }, { type: "Subsidised", priceRange: "€350-450" }], photos: ["/images/residences/passau/generic-student-dorm-3.jpg"] },
+  { name: "River Living Passau", category: "Private PBSA", beds: 155, rooms: [{ type: "Ilz (79 units · 19–25 sqm)", priceRange: "€560-575" }, { type: "Geforderte (30 units · 20–28 sqm)", priceRange: "€359" }, { type: "River Studio (24 units · 16–17 sqm)", priceRange: "€555-575" }, { type: "Donau (14 units · 26–40 sqm)", priceRange: "€575-795" }, { type: "Inn (7 units · 24–31 sqm)", priceRange: "€575-725" }, { type: "Penthouse (1 unit · 81 sqm)", priceRange: "€1,450" }], photos: ["/images/residences/passau/generic-student-dorm-3.jpg"], website: "https://www.river-living-passau.de" },
   { name: "UNILIFE Passau (ZS Wohnbau)", category: "Private PBSA", beds: 45, rooms: [{ type: "Single", priceRange: "€350-450" }, { type: "2-Person", priceRange: "€500-600" }], photos: ["/images/residences/passau/generic-student-dorm-4.jpg"] },
 ];
 
