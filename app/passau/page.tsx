@@ -13,8 +13,8 @@ const stats = [
 
 const rentBenchmarks = [
   { label: "PRS Median", value: "€550", sub: "276 listings" },
-  { label: "Avg PBSA", value: "€350", sub: "all operators" },
-  { label: "Premium PBSA", value: "€550", sub: "River Living / UNILIFE" },
+  { label: "Avg PBSA", value: "€397", sub: "all operators" },
+  { label: "Premium PBSA", value: "€591", sub: "River Living market-rate" },
   { label: "Studentenwerk", value: "€325", sub: "public benchmark" },
 ];
 

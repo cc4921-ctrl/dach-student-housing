@@ -66,7 +66,7 @@ const projects: PipelineProject[] = [
     completion: "Completed ~2022",
     investment: "Not disclosed",
     type: "Private PBSA (Operational)",
-    notes: "Closest direct comparable to Stonehill in Passau. Furnished units €450–650/mo. 30 subsidised units at €350–450/mo. Market-rate private PBSA.",
+    notes: "Closest direct comparable to Stonehill in Passau. 6 room types: Ilz (79 units, €560–575), Geforderte (30 subsidised units, €359), River Studio (24 units, €555–575), Donau (14 units, €575–795), Inn (7 units, €575–725), Penthouse (1 unit, €1,450). Avg rent €546/mo.",
     source: "https://river-living-passau.de/en/",
   },
   {

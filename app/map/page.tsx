@@ -86,7 +86,7 @@ const markers: MapMarker[] = [
   { lat: 48.56036, lng: 13.43001, type: "non-profit", city: "Passau", name: "Wohnbauwerk Haus St. Severin", detail: "160 beds · €200–€550/mo", detail2: "Schönleitnerweg, 94032 Passau" },
   { lat: 48.57131, lng: 13.43265, type: "non-profit", city: "Passau", name: "Boni Studentenwohnheim", detail: "165 beds · €250–€400/mo", detail2: "Holzheimerstraße, 94032 Passau" },
   { lat: 48.57129, lng: 13.45297, type: "private-pbsa", city: "Passau", name: "Vegis St. Nicola / Kapfinger", detail: "209 beds · €349/mo", detail2: "St. Nicola, 94032 Passau" },
-  { lat: 48.57168, lng: 13.44152, type: "private-pbsa", city: "Passau", name: "River Living Passau", detail: "155 beds · €350–€650/mo", detail2: "Spitalhofstraße 30, 94032 Passau" },
+  { lat: 48.57168, lng: 13.44152, type: "private-pbsa", city: "Passau", name: "River Living Passau", detail: "155 beds · €359–€1,450/mo", detail2: "Spitalhofstraße 30, 94032 Passau" },
   { lat: 48.57436, lng: 13.45382, type: "private-pbsa", city: "Passau", name: "UNILIFE Passau", detail: "45 beds · €350–€600/mo", detail2: "Near Passau Hbf" },
   { lat: 48.56749, lng: 13.44989, type: "private-pbsa", city: "Passau", name: "Campus Living Passau", detail: "127 beds", detail2: "Innstraße 72/74, 94032 Passau" },
 ];

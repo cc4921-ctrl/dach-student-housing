@@ -47,8 +47,8 @@ const pricingModel = {
       city: "Passau",
       prsPerSqm: 10,
       studentenwerk: 325,
-      avgPBSA: 350,
-      topTier: 550,
+      avgPBSA: 397,
+      topTier: 591,
       color: "text-cat-amber",
       rooms: [
         { type: "Micro Studio", sqm: 18, proposed: 467, scenario: { conservative: 330, base: 440, benchmark: 504, aggressive: 616 } },
@@ -97,7 +97,7 @@ const pbsaComps: PBSAComp[] = [
   { name: "Wohnbauwerk St. Severin", city: "Passau", category: "Non-Profit", min: 200, max: 290, beds: 160, operator: "Wohnbauwerk", address: "Schönleitnerweg, 94032 Passau", lat: 48.56036, lng: 13.43001 },
   { name: "Boni Studentenwohnheim", city: "Passau", category: "Non-Profit", min: 250, max: 400, beds: 165, operator: "Boni", address: "Holzheimerstraße, 94032 Passau", lat: 48.57131, lng: 13.43265 },
   { name: "Vegis St. Nicola", city: "Passau", category: "Private PBSA", min: 349, max: 349, beds: 209, operator: "Vegis", address: "St. Nicola, 94032 Passau", lat: 48.57129, lng: 13.45297 },
-  { name: "River Living Passau", city: "Passau", category: "Private PBSA", min: 350, max: 650, beds: 155, operator: "River Living", address: "Spitalhofstraße 30, 94032 Passau", lat: 48.57168, lng: 13.44152 },
+  { name: "River Living Passau", city: "Passau", category: "Private PBSA", min: 359, max: 1450, beds: 155, operator: "River Living", address: "Spitalhofstraße 30, 94032 Passau", lat: 48.57168, lng: 13.44152 },
 ];
 
 interface TargetProperty {
