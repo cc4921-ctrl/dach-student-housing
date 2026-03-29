@@ -1,16 +1,16 @@
 import Link from "next/link";
 
 const histogram = [
-  { label: "500", count: 2 },
-  { label: "750", count: 5 },
-  { label: "1k", count: 11 },
-  { label: "1.25k", count: 9 },
-  { label: "1.5k", count: 16 },
-  { label: "1.75k", count: 7 },
-  { label: "2k", count: 6 },
-  { label: "2.25k", count: 4 },
-  { label: "2.5k", count: 3 },
-  { label: "3k+", count: 3 },
+  { label: "500", count: 9 },
+  { label: "750", count: 19 },
+  { label: "1k", count: 27 },
+  { label: "1.25k", count: 16 },
+  { label: "1.5k", count: 38 },
+  { label: "1.75k", count: 26 },
+  { label: "2k", count: 11 },
+  { label: "2.25k", count: 7 },
+  { label: "2.5k", count: 9 },
+  { label: "3k+", count: 17 },
 ];
 
 const maxCount = Math.max(...histogram.map(h => h.count));
@@ -21,11 +21,11 @@ export default function InnsbruckPage() {
       <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
         <div>
           <h1 className="text-3xl font-bold text-slate-800">Innsbruck</h1>
-          <p className="text-slate-500 mt-1">66 listings &middot; Median &euro;1,385/mo &middot; March 2026</p>
+          <p className="text-slate-500 mt-1">179 listings &middot; Median &euro;1,380/mo &middot; March 2026</p>
         </div>
         <section>
           <h2 className="text-lg font-semibold text-slate-800 mb-1">Price Distribution</h2>
-          <p className="text-sm text-slate-500 mb-6">Monthly rent across 66 active PRS listings (willhaben.at &amp; ImmobilienScout24)</p>
+          <p className="text-sm text-slate-500 mb-6">Monthly rent across 179 active PRS listings (willhaben.at &amp; ImmobilienScout24)</p>
 
           <div className="bg-white rounded-xl border border-slate-200 p-6 pb-4">
             <div className="flex items-end gap-1.5 h-52">
@@ -48,10 +48,10 @@ export default function InnsbruckPage() {
             </div>
 
             <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-6 text-sm text-slate-500">
-              <div>Median <span className="font-semibold text-slate-800">&euro;1,385</span></div>
-              <div>Q25 <span className="font-semibold text-slate-800">&euro;980</span></div>
-              <div>Q75 <span className="font-semibold text-slate-800">&euro;1,850</span></div>
-              <div>Range <span className="font-semibold text-slate-800">&euro;450&ndash;&euro;4,169</span></div>
+              <div>Median <span className="font-semibold text-slate-800">&euro;1,380</span></div>
+              <div>Q25 <span className="font-semibold text-slate-800">&euro;900</span></div>
+              <div>Q75 <span className="font-semibold text-slate-800">&euro;1,710</span></div>
+              <div>Range <span className="font-semibold text-slate-800">&euro;314&ndash;&euro;4,268</span></div>
             </div>
           </div>
         </section>
