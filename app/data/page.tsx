@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 /* ═══════════════════════════════════════════════════════════════
-   INNSBRUCK LISTINGS (66 scraped)
+   INNSBRUCK LISTINGS (179 scraped — showing top 50)
    ═══════════════════════════════════════════════════════════════ */
 
 const innsbruckListings = [
@@ -61,7 +61,7 @@ const innsbruckListings = [
 ];
 
 /* ═══════════════════════════════════════════════════════════════
-   MUNICH LISTINGS (338 scraped — showing top 50)
+   MUNICH LISTINGS (2,832 scraped — showing top 50)
    ═══════════════════════════════════════════════════════════════ */
 
 const munichListings = [
@@ -118,7 +118,7 @@ const munichListings = [
 ];
 
 /* ═══════════════════════════════════════════════════════════════
-   PASSAU LISTINGS (167 scraped — showing top 50)
+   PASSAU LISTINGS (276 scraped — showing top 50)
    ═══════════════════════════════════════════════════════════════ */
 
 const passauListings = [
@@ -234,10 +234,9 @@ const universityData = [
 
 const sources = [
   { category: "Private Rental (PRS)", items: [
-    { source: "willhaben.at", scope: "Innsbruck apartment listings", count: 42, date: "March 2026" },
-    { source: "ImmobilienScout24.at", scope: "Innsbruck apartment listings", count: 2, date: "March 2026" },
-    { source: "wg-gesucht.de & ImmobilienScout24", scope: "Munich studio/1-room listings", count: 338, date: "March 2026" },
-    { source: "WG-gesucht.de & ImmobilienScout24", scope: "Passau apartment listings", count: 167, date: "March 2026" },
+    { source: "willhaben.at & ImmobilienScout24", scope: "Innsbruck apartment listings", count: 179, date: "March 2026" },
+    { source: "wg-gesucht.de & ImmobilienScout24", scope: "Munich studio/1-room listings", count: 2832, date: "March 2026" },
+    { source: "WG-gesucht.de & ImmobilienScout24", scope: "Passau apartment listings", count: 276, date: "March 2026" },
   ]},
   { category: "PBSA Comparables", items: [
     { source: "OeAD / Home4students / STUWO", scope: "Innsbruck student housing operators", count: 11, date: "March 2026" },
@@ -284,7 +283,7 @@ export default function DataPage() {
       <main className="max-w-6xl mx-auto px-6 py-8 space-y-8">
         <div>
           <h1 className="text-3xl font-bold text-slate-800">Data Explorer</h1>
-          <p className="text-slate-500 mt-1">571 PRS listings · {pbsaData.length} PBSA residences · {universityData.length} universities</p>
+          <p className="text-slate-500 mt-1">{innsbruckListings.length + munichListings.length + passauListings.length} PRS listings · {pbsaData.length} PBSA residences · {universityData.length} universities</p>
         </div>
 
         {/* City filter */}
