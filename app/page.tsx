@@ -157,6 +157,88 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Source Materials */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="flex items-center gap-2 mb-6">
+          <span className="w-8 h-px bg-emerald-accent/60" />
+          <span className="text-emerald-accent/80 text-xs font-bold tracking-[0.2em] uppercase">Source Materials</span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* DACH Market Data Spreadsheet */}
+          <a
+            href="/data/DACH_Student_Housing_Market_Data_2025.xlsx"
+            download
+            className="group flex items-start gap-4 bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-emerald-accent/30 transition-all duration-300"
+          >
+            <div className="w-11 h-11 rounded-xl bg-emerald-accent/10 border border-emerald-accent/20 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-accent/20 transition-colors">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-emerald-accent">
+                <rect x="3" y="2" width="14" height="16" rx="2" />
+                <path d="M7 6h6M7 10h6M7 14h4" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-snow group-hover:text-emerald-accent transition-colors truncate">DACH Student Housing Market Data</h3>
+              <p className="text-xs text-silver/60 mt-1 leading-relaxed">30 German + 6 Austrian cities &middot; PBSA rents, studio rents, premium rents, student population, supply pipeline &amp; provision rates</p>
+              <span className="inline-flex items-center gap-1.5 mt-2.5 text-[10px] text-emerald-accent/70 font-semibold uppercase tracking-wider">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-emerald-accent/50">
+                  <path d="M6 2v6M3 6l3 3 3-3M2 10h8" />
+                </svg>
+                Download .xlsx
+              </span>
+            </div>
+          </a>
+
+          {/* Innsbruck Listings CSV */}
+          <a
+            href="/data/innsbruck-listings.csv"
+            download
+            className="group flex items-start gap-4 bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-emerald-accent/30 transition-all duration-300"
+          >
+            <div className="w-11 h-11 rounded-xl bg-cat-blue/10 border border-cat-blue/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cat-blue/20 transition-colors">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-cat-blue">
+                <rect x="3" y="2" width="14" height="16" rx="2" />
+                <path d="M7 6h6M7 10h6M7 14h4" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-snow group-hover:text-cat-blue transition-colors truncate">Innsbruck Listings</h3>
+              <p className="text-xs text-silver/60 mt-1 leading-relaxed">PRS scraped listings &middot; willhaben.at &amp; wohnungsboerse.net data</p>
+              <span className="inline-flex items-center gap-1.5 mt-2.5 text-[10px] text-cat-blue/70 font-semibold uppercase tracking-wider">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-cat-blue/50">
+                  <path d="M6 2v6M3 6l3 3 3-3M2 10h8" />
+                </svg>
+                Download .csv
+              </span>
+            </div>
+          </a>
+
+          {/* Passau Listings CSV */}
+          <a
+            href="/data/passau-listings.csv"
+            download
+            className="group flex items-start gap-4 bg-midnight-light border border-white/[0.06] rounded-2xl p-5 hover:border-emerald-accent/30 transition-all duration-300"
+          >
+            <div className="w-11 h-11 rounded-xl bg-cat-blue/10 border border-cat-blue/20 flex items-center justify-center flex-shrink-0 group-hover:bg-cat-blue/20 transition-colors">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-cat-blue">
+                <rect x="3" y="2" width="14" height="16" rx="2" />
+                <path d="M7 6h6M7 10h6M7 14h4" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-snow group-hover:text-cat-blue transition-colors truncate">Passau Listings</h3>
+              <p className="text-xs text-silver/60 mt-1 leading-relaxed">PRS scraped listings &middot; ImmobilienScout24 data</p>
+              <span className="inline-flex items-center gap-1.5 mt-2.5 text-[10px] text-cat-blue/70 font-semibold uppercase tracking-wider">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-cat-blue/50">
+                  <path d="M6 2v6M3 6l3 3 3-3M2 10h8" />
+                </svg>
+                Download .csv
+              </span>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-white/[0.04] py-8">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
