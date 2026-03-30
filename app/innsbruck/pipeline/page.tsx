@@ -246,18 +246,6 @@ export default function InnsbruckPipelinePage() {
           })}
         </div>
 
-        {/* Source Data Link */}
-        <section className="mt-12 bg-midnight-light rounded-2xl border border-white/[0.06] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <h2 className="text-lg font-bold text-snow">Source Data</h2>
-            <p className="text-sm text-silver mt-1">Full pipeline &amp; residences dataset across Munich, Innsbruck &amp; Passau</p>
-          </div>
-          <Link href="/downloads"
-            className="inline-flex items-center justify-center gap-2 bg-emerald-accent text-midnight px-6 py-3 rounded-xl hover:bg-emerald-glow transition-colors font-bold text-sm tracking-wide whitespace-nowrap">
-            View Downloads
-          </Link>
-        </section>
-
         {/* Cross-city pipeline nav */}
         <section className="mt-12">
           <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Pipeline by City</h2>

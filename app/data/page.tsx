@@ -120,19 +120,6 @@ export default function DataPage() {
           </div>
         </section>
 
-        {/* ── Download ── */}
-        <section className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <h2 className="text-lg font-bold text-snow">Source Data Download</h2>
-            <p className="text-sm text-silver mt-1">Full dataset with all {totalListings.toLocaleString()} listings across Innsbruck, Munich &amp; Passau</p>
-          </div>
-          <Link href="/downloads"
-            className="inline-flex items-center justify-center gap-2 bg-emerald-accent text-midnight px-6 py-3 rounded-xl hover:bg-emerald-glow transition-colors font-bold text-sm tracking-wide whitespace-nowrap"
-          >
-            View Downloads
-          </Link>
-        </section>
-
         {/* ── Nav links ── */}
         <div className="flex flex-wrap gap-3">
           {["Innsbruck", "Munich", "Passau"].map(c => (
