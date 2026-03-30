@@ -1,17 +1,18 @@
 import Link from "next/link";
 
+/* ── Student-Filtered Distribution ──
+   Filter: ≤50 sqm, ≤€1,800/mo, size ≥10 sqm — studios and 1-bed
+   apartments realistic for a single student in Munich.
+   Source: 859 of 2,509 valid listings from ImmobilienScout24, March 2026. */
+
 const histogram = [
-  { label: "200", count: 3 },
-  { label: "400", count: 31 },
-  { label: "600", count: 120 },
-  { label: "800", count: 263 },
-  { label: "1k", count: 393 },
-  { label: "1.2k", count: 418 },
-  { label: "1.4k", count: 421 },
-  { label: "1.6k", count: 318 },
-  { label: "1.8k", count: 246 },
-  { label: "2k", count: 173 },
-  { label: "2.4k+", count: 446 },
+  { label: "400", count: 104 },
+  { label: "700", count: 173 },
+  { label: "900", count: 214 },
+  { label: "1.1k", count: 188 },
+  { label: "1.3k", count: 108 },
+  { label: "1.5k", count: 45 },
+  { label: "1.8k", count: 27 },
 ];
 
 const maxCount = Math.max(...histogram.map(h => h.count));
@@ -28,14 +29,22 @@ export default function MunichPRSPage() {
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Munich / PRS Distribution</span>
           </div>
           <h1 className="text-3xl font-serif text-snow tracking-tight">Private Rental Distribution</h1>
-          <p className="text-silver mt-1 text-sm">2,832 listings &middot; Median &euro;1,290/mo &middot; March 2026</p>
+          <p className="text-silver mt-1 text-sm">859 student-relevant listings &middot; Median &euro;920/mo &middot; March 2026</p>
         </div>
       </div>
 
       <main className="max-w-5xl mx-auto px-6 py-10 space-y-10">
+
+        {/* Methodology note */}
+        <div className="bg-emerald-accent/5 border border-emerald-accent/15 rounded-xl px-5 py-4 text-sm text-silver">
+          <span className="text-emerald-accent font-bold text-xs uppercase tracking-wider">Student Filter Applied</span>
+          <p className="mt-1.5">Listings narrowed to units &le;50&thinsp;m&sup2; and &le;&euro;1,800/mo with a minimum size of 10&thinsp;m&sup2; &mdash; studios and 1-bed apartments realistic for a single student. This excludes large family flats, shared WGs priced per-unit, and luxury apartments that skew market averages. 859 of 2,509 valid listings pass this filter.</p>
+        </div>
+
+        {/* Price Distribution */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-1">Price Distribution</h2>
-          <p className="text-sm text-silver mb-6">Monthly rent across 2,832 active 1-room listings (wg-gesucht.de &amp; ImmobilienScout24)</p>
+          <p className="text-sm text-silver mb-6">Monthly rent across 859 student-relevant PRS listings (ImmobilienScout24)</p>
 
           <div className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 pb-4">
             <div className="flex items-end gap-1.5 h-52">
@@ -58,27 +67,49 @@ export default function MunichPRSPage() {
             </div>
 
             <div className="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-6 text-sm text-silver">
-              <div>Median <span className="font-semibold text-snow">&euro;1,290</span></div>
-              <div>Q25 <span className="font-semibold text-snow">&euro;950</span></div>
-              <div>Q75 <span className="font-semibold text-snow">&euro;1,700</span></div>
-              <div>Range <span className="font-semibold text-snow">&euro;175&ndash;&euro;4,890</span></div>
+              <div>Median <span className="font-semibold text-snow">&euro;920</span></div>
+              <div>Q25 <span className="font-semibold text-snow">&euro;730</span></div>
+              <div>Q75 <span className="font-semibold text-snow">&euro;1,150</span></div>
+              <div>Range <span className="font-semibold text-snow">&euro;215&ndash;&euro;1,800</span></div>
             </div>
           </div>
         </section>
 
-        {/* Detailed Stats */}
+        {/* Summary Statistics */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-4">Summary Statistics</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { label: "Mean", value: "€1,416" },
-              { label: "Median", value: "€1,290" },
-              { label: "Q25", value: "€950" },
-              { label: "Q75", value: "€1,700" },
-              { label: "Min", value: "€175" },
-              { label: "Max", value: "€4,890" },
-              { label: "Listings", value: "2,832" },
-              { label: "Sources", value: "wg-gesucht / IS24" },
+              { label: "Mean", value: "€953" },
+              { label: "Median", value: "€920" },
+              { label: "Q25", value: "€730" },
+              { label: "Q75", value: "€1,150" },
+              { label: "Min", value: "€215" },
+              { label: "Max", value: "€1,800" },
+              { label: "Listings", value: "859 of 2,509" },
+              { label: "Sources", value: "ImmobilienScout24" },
+            ].map(s => (
+              <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+                <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">{s.label}</div>
+                <div className="text-base font-bold text-snow">{s.value}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Price per sqm */}
+        <section>
+          <h2 className="text-lg font-bold text-snow mb-4">Price per Square Metre</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: "Mean €/m²", value: "€28.90" },
+              { label: "Median €/m²", value: "€27.60" },
+              { label: "Min €/m²", value: "€6.10" },
+              { label: "Max €/m²", value: "€81.00" },
+              { label: "Median Size", value: "35 m²" },
+              { label: "Size Range", value: "10–50 m²" },
+              { label: "Avg Size", value: "35 m²" },
+              { label: "Sample", value: "859 listings" },
             ].map(s => (
               <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
                 <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">{s.label}</div>
@@ -96,7 +127,7 @@ export default function MunichPRSPage() {
           <Link href="/munich/comparables" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-6 py-3 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all font-medium text-sm">
             PBSA Comparables
           </Link>
-          <a href="https://www.wg-gesucht.de/1-zimmer-wohnungen-in-Muenchen.90.1.1.0.html" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-6 py-3 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all font-medium text-sm">
+          <a href="https://www.immobilienscout24.de/Suche/de/bayern/muenchen/wohnung-mieten" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-6 py-3 rounded-xl hover:text-snow hover:border-white/[0.2] transition-all font-medium text-sm">
             Source Data &uarr;
           </a>
         </div>

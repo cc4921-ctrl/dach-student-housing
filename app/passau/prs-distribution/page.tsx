@@ -1,13 +1,16 @@
 import Link from "next/link";
 
+/* ── Student-Filtered Distribution ──
+   Filter: ≤50 sqm, ≤€1,000/mo, size ≥10 sqm — i.e. studios and 1-bed
+   apartments realistic for a single student in Passau.
+   Source: 53 listings from wg-gesucht.de & ImmobilienScout24, March 2026. */
+
 const histogram = [
-  { label: "300", count: 12 },
-  { label: "400", count: 39 },
-  { label: "500", count: 54 },
-  { label: "600", count: 47 },
-  { label: "700", count: 28 },
-  { label: "800", count: 23 },
-  { label: "900+", count: 73 },
+  { label: "300", count: 10 },
+  { label: "400", count: 20 },
+  { label: "500", count: 18 },
+  { label: "600", count: 5 },
+  { label: "700+", count: 0 },
 ];
 
 const maxCount = Math.max(...histogram.map(h => h.count));
@@ -24,14 +27,22 @@ export default function PassauPRSPage() {
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Passau / PRS Distribution</span>
           </div>
           <h1 className="text-3xl font-serif text-snow tracking-tight">Private Rental Distribution</h1>
-          <p className="text-silver mt-1 text-sm">276 listings &middot; Median &euro;550/mo &middot; March 2026</p>
+          <p className="text-silver mt-1 text-sm">53 student-relevant listings &middot; Median &euro;490/mo &middot; March 2026</p>
         </div>
       </div>
 
       <main className="max-w-5xl mx-auto px-6 py-10 space-y-10">
+
+        {/* Methodology note */}
+        <div className="bg-emerald-accent/5 border border-emerald-accent/15 rounded-xl px-5 py-4 text-sm text-silver">
+          <span className="text-emerald-accent font-bold text-xs uppercase tracking-wider">Student Filter Applied</span>
+          <p className="mt-1.5">Listings narrowed to units &le;50&thinsp;m&sup2; and &le;&euro;1,000/mo &mdash; studios and 1-bed apartments realistic for a single student. This excludes large family flats, shared WGs priced per-unit, and luxury apartments that skew market averages.</p>
+        </div>
+
+        {/* Price Distribution */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-1">Price Distribution</h2>
-          <p className="text-sm text-silver mb-6">Monthly rent across 276 active PRS listings (WG-gesucht &amp; ImmobilienScout24)</p>
+          <p className="text-sm text-silver mb-6">Monthly rent across 53 student-relevant PRS listings (WG-gesucht &amp; ImmobilienScout24)</p>
 
           <div className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 pb-4">
             <div className="flex items-end gap-1.5 h-52">
@@ -54,27 +65,49 @@ export default function PassauPRSPage() {
             </div>
 
             <div className="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-6 text-sm text-silver">
-              <div>Median <span className="font-semibold text-snow">&euro;550</span></div>
-              <div>Q25 <span className="font-semibold text-snow">&euro;430</span></div>
-              <div>Q75 <span className="font-semibold text-snow">&euro;800</span></div>
-              <div>Range <span className="font-semibold text-snow">&euro;200&ndash;&euro;2,000</span></div>
+              <div>Median <span className="font-semibold text-snow">&euro;490</span></div>
+              <div>Q25 <span className="font-semibold text-snow">&euro;420</span></div>
+              <div>Q75 <span className="font-semibold text-snow">&euro;530</span></div>
+              <div>Range <span className="font-semibold text-snow">&euro;332&ndash;&euro;650</span></div>
             </div>
           </div>
         </section>
 
-        {/* Detailed Stats */}
+        {/* Summary Statistics */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-4">Summary Statistics</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { label: "Mean", value: "€682" },
-              { label: "Median", value: "€550" },
-              { label: "Q25", value: "€430" },
-              { label: "Q75", value: "€800" },
-              { label: "Min", value: "€200" },
-              { label: "Max", value: "€2,000" },
-              { label: "Listings", value: "276" },
+              { label: "Mean", value: "€480" },
+              { label: "Median", value: "€490" },
+              { label: "Q25", value: "€420" },
+              { label: "Q75", value: "€530" },
+              { label: "Min", value: "€332" },
+              { label: "Max", value: "€650" },
+              { label: "Listings", value: "53" },
               { label: "Sources", value: "wg-gesucht / IS24" },
+            ].map(s => (
+              <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+                <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">{s.label}</div>
+                <div className="text-base font-bold text-snow">{s.value}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Price per sqm */}
+        <section>
+          <h2 className="text-lg font-bold text-snow mb-4">Price per Square Metre</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: "Mean €/m²", value: "€18.30" },
+              { label: "Median €/m²", value: "€17.80" },
+              { label: "Min €/m²", value: "€10.00" },
+              { label: "Max €/m²", value: "€31.20" },
+              { label: "Median Size", value: "25 m²" },
+              { label: "Size Range", value: "15–48 m²" },
+              { label: "Avg Size", value: "26 m²" },
+              { label: "Sample", value: "53 listings" },
             ].map(s => (
               <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
                 <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">{s.label}</div>

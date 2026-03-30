@@ -1,16 +1,17 @@
 import Link from "next/link";
 
+/* ── Student-Filtered Distribution ──
+   Filter: ≤50 sqm, ≤€1,500/mo, size ≥10 sqm — studios and 1-bed
+   apartments realistic for a single student in Innsbruck.
+   Source: 84 of 163 total listings from willhaben.at & ImmobilienScout24, March 2026. */
+
 const histogram = [
-  { label: "500", count: 9 },
-  { label: "750", count: 19 },
-  { label: "1k", count: 27 },
-  { label: "1.25k", count: 16 },
-  { label: "1.5k", count: 38 },
-  { label: "1.75k", count: 26 },
-  { label: "2k", count: 11 },
-  { label: "2.25k", count: 7 },
-  { label: "2.5k", count: 9 },
-  { label: "3k+", count: 17 },
+  { label: "400", count: 4 },
+  { label: "600", count: 12 },
+  { label: "800", count: 20 },
+  { label: "1k", count: 20 },
+  { label: "1.2k", count: 7 },
+  { label: "1.5k", count: 21 },
 ];
 
 const maxCount = Math.max(...histogram.map(h => h.count));
@@ -27,14 +28,22 @@ export default function InnsbruckPRSPage() {
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">Innsbruck / PRS Distribution</span>
           </div>
           <h1 className="text-3xl font-serif text-snow tracking-tight">Private Rental Distribution</h1>
-          <p className="text-silver mt-1 text-sm">179 listings &middot; Median &euro;1,380/mo &middot; March 2026</p>
+          <p className="text-silver mt-1 text-sm">84 student-relevant listings &middot; Median &euro;928/mo &middot; March 2026</p>
         </div>
       </div>
 
       <main className="max-w-5xl mx-auto px-6 py-10 space-y-10">
+
+        {/* Methodology note */}
+        <div className="bg-emerald-accent/5 border border-emerald-accent/15 rounded-xl px-5 py-4 text-sm text-silver">
+          <span className="text-emerald-accent font-bold text-xs uppercase tracking-wider">Student Filter Applied</span>
+          <p className="mt-1.5">Listings narrowed to units &le;50&thinsp;m&sup2; and &le;&euro;1,500/mo &mdash; studios and 1-bed apartments realistic for a single student. This excludes large family flats, shared WGs priced per-unit, and luxury apartments that skew market averages. 84 of 163 total listings pass this filter.</p>
+        </div>
+
+        {/* Price Distribution */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-1">Price Distribution</h2>
-          <p className="text-sm text-silver mb-6">Monthly rent across 179 active PRS listings (willhaben.at &amp; ImmobilienScout24)</p>
+          <p className="text-sm text-silver mb-6">Monthly rent across 84 student-relevant PRS listings (willhaben.at &amp; ImmobilienScout24)</p>
 
           <div className="bg-midnight-light rounded-2xl border border-white/[0.06] p-6 pb-4">
             <div className="flex items-end gap-1.5 h-52">
@@ -57,27 +66,49 @@ export default function InnsbruckPRSPage() {
             </div>
 
             <div className="mt-5 pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-6 text-sm text-silver">
-              <div>Median <span className="font-semibold text-snow">&euro;1,380</span></div>
-              <div>Q25 <span className="font-semibold text-snow">&euro;900</span></div>
-              <div>Q75 <span className="font-semibold text-snow">&euro;1,710</span></div>
-              <div>Range <span className="font-semibold text-snow">&euro;314&ndash;&euro;4,268</span></div>
+              <div>Median <span className="font-semibold text-snow">&euro;928</span></div>
+              <div>Q25 <span className="font-semibold text-snow">&euro;729</span></div>
+              <div>Q75 <span className="font-semibold text-snow">&euro;1,300</span></div>
+              <div>Range <span className="font-semibold text-snow">&euro;342&ndash;&euro;1,500</span></div>
             </div>
           </div>
         </section>
 
-        {/* Detailed Stats */}
+        {/* Summary Statistics */}
         <section>
           <h2 className="text-lg font-bold text-snow mb-4">Summary Statistics</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { label: "Mean", value: "€1,467" },
-              { label: "Median", value: "€1,380" },
-              { label: "Q25", value: "€900" },
-              { label: "Q75", value: "€1,710" },
-              { label: "Min", value: "€314" },
-              { label: "Max", value: "€4,268" },
-              { label: "Listings", value: "179" },
+              { label: "Mean", value: "€975" },
+              { label: "Median", value: "€928" },
+              { label: "Q25", value: "€729" },
+              { label: "Q75", value: "€1,300" },
+              { label: "Min", value: "€342" },
+              { label: "Max", value: "€1,500" },
+              { label: "Listings", value: "84 of 163" },
               { label: "Sources", value: "willhaben / IS24" },
+            ].map(s => (
+              <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+                <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">{s.label}</div>
+                <div className="text-base font-bold text-snow">{s.value}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Price per sqm */}
+        <section>
+          <h2 className="text-lg font-bold text-snow mb-4">Price per Square Metre</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: "Mean €/m²", value: "€32.10" },
+              { label: "Median €/m²", value: "€29.90" },
+              { label: "Min €/m²", value: "€8.60" },
+              { label: "Max €/m²", value: "€69.00" },
+              { label: "Median Size", value: "32 m²" },
+              { label: "Size Range", value: "10–50 m²" },
+              { label: "Avg Size", value: "31 m²" },
+              { label: "Sample", value: "84 listings" },
             ].map(s => (
               <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
                 <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">{s.label}</div>

@@ -126,13 +126,11 @@ export default function DataPage() {
             <h2 className="text-lg font-bold text-snow">Source Data Download</h2>
             <p className="text-sm text-silver mt-1">Full dataset with all {totalListings.toLocaleString()} listings across Innsbruck, Munich &amp; Passau</p>
           </div>
-          <a
-            href="/Student_Rental_Listings_Innsbruck_Passau_Munich.xlsx"
-            download
+          <Link href="/downloads"
             className="inline-flex items-center justify-center gap-2 bg-emerald-accent text-midnight px-6 py-3 rounded-xl hover:bg-emerald-glow transition-colors font-bold text-sm tracking-wide whitespace-nowrap"
           >
-            Download Excel (.xlsx)
-          </a>
+            View Downloads
+          </Link>
         </section>
 
         {/* ── Nav links ── */}

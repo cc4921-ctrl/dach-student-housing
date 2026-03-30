@@ -8,7 +8,7 @@ const stats = [
   { label: "PBSA Beds", value: "~12,000", accent: false },
   { label: "Provision Rate", value: "9.2%", accent: false },
   { label: "Bed Gap", value: ">14,000", accent: true },
-  { label: "Occupancy", value: "96%", accent: false },
+  { label: "Pipeline Beds", value: "~1,044", accent: false },
 ];
 
 const rentBenchmarks = [

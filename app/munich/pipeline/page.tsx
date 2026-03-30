@@ -242,16 +242,16 @@ export default function MunichPipelinePage() {
           })}
         </div>
 
-        {/* Source Download */}
+        {/* Source Data Link */}
         <section className="mt-12 bg-midnight-light rounded-2xl border border-white/[0.06] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold text-snow">Source Data</h2>
             <p className="text-sm text-silver mt-1">Full pipeline &amp; residences dataset across Munich, Innsbruck &amp; Passau</p>
           </div>
-          <a href="/Pipeline_and_Residences_Summary.xlsx" download
+          <Link href="/downloads"
             className="inline-flex items-center justify-center gap-2 bg-emerald-accent text-midnight px-6 py-3 rounded-xl hover:bg-emerald-glow transition-colors font-bold text-sm tracking-wide whitespace-nowrap">
-            Download Excel (.xlsx)
-          </a>
+            View Downloads
+          </Link>
         </section>
 
         {/* Cross-city pipeline nav */}
