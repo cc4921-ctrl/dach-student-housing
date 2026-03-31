@@ -19,7 +19,7 @@ const rentBenchmarks = [
 ];
 
 const pages = [
-  { href: "/innsbruck/comparables", label: "PBSA Comparables", desc: "34 residences · pricing & photos", primary: true },
+  { href: "/innsbruck/comparables", label: "PBSA Comparables", desc: "37 residences · pricing & photos", primary: true },
   { href: "/innsbruck/prs-distribution", label: "PRS Distribution", desc: "179 listings · price histogram" },
   { href: "/innsbruck/pipeline", label: "Pipeline", desc: "8 projects · development tracker" },
   { href: "/innsbruck/growth", label: "Growth", desc: "Enrolment, supply & rent trends" },
