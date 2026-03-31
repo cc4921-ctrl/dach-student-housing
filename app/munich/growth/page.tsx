@@ -53,7 +53,7 @@ const keyTakeaways = [
 
 /* ── Helpers ───────────────────────────────────────────────────────── */
 
-function BarChart({ data, maxVal, valueKey, label, color }: { data: { year: string;[k: string]: any }[]; maxVal: number; valueKey: string; label: string; color: string }) {
+function BarChart({ data, maxVal, valueKey, label, color }: { data: { year: string;[k: string]: string | number }[]; maxVal: number; valueKey: string; label: string; color: string }) {
   return (
     <div className="space-y-2">
       <p className="text-[10px] text-silver/50 uppercase tracking-wider mb-3">{label}</p>
