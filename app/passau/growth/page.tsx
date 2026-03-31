@@ -4,72 +4,69 @@ import Link from "next/link";
 
 /* ── Placeholder data ─────────────────────────────────────────────── */
 
-const enrolmentHistory = [
-  { year: "2018/19", total: 12_186, intl: 1_740, pctIntl: "14.3%" },
-  { year: "2019/20", total: 11_850, intl: 1_790, pctIntl: "15.1%" },
-  { year: "2020/21", total: 11_420, intl: 1_680, pctIntl: "14.7%" },
-  { year: "2021/22", total: 11_050, intl: 1_720, pctIntl: "15.6%" },
-  { year: "2022/23", total: 10_840, intl: 1_810, pctIntl: "16.7%" },
-  { year: "2023/24", total: 10_690, intl: 1_870, pctIntl: "17.5%" },
-  { year: "2024/25", total: 10_568, intl: 1_916, pctIntl: "18.1%" },
+const rentHistory = [
+  { year: "2020", pbsaAvg: 340, premiumPbsa: 480, prsMedian: 420, prsSqm: 13.8 },
+  { year: "2021", pbsaAvg: 350, premiumPbsa: 500, prsMedian: 440, prsSqm: 14.5 },
+  { year: "2022", pbsaAvg: 365, premiumPbsa: 530, prsMedian: 475, prsSqm: 15.6 },
+  { year: "2023", pbsaAvg: 380, premiumPbsa: 555, prsMedian: 510, prsSqm: 16.8 },
+  { year: "2024", pbsaAvg: 390, premiumPbsa: 575, prsMedian: 535, prsSqm: 17.5 },
+  { year: "2025", pbsaAvg: 397, premiumPbsa: 591, prsMedian: 550, prsSqm: 18.3 },
 ];
 
-const populationHistory = [
-  { year: "2018", value: "52,469" },
-  { year: "2019", value: "52,803" },
-  { year: "2020", value: "53,010" },
-  { year: "2021", value: "53,340" },
-  { year: "2022", value: "53,572" },
-  { year: "2023", value: "53,780" },
-  { year: "2024", value: "~54,000" },
+const spreadHistory = [
+  { year: "2020", prsVsPbsa: 80, premiumVsPrs: 60, prsVsStudentenwerk: 95 },
+  { year: "2021", prsVsPbsa: 90, premiumVsPrs: 60, prsVsStudentenwerk: 115 },
+  { year: "2022", prsVsPbsa: 110, premiumVsPrs: 55, prsVsStudentenwerk: 150 },
+  { year: "2023", prsVsPbsa: 130, premiumVsPrs: 45, prsVsStudentenwerk: 185 },
+  { year: "2024", prsVsPbsa: 145, premiumVsPrs: 40, prsVsStudentenwerk: 210 },
+  { year: "2025", prsVsPbsa: 153, premiumVsPrs: 41, prsVsStudentenwerk: 225 },
 ];
 
 const bedSupplyHistory = [
-  { year: "2020", beds: "~1,540", provisionRate: "13.5%" },
-  { year: "2021", beds: "~1,540", provisionRate: "13.9%" },
-  { year: "2022", beds: "~1,695", provisionRate: "15.6%" },
-  { year: "2023", beds: "~1,695", provisionRate: "15.9%" },
-  { year: "2024", beds: "~1,895", provisionRate: "17.9%" },
-  { year: "2025E", beds: "~1,895", provisionRate: "17.9%" },
-  { year: "2028E", beds: "~2,324", provisionRate: "~22.0%" },
-];
-
-const rentGrowth = [
-  { year: "2020", pbsaAvg: "€340", prsMedian: "€420" },
-  { year: "2021", pbsaAvg: "€350", prsMedian: "€440" },
-  { year: "2022", pbsaAvg: "€365", prsMedian: "€475" },
-  { year: "2023", pbsaAvg: "€380", prsMedian: "€510" },
-  { year: "2024", pbsaAvg: "€390", prsMedian: "€535" },
-  { year: "2025", pbsaAvg: "€397", prsMedian: "€550" },
+  { year: "2020", beds: 1540, provisionRate: "13.5%" },
+  { year: "2021", beds: 1540, provisionRate: "13.9%" },
+  { year: "2022", beds: 1695, provisionRate: "15.6%" },
+  { year: "2023", beds: 1695, provisionRate: "15.9%" },
+  { year: "2024", beds: 1895, provisionRate: "17.9%" },
+  { year: "2025E", beds: 1895, provisionRate: "17.9%" },
+  { year: "2028E", beds: 2324, provisionRate: "~22.0%" },
 ];
 
 const keyTakeaways = [
-  "Student numbers have declined ~13% from 2018 peak, but international share has grown steadily from 14.3% to 18.1%.",
-  "PBSA provision rate improved from 13.5% to 17.9% following River Living (155 beds) and STWNO Leonhard-Paminger renovation (+102 beds).",
-  "Pipeline of ~429 new beds (incl. Stonehill 291) would push provision to ~22% by 2028, though total demand still exceeds supply.",
-  "PRS rents have grown ~31% since 2020, outpacing PBSA rent growth of ~17%, widening the affordability gap.",
-  "Passau remains a compact market where new supply can meaningfully shift provision ratios — both an opportunity and a risk.",
+  "PRS rents have grown ~31% since 2020 (€420 → €550/mo), outpacing PBSA rent growth of ~17% (€340 → €397/mo) — widening the affordability gap that PBSA operators can capture.",
+  "The PRS–PBSA spread has nearly doubled from €80/mo to €153/mo, meaning students increasingly pay a premium for private market housing over purpose-built stock.",
+  "Premium PBSA (River Living market-rate) rents grew ~23% from €480 to €591/mo, sitting €41/mo above PRS median — suggesting pricing power for high-quality product.",
+  "PRS rent per sqm climbed from €13.80 to €18.30 — a 33% increase — reflecting both rent inflation and a shift toward smaller, higher-density listings.",
+  "PBSA provision rate improved from 13.5% to 17.9%, but pipeline of ~429 beds (incl. Stonehill 291) would push this to ~22% by 2028 — still below the European average of ~25%.",
+];
+
+const summaryStats = [
+  { label: "Students (2024/25)", value: "10,568" },
+  { label: "Intl Students", value: "18.1%" },
+  { label: "City Population", value: "~54,000" },
+  { label: "PBSA Beds", value: "~1,895" },
 ];
 
 /* ── Helpers ───────────────────────────────────────────────────────── */
 
-function BarChart({ data, maxVal, valueKey, label, color }: { data: { year: string;[k: string]: string | number }[]; maxVal: number; valueKey: string; label: string; color: string }) {
+function DualBarRow({ year, val1, val2, max, label1, label2, color1, color2 }: { year: string; val1: number; val2: number; max: number; label1: string; label2: string; color1: string; color2: string }) {
   return (
-    <div className="space-y-2">
-      <p className="text-[10px] text-silver/50 uppercase tracking-wider mb-3">{label}</p>
-      {data.map((d) => {
-        const raw = typeof d[valueKey] === "string" ? parseInt(d[valueKey].replace(/[^0-9]/g, "")) : d[valueKey];
-        const pct = Math.max(4, (raw / maxVal) * 100);
-        return (
-          <div key={d.year} className="flex items-center gap-3">
-            <span className="text-[11px] text-silver/60 w-16 text-right font-mono">{d.year}</span>
-            <div className="flex-1 h-5 bg-white/[0.03] rounded overflow-hidden">
-              <div className={`h-full ${color} rounded transition-all duration-500`} style={{ width: `${pct}%` }} />
-            </div>
-            <span className="text-[11px] text-snow font-mono w-16">{typeof d[valueKey] === "number" ? d[valueKey].toLocaleString() : d[valueKey]}</span>
-          </div>
-        );
-      })}
+    <div className="space-y-1">
+      <span className="text-[11px] text-silver/60 font-mono">{year}</span>
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-silver/40 w-14">{label1}</span>
+        <div className="flex-1 h-4 bg-white/[0.03] rounded overflow-hidden">
+          <div className={`h-full ${color1} rounded`} style={{ width: `${(val1 / max) * 100}%` }} />
+        </div>
+        <span className="text-[11px] text-snow font-mono w-12 text-right">€{val1}</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-silver/40 w-14">{label2}</span>
+        <div className="flex-1 h-4 bg-white/[0.03] rounded overflow-hidden">
+          <div className={`h-full ${color2} rounded`} style={{ width: `${(val2 / max) * 100}%` }} />
+        </div>
+        <span className="text-[11px] text-snow font-mono w-12 text-right">€{val2}</span>
+      </div>
     </div>
   );
 }
@@ -89,8 +86,8 @@ export default function PassauGrowthPage() {
             <span className="text-silver/40 text-xs">/</span>
             <span className="text-silver text-[10px] font-bold tracking-[0.2em] uppercase">Growth</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Market Growth</h1>
-          <p className="text-sm text-silver mt-2">Student enrolment, supply pipeline &amp; rent trends &middot; 2018–2028</p>
+          <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Rental Growth</h1>
+          <p className="text-sm text-silver mt-2">PBSA &amp; PRS rent trends, spreads &amp; supply dynamics &middot; 2020–2028</p>
         </div>
       </div>
 
@@ -118,41 +115,112 @@ export default function PassauGrowthPage() {
           </div>
         </section>
 
-        {/* Enrolment Trend */}
+        {/* Headline rent metrics */}
         <section>
-          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Student Enrolment Trend</h2>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Current Rent Snapshot (2025)</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+              <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">Avg PBSA</div>
+              <div className="text-2xl font-bold text-snow font-serif">€397<span className="text-xs text-silver/40 font-sans font-normal ml-1">/mo</span></div>
+              <div className="text-[11px] text-emerald-accent mt-1">+17% since 2020</div>
+            </div>
+            <div className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+              <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">Premium PBSA</div>
+              <div className="text-2xl font-bold text-snow font-serif">€591<span className="text-xs text-silver/40 font-sans font-normal ml-1">/mo</span></div>
+              <div className="text-[11px] text-emerald-accent mt-1">+23% since 2020</div>
+            </div>
+            <div className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+              <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">PRS Median</div>
+              <div className="text-2xl font-bold text-snow font-serif">€550<span className="text-xs text-silver/40 font-sans font-normal ml-1">/mo</span></div>
+              <div className="text-[11px] text-cat-amber mt-1">+31% since 2020</div>
+            </div>
+            <div className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+              <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">PRS €/sqm</div>
+              <div className="text-2xl font-bold text-snow font-serif">€18.30<span className="text-xs text-silver/40 font-sans font-normal ml-1">/sqm</span></div>
+              <div className="text-[11px] text-cat-amber mt-1">+33% since 2020</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rent Growth Table */}
+        <section>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Rent Growth History</h2>
           <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="text-left text-[10px] text-silver/50 uppercase tracking-wider">
                     <th className="pb-3 pr-4">Year</th>
-                    <th className="pb-3 pr-4">Total Students</th>
-                    <th className="pb-3 pr-4">International</th>
-                    <th className="pb-3">% Intl</th>
+                    <th className="pb-3 pr-4">Avg PBSA</th>
+                    <th className="pb-3 pr-4">Premium PBSA</th>
+                    <th className="pb-3 pr-4">PRS Median</th>
+                    <th className="pb-3">PRS €/sqm</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {enrolmentHistory.map((row, i) => (
-                    <tr key={row.year} className={`border-t border-white/[0.04] ${i === enrolmentHistory.length - 1 ? "text-emerald-accent font-semibold" : "text-silver"}`}>
+                  {rentHistory.map((row, i) => (
+                    <tr key={row.year} className={`border-t border-white/[0.04] ${i === rentHistory.length - 1 ? "text-emerald-accent font-semibold" : "text-silver"}`}>
                       <td className="py-2.5 pr-4 font-mono text-xs">{row.year}</td>
-                      <td className="py-2.5 pr-4 font-mono">{row.total.toLocaleString()}</td>
-                      <td className="py-2.5 pr-4 font-mono">{row.intl.toLocaleString()}</td>
-                      <td className="py-2.5 font-mono">{row.pctIntl}</td>
+                      <td className="py-2.5 pr-4 font-mono">€{row.pbsaAvg}</td>
+                      <td className="py-2.5 pr-4 font-mono">€{row.premiumPbsa}</td>
+                      <td className="py-2.5 pr-4 font-mono">€{row.prsMedian}</td>
+                      <td className="py-2.5 font-mono">€{row.prsSqm.toFixed(2)}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="mt-6">
-              <BarChart data={enrolmentHistory} maxVal={13_000} valueKey="total" label="Total Enrolment" color="bg-emerald-accent/60" />
+            <p className="text-xs text-silver/40 mt-4">CAGR (2020–2025): Avg PBSA ~3.1% · Premium PBSA ~4.3% · PRS Median ~5.6% · PRS €/sqm ~5.8%</p>
+          </div>
+        </section>
+
+        {/* PBSA vs PRS Visual */}
+        <section>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">PBSA vs PRS Rent Comparison</h2>
+          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6 space-y-4">
+            {rentHistory.map((row) => (
+              <DualBarRow key={row.year} year={row.year} val1={row.pbsaAvg} val2={row.prsMedian} max={650} label1="PBSA" label2="PRS" color1="bg-emerald-accent/60" color2="bg-cat-amber/60" />
+            ))}
+            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-white/[0.04]">
+              <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-emerald-accent/60" /><span className="text-[11px] text-silver/60">Avg PBSA</span></div>
+              <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-cat-amber/60" /><span className="text-[11px] text-silver/60">PRS Median</span></div>
             </div>
           </div>
         </section>
 
-        {/* PBSA Supply & Provision */}
+        {/* Spread Analysis */}
         <section>
-          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">PBSA Supply &amp; Provision Rate</h2>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Rent Spread Analysis</h2>
+          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-left text-[10px] text-silver/50 uppercase tracking-wider">
+                    <th className="pb-3 pr-4">Year</th>
+                    <th className="pb-3 pr-4">PRS vs Avg PBSA</th>
+                    <th className="pb-3 pr-4">Premium vs PRS</th>
+                    <th className="pb-3">PRS vs Studentenwerk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {spreadHistory.map((row, i) => (
+                    <tr key={row.year} className={`border-t border-white/[0.04] ${i === spreadHistory.length - 1 ? "text-emerald-accent font-semibold" : "text-silver"}`}>
+                      <td className="py-2.5 pr-4 font-mono text-xs">{row.year}</td>
+                      <td className="py-2.5 pr-4 font-mono">+€{row.prsVsPbsa}/mo</td>
+                      <td className="py-2.5 pr-4 font-mono">+€{row.premiumVsPrs}/mo</td>
+                      <td className="py-2.5 font-mono">+€{row.prsVsStudentenwerk}/mo</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-silver/40 mt-4">PRS–PBSA spread has nearly doubled (+91%), reflecting PRS inflation outpacing managed PBSA pricing.</p>
+          </div>
+        </section>
+
+        {/* Supply Pipeline (compact) */}
+        <section>
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Supply &amp; Provision Rate</h2>
           <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -164,55 +232,29 @@ export default function PassauGrowthPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {bedSupplyHistory.map((row, i) => (
+                  {bedSupplyHistory.map((row) => (
                     <tr key={row.year} className={`border-t border-white/[0.04] ${row.year.includes("E") ? "text-emerald-accent/70 italic" : "text-silver"}`}>
                       <td className="py-2.5 pr-4 font-mono text-xs">{row.year}</td>
-                      <td className="py-2.5 pr-4 font-mono">{row.beds}</td>
+                      <td className="py-2.5 pr-4 font-mono">~{row.beds.toLocaleString()}</td>
                       <td className="py-2.5 font-mono">{row.provisionRate}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="mt-6">
-              <BarChart data={bedSupplyHistory} maxVal={2_500} valueKey="beds" label="Total PBSA Beds" color="bg-cat-blue/60" />
-            </div>
           </div>
         </section>
 
-        {/* Rent Growth */}
+        {/* Market Context (compact) */}
         <section>
-          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Rent Growth</h2>
-          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="text-left text-[10px] text-silver/50 uppercase tracking-wider">
-                    <th className="pb-3 pr-4">Year</th>
-                    <th className="pb-3 pr-4">Avg PBSA</th>
-                    <th className="pb-3">PRS Median</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rentGrowth.map((row, i) => (
-                    <tr key={row.year} className={`border-t border-white/[0.04] ${i === rentGrowth.length - 1 ? "text-emerald-accent font-semibold" : "text-silver"}`}>
-                      <td className="py-2.5 pr-4 font-mono text-xs">{row.year}</td>
-                      <td className="py-2.5 pr-4 font-mono">{row.pbsaAvg}</td>
-                      <td className="py-2.5 font-mono">{row.prsMedian}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-xs text-silver/40 mt-4">CAGR (2020–2025): PBSA ~3.1% · PRS ~5.6%</p>
-          </div>
-        </section>
-
-        {/* City Population */}
-        <section>
-          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">City Population</h2>
-          <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-6">
-            <BarChart data={populationHistory} maxVal={56_000} valueKey="value" label="Residents" color="bg-cat-purple/50" />
+          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Market Context</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {summaryStats.map(s => (
+              <div key={s.label} className="bg-midnight-light border border-white/[0.06] rounded-xl p-4">
+                <div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1.5">{s.label}</div>
+                <div className="text-lg font-bold text-snow font-serif">{s.value}</div>
+              </div>
+            ))}
           </div>
         </section>
 
