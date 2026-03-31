@@ -22,6 +22,7 @@ const pages = [
   { href: "/passau/comparables", label: "PBSA Comparables", desc: "11 residences · pricing & photos", primary: true },
   { href: "/passau/prs-distribution", label: "PRS Distribution", desc: "276 listings · price histogram" },
   { href: "/passau/pipeline", label: "Pipeline", desc: "5 projects · development tracker" },
+  { href: "/passau/growth", label: "Growth", desc: "Enrolment, supply & rent trends" },
   { href: "/passau/universities", label: "Universities", desc: "1 institution · 10.6k students" },
 ];
 

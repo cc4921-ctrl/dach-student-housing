@@ -22,6 +22,7 @@ const pages = [
   { href: "/munich/comparables", label: "PBSA Comparables", desc: "20 residences · pricing & photos", primary: true },
   { href: "/munich/prs-distribution", label: "PRS Distribution", desc: "2,832 listings · price histogram" },
   { href: "/munich/pipeline", label: "Pipeline", desc: "9 projects · development tracker" },
+  { href: "/munich/growth", label: "Growth", desc: "Enrolment, supply & rent trends" },
   { href: "/munich/universities", label: "Universities", desc: "16 institutions · 130k students" },
   { href: "/munich/gallery", label: "Gallery", desc: "Residence photo gallery" },
 ];

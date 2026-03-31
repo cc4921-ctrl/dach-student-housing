@@ -22,6 +22,7 @@ const pages = [
   { href: "/innsbruck/comparables", label: "PBSA Comparables", desc: "34 residences · pricing & photos", primary: true },
   { href: "/innsbruck/prs-distribution", label: "PRS Distribution", desc: "179 listings · price histogram" },
   { href: "/innsbruck/pipeline", label: "Pipeline", desc: "8 projects · development tracker" },
+  { href: "/innsbruck/growth", label: "Growth", desc: "Enrolment, supply & rent trends" },
   { href: "/innsbruck/universities", label: "Universities", desc: "5 institutions · 35k students" },
   { href: "/innsbruck/gallery", label: "Gallery", desc: "Residence photo gallery" },
 ];
