@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 const stats = [
   { label: "Students", value: "~10,568", accent: false },
@@ -18,13 +17,6 @@ const rentBenchmarks = [
   { label: "Studentenwerk", value: "€325", sub: "public benchmark" },
 ];
 
-const pages = [
-  { href: "/passau/comparables", label: "PBSA Comparables", desc: "11 residences · pricing & photos", primary: true },
-  { href: "/passau/prs-distribution", label: "PRS Distribution", desc: "276 listings · price histogram" },
-  { href: "/passau/pipeline", label: "Pipeline", desc: "5 projects · development tracker" },
-  { href: "/passau/growth", label: "Growth", desc: "Enrolment, supply & rent trends" },
-  { href: "/passau/universities", label: "Universities", desc: "1 institution · 10.6k students" },
-];
 
 export default function PassauPage() {
   return (
@@ -72,26 +64,6 @@ export default function PassauPage() {
           </div>
         </section>
 
-        {/* Quick Navigation */}
-        <section>
-          <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Explore</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {pages.map(p => (
-              <Link key={p.href} href={p.href}
-                className={`group rounded-xl border p-5 transition-all duration-200 ${
-                  p.primary
-                    ? "bg-emerald-accent/5 border-emerald-accent/20 hover:border-emerald-accent/40"
-                    : "bg-midnight-light border-white/[0.06] hover:border-white/[0.15]"
-                }`}>
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className={`text-sm font-bold ${p.primary ? "text-emerald-accent" : "text-snow"}`}>{p.label}</h3>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-silver/30 group-hover:text-emerald-accent group-hover:translate-x-0.5 transition-all"><path d="M1 8h14M9 2l6 6-6 6" /></svg>
-                </div>
-                <p className="text-xs text-silver/60">{p.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
       </main>
     </div>
   );
