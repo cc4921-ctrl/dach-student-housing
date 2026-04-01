@@ -1,8 +1,8 @@
 
 const stats = [
-  { label: "Students", value: "~72,000", accent: false },
-  { label: "International %", value: "~20%", accent: false },
-  { label: "City Population", value: "~773K", accent: false },
+  { label: "Students", value: "~69,000", accent: false },
+  { label: "International %", value: "~18%", accent: false },
+  { label: "City Population", value: "~731K", accent: false },
   { label: "Universities", value: "8", accent: false },
   { label: "PBSA Beds", value: "~5,500", accent: false },
   { label: "Provision Rate", value: "7.6%", accent: false },
@@ -31,7 +31,7 @@ export default function FrankfurtPage() {
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">City Overview</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight drop-shadow-lg">Frankfurt</h1>
-          <p className="text-silver mt-1 text-sm drop-shadow-md">Hesse, Germany &middot; 72,000 students &middot; ~20% international &middot; March 2026</p>
+          <p className="text-silver mt-1 text-sm drop-shadow-md">Hesse, Germany &middot; 69,000 students &middot; ~18% international &middot; March 2026</p>
         </div>
       </div>
 

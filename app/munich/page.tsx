@@ -1,7 +1,7 @@
 
 const stats = [
-  { label: "Students", value: "~130,000", accent: false },
-  { label: "International %", value: "28.9%", accent: false },
+  { label: "Students", value: "~129,000", accent: false },
+  { label: "International %", value: "~30%", accent: false },
   { label: "City Population", value: "~1.51M", accent: false },
   { label: "Universities", value: "16", accent: false },
   { label: "PBSA Beds", value: "~12,000", accent: false },
@@ -31,7 +31,7 @@ export default function MunichPage() {
             <span className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase">City Overview</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight drop-shadow-lg">Munich</h1>
-          <p className="text-silver mt-1 text-sm drop-shadow-md">Bavaria, Germany &middot; 130,000 students &middot; 28.9% international &middot; March 2026</p>
+          <p className="text-silver mt-1 text-sm drop-shadow-md">Bavaria, Germany &middot; 129,000 students &middot; ~30% international &middot; March 2026</p>
         </div>
       </div>
 

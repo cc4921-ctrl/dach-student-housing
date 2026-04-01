@@ -1,17 +1,17 @@
 import Link from "next/link";
 
 const universities = [
-  { name: "Goethe University Frankfurt", total: "44,500", intl: "~8,000", pctIntl: "18%", founded: "1914", focus: "Full research university — law, economics, social sciences, natural sciences, medicine, humanities" },
-  { name: "Frankfurt School of Finance & Management", total: "3,200", intl: "~1,300", pctIntl: "41%", founded: "1957", focus: "Private business school — finance, management, international business, data analytics" },
-  { name: "Frankfurt University of Applied Sciences (UAS)", total: "15,400", intl: "~3,000", pctIntl: "19%", founded: "1971", focus: "University of applied sciences — engineering, architecture, IT, social work, business" },
-  { name: "Hochschule für Musik und Darstellende Kunst", total: "900", intl: "~350", pctIntl: "39%", founded: "1878", focus: "Conservatory — music, performing arts, directing, composition, music education" },
-  { name: "Städelschule (Staatliche Hochschule für Bildende Künste)", total: "200", intl: "~100", pctIntl: "50%", founded: "1817", focus: "Fine arts academy — painting, sculpture, architecture (highly selective)" },
+  { name: "Goethe University Frankfurt", total: "48,000", intl: "~7,600", pctIntl: "16%", founded: "1914", focus: "Full research university — law, economics, social sciences, natural sciences, medicine, humanities" },
+  { name: "Frankfurt University of Applied Sciences (UAS)", total: "15,000", intl: "~3,000", pctIntl: "19%", founded: "1971", focus: "University of applied sciences — engineering, architecture, IT, social work, business" },
+  { name: "Frankfurt School of Finance & Management", total: "3,327", intl: "~1,000", pctIntl: "30%", founded: "1957", focus: "Private business school — finance, management, international business, data analytics" },
+  { name: "Hochschule für Musik und Darstellende Kunst", total: "900", intl: "~380", pctIntl: "42%", founded: "1878", focus: "Conservatory — music, performing arts, directing, composition, music education" },
+  { name: "Provadis School of International Management & Technology", total: "897", intl: "~130", pctIntl: "14%", founded: "2003", focus: "Practice-integrated degree programmes in business, IT, and chemical engineering" },
+  { name: "accadis Hochschule Bad Homburg", total: "600", intl: "~160", pctIntl: "27%", founded: "1980", focus: "Private business school — international management, sports management, digital business" },
   { name: "Philosophisch-Theologische Hochschule Sankt Georgen", total: "350", intl: "~80", pctIntl: "23%", founded: "1926", focus: "Jesuit faculty — philosophy, theology, religious studies" },
-  { name: "Provadis School of International Management & Technology", total: "1,100", intl: "~150", pctIntl: "14%", founded: "2003", focus: "Practice-integrated degree programmes in business, IT, and chemical engineering" },
-  { name: "accadis Hochschule Bad Homburg", total: "750", intl: "~200", pctIntl: "27%", founded: "1980", focus: "Private business school — international management, sports management, digital business" },
+  { name: "Städelschule (Staatliche Hochschule für Bildende Künste)", total: "200", intl: "~140", pctIntl: "70%", founded: "1817", focus: "Fine arts academy — painting, sculpture, architecture (highly selective)" },
 ];
 
-const totals = { students: "72,000+", intl: "~14,400", pctIntl: "~20%" };
+const totals = { students: "69,000+", intl: "~12,500", pctIntl: "~18%" };
 
 export default function FrankfurtUniversities() {
   return (

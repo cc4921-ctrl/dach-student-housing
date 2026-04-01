@@ -1,15 +1,16 @@
 import Link from "next/link";
 
 const universities = [
-  { name: "Ludwig-Maximilians-Universität (LMU)", total: "52,600", intl: "~9,300", pctIntl: "17%", founded: "1472", focus: "Germany's second-largest university — full-spectrum research across humanities, sciences, medicine, law" },
-  { name: "Technical University of Munich (TUM)", total: "51,900", intl: "~23,000", pctIntl: "44%", founded: "1868", focus: "Top-ranked technical university — engineering, natural sciences, computer science, medicine" },
-  { name: "Hochschule München (HM)", total: "18,000", intl: "~2,700", pctIntl: "15%", founded: "1971", focus: "University of applied sciences — engineering, business, design, social sciences" },
-  { name: "Universität der Bundeswehr München", total: "3,500", intl: "~350", pctIntl: "10%", founded: "1973", focus: "Federal defence university — engineering, computer science, economics, social sciences" },
-  { name: "Hochschule für Musik und Theater München", total: "1,200", intl: "~480", pctIntl: "40%", founded: "1846", focus: "Conservatory — music performance, conducting, theatre, music education" },
-  { name: "Akademie der Bildenden Künste München", total: "750", intl: "~200", pctIntl: "27%", founded: "1808", focus: "Fine arts academy — painting, sculpture, art education, interior architecture" },
+  { name: "Ludwig-Maximilians-Universität (LMU)", total: "52,658", intl: "~11,658", pctIntl: "22%", founded: "1472", focus: "Germany's second-largest university — full-spectrum research across humanities, sciences, medicine, law" },
+  { name: "Technical University of Munich (TUM)", total: "51,954", intl: "~23,300", pctIntl: "45%", founded: "1868", focus: "Top-ranked technical university — engineering, natural sciences, computer science, medicine" },
+  { name: "Hochschule München (HM)", total: "18,000", intl: "~2,500", pctIntl: "14%", founded: "1971", focus: "University of applied sciences — engineering, business, design, social sciences" },
+  { name: "Universität der Bundeswehr München", total: "3,500", intl: "~280", pctIntl: "8%", founded: "1973", focus: "Federal defence university — engineering, computer science, economics, social sciences" },
+  { name: "Hochschule für Musik und Theater München", total: "1,400", intl: "~560", pctIntl: "40%", founded: "1846", focus: "Conservatory — music performance, conducting, theatre, music education" },
+  { name: "Akademie der Bildenden Künste München", total: "800", intl: "~200", pctIntl: "25%", founded: "1808", focus: "Fine arts academy — painting, sculpture, art education, interior architecture" },
+  { name: "Hochschule für Fernsehen und Film (HFF)", total: "350", intl: "~70", pctIntl: "20%", founded: "1966", focus: "Film school — film directing, screenwriting, documentary, production, cinematography" },
 ];
 
-const totals = { students: "148,000+", intl: "~36,000", pctIntl: "~24%" };
+const totals = { students: "129,000+", intl: "~38,600", pctIntl: "~30%" };
 
 export default function MunichUniversities() {
   return (
@@ -24,7 +25,7 @@ export default function MunichUniversities() {
             <span className="text-silver text-[10px] font-bold tracking-[0.2em] uppercase">Universities</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Universities</h1>
-          <p className="text-sm text-silver mt-2">{totals.students} students &middot; {totals.pctIntl} international &middot; 6 institutions</p>
+          <p className="text-sm text-silver mt-2">{totals.students} students &middot; {totals.pctIntl} international &middot; 7 institutions</p>
         </div>
       </div>
 
