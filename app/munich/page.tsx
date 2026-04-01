@@ -12,8 +12,8 @@ const stats = [
 
 const rentBenchmarks = [
   { label: "PRS Median", value: "€1,290", sub: "2,832 listings" },
-  { label: "Avg PBSA", value: "€1,374", sub: "all operators" },
-  { label: "Premium PBSA", value: "€1,919", sub: "THE FIZZ / Die Zimmerei" },
+  { label: "Avg PBSA", value: "€925", sub: "6 operators" },
+  { label: "Premium PBSA", value: "€1,210", sub: "THE FIZZ / Die Zimmerei" },
   { label: "Studentenwerk", value: "€353", sub: "public benchmark" },
 ];
 

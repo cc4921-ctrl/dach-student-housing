@@ -12,8 +12,8 @@ const stats = [
 
 const rentBenchmarks = [
   { label: "PRS Median", value: "€950", sub: "1,420 listings" },
-  { label: "Avg PBSA", value: "€680", sub: "all operators" },
-  { label: "Premium PBSA", value: "€1,050", sub: "THE FIZZ / Greystar" },
+  { label: "Avg PBSA", value: "€695", sub: "7 operators" },
+  { label: "Premium PBSA", value: "€1,020", sub: "THE FIZZ / Greystar / Yugo" },
   { label: "Studentenwerk", value: "€310", sub: "public benchmark" },
 ];
 

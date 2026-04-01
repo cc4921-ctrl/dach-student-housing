@@ -12,8 +12,8 @@ const stats = [
 
 const rentBenchmarks = [
   { label: "PRS Median", value: "€1,380", sub: "179 listings" },
-  { label: "Avg PBSA", value: "€520", sub: "all operators" },
-  { label: "Premium PBSA", value: "€700", sub: "STUWO / FOX 54" },
+  { label: "Avg PBSA", value: "€630", sub: "all operators" },
+  { label: "Premium PBSA", value: "€860", sub: "FOX 54 / STUWO" },
   { label: "Studentenwerk", value: "€374", sub: "public benchmark" },
 ];
 
