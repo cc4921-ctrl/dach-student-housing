@@ -26,63 +26,96 @@ const statusColors: Record<string, { bg: string; text: string; dot: string }> = 
 
 const projects: PipelineProject[] = [
   {
-    name: "Stonehill — Haitzingerstraße",
-    status: "Planning",
-    developer: "Stonehill Group",
-    beds: "291 beds (PBSA)",
-    completion: "Est. 2029",
-    investment: "€25M total (€85,911/bed)",
-    type: "Stonehill Pipeline",
-    notes: "Freehold site (ex-Deutsche Bahn). Total project cost €25M (€85,911/bed). KfW facility €21M at ~2.5% committed. Requires €3.5M sponsor equity to start construction. Bebauungsplan adopted 2025; building permit in progress; construction est. 2027.",
-    source: "https://niederbayern.oldiewelle.com/gruenes-licht-fuer-neues-studentenwohnheim-in-passau-baustart-noch-2025-36382/",
-  },
-  {
-    name: "BPD — Neuburger Straße 87",
-    status: "Planning",
-    developer: "BPD Immobilienentwicklung GmbH",
-    beds: "~138 student + 84 owner-occupied (~222 total)",
-    completion: "No confirmed date",
-    investment: "Not disclosed",
-    type: "Private Developer",
-    notes: "Haidenhof district, 5 min from city centre. ~10,070 m² total living area. Mixed-use: student housing + owner-occupied apartments. Near all four university faculties. Newsletter signup for updates.",
-    source: "https://www.neubau-passau.de/",
-  },
-  {
-    name: "STWNO — Leonhard-Paminger-Str.",
-    status: "Completed",
-    developer: "Studierendenwerk Niederbayern/Oberpfalz (STWNO)",
-    beds: "356 beds (renovated + extended)",
-    completion: "Oct 2025",
-    investment: "~€43M",
-    type: "Public/Subsidised",
-    notes: "Originally 254 beds (1987), expanded to 356. Renovation cost ~€43M. €12M from Free State of Bavaria. Rents €368–386/mo (subsidised). 8 barrier-free apartments. Fully furnished, private bathrooms.",
-    source: "https://stwno.de/de/home/news/sonstiges/3275-stwno-feiert-fertigstellung-der-sanierungs-und-erweiterungsarbeiten-der-wohnanlage-leonhard-paminger-strasse-in-passau",
-  },
-  {
-    name: "River Living Passau",
+    name: "THE FIZZ Frankfurt (Europaviertel)",
     status: "Operational",
-    developer: "Private operator",
-    beds: "155 beds",
-    completion: "Completed ~2022",
+    developer: "International Campus GmbH",
+    beds: "~350 apartments",
+    completion: "2020",
     investment: "Not disclosed",
-    type: "Private PBSA (Operational)",
-    notes: "Closest direct comparable to Stonehill in Passau. 6 room types: Ilz (79 units, €560–575), Geforderte (30 subsidised units, €359), River Studio (24 units, €555–575), Donau (14 units, €575–795), Inn (7 units, €575–725), Penthouse (1 unit, €1,450). Avg rent €546/mo.",
-    source: "https://river-living-passau.de/en/",
+    type: "Private (PBSA)",
+    notes: "Modern PBSA in Frankfurt's Europaviertel, close to Messe and Westend campus. Furnished studios with all-inclusive rent model.",
+    source: "https://www.the-fizz.com/en/student-accommodation/frankfurt/",
   },
   {
-    name: "UNILIFE Passau (ZS Wohnbau)",
+    name: "THE FIZZ Frankfurt — Expansion",
+    status: "Planning",
+    developer: "International Campus GmbH",
+    beds: "TBC",
+    completion: "TBC",
+    investment: "Not disclosed",
+    type: "Private (PBSA)",
+    notes: "IC actively evaluating further sites in Frankfurt for FIZZ-branded residences, including potential office-to-residential conversions.",
+    source: "https://ic-campus.com/en/",
+  },
+  {
+    name: "Greystar Frankfurt Student Living",
+    status: "Under Construction",
+    developer: "Greystar",
+    beds: "~220 apartments",
+    completion: "2026",
+    investment: "Not disclosed",
+    type: "Private (Premium PBSA)",
+    notes: "Premium student apartments in Frankfurt Gallus targeting young professionals and students. Part of Greystar's European expansion.",
+    source: "https://www.greystar.com",
+  },
+  {
+    name: "OmniLiv Platform — Frankfurt Pipeline",
+    status: "Planning",
+    developer: "PGIM Real Estate / OmniLiv",
+    beds: "TBC",
+    completion: "TBC (2026–2028 expected)",
+    investment: "Part of broader platform",
+    type: "Private (Micro-Living / PBSA)",
+    notes: "Frankfurt is one of three primary target cities (alongside Berlin and Munich) for PGIM's dedicated micro-living platform targeting students and young professionals.",
+    source: "https://www.pgim.com/global/en/borrower/about-us/newsroom/press-releases/pgim-real-estate-launches-german-micro-living-platform",
+  },
+  {
+    name: "Studierendenwerk Riedberg Expansion",
+    status: "Planning",
+    developer: "Studierendenwerk Frankfurt",
+    beds: "~200 beds",
+    completion: "2027–2028",
+    investment: "State-funded",
+    type: "Public (New Build)",
+    notes: "Planned expansion of student housing at Riedberg science campus to serve growing STEM student population at Goethe University.",
+    source: "https://www.studentenwerkfrankfurt.de/wohnen",
+  },
+  {
+    name: "BASECAMP Frankfurt (Europaviertel)",
     status: "Operational",
-    developer: "ZS Wohnbau",
-    beds: "45 beds",
+    developer: "BASECAMP",
+    beds: "~200 apartments",
+    completion: "2019",
+    investment: "Not disclosed",
+    type: "Private (PBSA)",
+    notes: "Student apartments with community facilities, roof terrace, gym. Focus on international students with flexible lease terms.",
+    source: "https://www.basecamp-student.de/en/frankfurt/",
+  },
+  {
+    name: "Campus Viva Frankfurt",
+    status: "Operational",
+    developer: "Campus Viva",
+    beds: "~320 apartments",
     completion: "Operational",
     investment: "Not disclosed",
-    type: "Private PBSA (Operational)",
-    notes: "Spitalhofstraße 30. 36 single + 9 shared flats. Rents €350–600/mo range.",
-    source: "https://unilife-passau.de",
+    type: "Private (PBSA)",
+    notes: "Student-focused micro-apartments in Frankfurt Gallus with communal spaces and bike storage.",
+    source: "https://www.campusviva.de/en/",
+  },
+  {
+    name: "i LIVE Frankfurt Ostend",
+    status: "Completed",
+    developer: "i LIVE Group",
+    beds: "~250 apartments",
+    completion: "2023",
+    investment: "Not disclosed",
+    type: "Private (PBSA)",
+    notes: "Modern student residence in Frankfurt's Ostend district near the EZB. Smart studios with digital access and community app.",
+    source: "https://www.ilive-group.com/en/",
   },
 ];
 
-export default function PassauPipelinePage() {
+export default function FrankfurtPipelinePage() {
   const [filter, setFilter] = useState<Status>("All");
   const [expanded, setExpanded] = useState<string | null>(null);
   const statuses: Status[] = ["All", "Completed", "Under Construction", "Planning", "Operational"];
@@ -92,16 +125,16 @@ export default function PassauPipelinePage() {
     <div className="min-h-screen bg-midnight">
       {/* Header */}
       <div className="relative w-full h-64 overflow-hidden">
-        <img src="/images/banners/passau.jpg" alt="Passau" className="w-full h-full object-cover" />
+        <img src="/images/banners/frankfurt.jpg" alt="Frankfurt" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/60 to-midnight/20" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-8">
           <div className="flex items-center gap-2 mb-3">
-            <Link href="/passau" className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase hover:text-emerald-glow transition-colors">Passau</Link>
+            <Link href="/frankfurt" className="text-emerald-accent text-[10px] font-bold tracking-[0.2em] uppercase hover:text-emerald-glow transition-colors">Frankfurt</Link>
             <span className="text-silver/40 text-xs">/</span>
             <span className="text-silver text-[10px] font-bold tracking-[0.2em] uppercase">Pipeline</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif text-snow tracking-tight">Development Pipeline</h1>
-          <p className="text-sm text-silver mt-2">{projects.length} projects &middot; Passau student housing pipeline</p>
+          <p className="text-sm text-silver mt-2">{projects.length} projects &middot; Frankfurt student housing pipeline</p>
         </div>
       </div>
 
@@ -160,7 +193,7 @@ export default function PassauPipelinePage() {
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                       {[
                         { label: "Developer", value: p.developer },
-                        { label: "Capacity", value: `${p.beds}` },
+                        { label: "Capacity", value: `${p.beds} beds` },
                         { label: "Investment", value: p.investment },
                         { label: "Type", value: p.type },
                       ].map((d) => (
@@ -202,10 +235,6 @@ export default function PassauPipelinePage() {
         <section className="mt-12">
           <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Pipeline by City</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <Link href="/frankfurt/pipeline" className="group bg-midnight-light border border-white/[0.06] hover:border-emerald-accent/30 rounded-xl px-5 py-4 transition-all duration-300">
-              <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
-              <div className="text-silver group-hover:text-snow font-bold transition-colors">Frankfurt</div>
-            </Link>
             <Link href="/innsbruck/pipeline" className="group bg-midnight-light border border-white/[0.06] hover:border-emerald-accent/30 rounded-xl px-5 py-4 transition-all duration-300">
               <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
               <div className="text-silver group-hover:text-snow font-bold transition-colors">Innsbruck</div>
@@ -214,29 +243,33 @@ export default function PassauPipelinePage() {
               <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
               <div className="text-silver group-hover:text-snow font-bold transition-colors">Munich</div>
             </Link>
+            <Link href="/passau/pipeline" className="group bg-midnight-light border border-white/[0.06] hover:border-emerald-accent/30 rounded-xl px-5 py-4 transition-all duration-300">
+              <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
+              <div className="text-silver group-hover:text-snow font-bold transition-colors">Passau</div>
+            </Link>
             <div className="bg-emerald-accent/10 border border-emerald-accent/30 rounded-xl px-5 py-4">
               <div className="text-emerald-accent text-xs font-bold uppercase tracking-wider mb-1">Current</div>
-              <div className="text-snow font-bold">Passau</div>
+              <div className="text-snow font-bold">Frankfurt</div>
             </div>
           </div>
         </section>
 
         {/* Nav links */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <Link href="/passau/comparables"
+          <Link href="/frankfurt/comparables"
             className="group inline-flex items-center justify-center gap-3 bg-emerald-accent text-midnight px-8 py-4 rounded-xl font-bold text-sm tracking-wide hover:bg-emerald-glow transition-colors duration-300">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="group-hover:-translate-x-1 transition-transform">
               <path d="M15 8H1M7 2L1 8l6 6" />
             </svg>
             PBSA Comparables
           </Link>
-          <Link href="/passau/universities"
+          <Link href="/frankfurt/universities"
             className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
             Universities
           </Link>
-          <Link href="/passau"
+          <Link href="/frankfurt"
             className="inline-flex items-center justify-center gap-2 bg-transparent text-silver border border-white/[0.1] px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:text-snow hover:border-white/[0.2] transition-all duration-300">
-            Passau Overview
+            Frankfurt Overview
           </Link>
         </div>
       </main>

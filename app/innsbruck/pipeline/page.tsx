@@ -249,7 +249,11 @@ export default function InnsbruckPipelinePage() {
         {/* Cross-city pipeline nav */}
         <section className="mt-12">
           <h2 className="text-sm font-bold text-silver/50 uppercase tracking-[0.2em] mb-4">Pipeline by City</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <Link href="/frankfurt/pipeline" className="group bg-midnight-light border border-white/[0.06] hover:border-emerald-accent/30 rounded-xl px-5 py-4 transition-all duration-300">
+              <div className="text-silver/50 text-xs font-bold uppercase tracking-wider mb-1 group-hover:text-emerald-accent/70 transition-colors">Pipeline</div>
+              <div className="text-silver group-hover:text-snow font-bold transition-colors">Frankfurt</div>
+            </Link>
             <div className="bg-emerald-accent/10 border border-emerald-accent/30 rounded-xl px-5 py-4">
               <div className="text-emerald-accent text-xs font-bold uppercase tracking-wider mb-1">Current</div>
               <div className="text-snow font-bold">Innsbruck</div>

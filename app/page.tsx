@@ -4,6 +4,19 @@ import { useState } from "react";
 
 const cities = [
   {
+    slug: "frankfurt",
+    name: "Frankfurt",
+    country: "Germany",
+    flag: "🇩🇪",
+    students: "72,000+",
+    avgRent: "€780",
+    premiumRange: "€850–€1,400",
+    universities: 8,
+    listings: 682,
+    image: "/images/banners/frankfurt.jpg",
+    tagline: "Financial capital with growing PBSA market",
+  },
+  {
     slug: "innsbruck",
     name: "Innsbruck",
     country: "Austria",
@@ -71,7 +84,7 @@ export default function Home() {
                 <span className="w-2 h-2 rounded-full bg-emerald-accent animate-pulse" />
                 <span className="text-xs text-silver font-medium tracking-wide">Live Data &middot; March 2026</span>
               </div>
-              <span className="text-xs text-silver/40">459 listings &middot; 3 cities</span>
+              <span className="text-xs text-silver/40">1,141 listings &middot; 4 cities</span>
             </div>
           </div>
         </div>
@@ -79,7 +92,7 @@ export default function Home() {
 
       {/* City cards */}
       <section className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {cities.map((city) => (
             <Link
               key={city.slug}

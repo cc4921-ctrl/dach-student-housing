@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const cities = [
+  { slug: "frankfurt", label: "Frankfurt" },
   { slug: "innsbruck", label: "Innsbruck" },
   { slug: "munich", label: "Munich" },
   { slug: "passau", label: "Passau" },
@@ -58,7 +59,7 @@ export default function Nav() {
                     <Link href={`/${c.slug}/universities`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
                       Universities
                     </Link>
-                    {c.slug !== "passau" && (
+                    {(c.slug !== "passau" && c.slug !== "frankfurt") && (
                       <Link href={`/${c.slug}/gallery`} className="block px-4 py-2.5 text-[13px] text-silver hover:text-snow hover:bg-white/[0.04] transition-colors">
                         Gallery
                       </Link>
@@ -132,7 +133,7 @@ export default function Nav() {
                   <Link href={`/${c.slug}/pipeline`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Pipeline</Link>
                   <Link href={`/${c.slug}/growth`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Growth</Link>
                   <Link href={`/${c.slug}/universities`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Universities</Link>
-                  {c.slug !== "passau" && <Link href={`/${c.slug}/gallery`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Gallery</Link>}
+                  {(c.slug !== "passau" && c.slug !== "frankfurt") && <Link href={`/${c.slug}/gallery`} onClick={() => setOpen(false)} className="block px-4 py-2 text-xs text-silver/70 hover:text-snow transition-colors">Gallery</Link>}
                 </div>
               </div>
             ))}
