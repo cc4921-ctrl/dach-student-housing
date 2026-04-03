@@ -132,7 +132,8 @@ function PhotoCarousel({ photos, name }: { photos: string[]; name: string }) {
 
 export default function InnsbruckComparablesPage() {
   const [filter, setFilter] = useState<Category>("All");
-  const [expanded, setExpanded] = useState<string | null>(null);
+  const [cardExpanded, setCardExpanded] = useState<string | null>(null);
+  const [tableExpanded, setTableExpanded] = useState<Set<string>>(new Set());
   const [view, setView] = useState<ViewMode>("cards");
   const [sortKey, setSortKey] = useState<SortKey>("name");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
@@ -159,6 +160,15 @@ export default function InnsbruckComparablesPage() {
   function toggleSort(key: SortKey) {
     if (sortKey === key) setSortDir(d => d === "asc" ? "desc" : "asc");
     else { setSortKey(key); setSortDir("asc"); }
+  }
+
+  function toggleTableExpand(name: string) {
+    setTableExpanded(prev => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
   }
 
   const sortIcon = (key: SortKey) => sortKey === key ? (sortDir === "asc" ? " ▲" : " ▼") : "";
@@ -207,7 +217,7 @@ export default function InnsbruckComparablesPage() {
             </button>
             <button onClick={() => setView("table")}
               className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${view === "table" ? "bg-emerald-accent/15 text-emerald-accent" : "text-silver/60 hover:text-silver"}`}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="1" y1="3" x2="15" y2="3"/><line x1="1" y1="8" x2="15" y2="8"/><line x1="1" y1="13" x2="15" y2="13"/><line x1="5" y1="1" x2="5" y2="15"/><line x1="10" y1="1" x2="10" y2="15"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="1" y1="3" x2="15" y2="3"/><line x1="1" y1="8" x2="15" y2="8"/><line x1="1" y1="13" x2="15" y2="13"/></svg>
               Table
             </button>
           </div>
@@ -217,7 +227,7 @@ export default function InnsbruckComparablesPage() {
           <div className="space-y-4">
             {filtered.map((r) => {
               const priceStr = extractPriceRange(r.rooms);
-              const isOpen = expanded === r.name;
+              const isOpen = cardExpanded === r.name;
               const c = catColors[r.category];
 
               return (
@@ -248,7 +258,7 @@ export default function InnsbruckComparablesPage() {
                         <div><div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">Room Types</div><div className="text-sm font-medium text-silver-bright">{r.rooms.length}</div></div>
                       </div>
                       {r.rooms.length > 0 && (
-                        <button onClick={() => setExpanded(isOpen ? null : r.name)}
+                        <button onClick={() => setCardExpanded(isOpen ? null : r.name)}
                           className="text-emerald-accent text-[13px] font-semibold hover:text-emerald-glow transition-colors flex items-center gap-1.5">
                           {isOpen ? "Hide Details" : "View Details"}
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}><path d="M3 5l3 3 3-3" /></svg>
@@ -278,61 +288,107 @@ export default function InnsbruckComparablesPage() {
           </div>
         ) : (
           <div className="bg-midnight-light border border-white/[0.06] rounded-2xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-white/[0.06]">
-                    <th onClick={() => toggleSort("name")} className="text-left px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Property{sortIcon("name")}</th>
-                    <th onClick={() => toggleSort("category")} className="text-left px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Category{sortIcon("category")}</th>
-                    <th onClick={() => toggleSort("operator")} className="text-left px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Operator{sortIcon("operator")}</th>
-                    <th onClick={() => toggleSort("beds")} className="text-right px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Beds{sortIcon("beds")}</th>
-                    <th className="text-left px-4 py-3 font-semibold text-silver whitespace-nowrap">Room Types</th>
-                    <th onClick={() => toggleSort("minPrice")} className="text-right px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Price Range{sortIcon("minPrice")}</th>
-                    <th className="text-center px-4 py-3 font-semibold text-silver whitespace-nowrap">Source</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sorted.map((r, i) => {
-                    const c = catColors[r.category];
-                    return (
-                      <tr key={r.name} className={`border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors ${i % 2 === 0 ? "" : "bg-white/[0.01]"}`}>
-                        <td className="px-4 py-3">
-                          <div className="font-medium text-snow">{r.name}</div>
-                          <div className="text-xs text-silver/40 mt-0.5">{r.location}</div>
-                        </td>
-                        <td className="px-4 py-3">
-                          <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${c.bg} ${c.text}`}>
+            <div className="hidden sm:grid grid-cols-12 gap-4 border-b border-white/[0.06] px-6 py-3 bg-midnight/50">
+              <button onClick={() => toggleSort("name")} className="col-span-5 text-left font-semibold text-silver cursor-pointer hover:text-snow select-none flex items-center gap-1">
+                Property{sortIcon("name")}
+              </button>
+              <button onClick={() => toggleSort("beds")} className="col-span-2 text-left font-semibold text-silver cursor-pointer hover:text-snow select-none flex items-center gap-1">
+                Beds{sortIcon("beds")}
+              </button>
+              <button onClick={() => toggleSort("minPrice")} className="col-span-3 text-left font-semibold text-silver cursor-pointer hover:text-snow select-none flex items-center gap-1">
+                Price Range{sortIcon("minPrice")}
+              </button>
+              <button onClick={() => toggleSort("category")} className="col-span-2 text-left font-semibold text-silver cursor-pointer hover:text-snow select-none flex items-center gap-1">
+                Category{sortIcon("category")}
+              </button>
+            </div>
+
+            <div className="divide-y divide-white/[0.04]">
+              {sorted.map((r) => {
+                const c = catColors[r.category];
+                const isExpanded = tableExpanded.has(r.name);
+                const priceStr = extractPriceRange(r.rooms);
+
+                return (
+                  <div key={r.name}>
+                    <button
+                      onClick={() => toggleTableExpand(r.name)}
+                      className="w-full hover:bg-white/[0.02] transition-colors"
+                    >
+                      <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 items-start">
+                        <div className="col-span-5">
+                          <div className="flex items-start gap-2">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className={`flex-shrink-0 mt-0.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}>
+                              <path d="M4 6l4 4 4-4" />
+                            </svg>
+                            <div className="text-left">
+                              <div className="font-bold text-snow">{r.name}</div>
+                              <div className="text-xs text-silver/50 mt-0.5">{r.location}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-span-2">
+                          <div className="text-sm font-medium text-silver-bright">{r.beds}</div>
+                        </div>
+                        <div className="col-span-3">
+                          <div className="text-sm text-emerald-accent font-semibold">{priceStr}</div>
+                        </div>
+                        <div className="col-span-2">
+                          <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-[11px] font-semibold border ${c.bg} ${c.text}`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${c.dot}`} />
                             {r.category}
                           </span>
-                        </td>
-                        <td className="px-4 py-3 text-silver">{r.operator}</td>
-                        <td className="px-4 py-3 text-right font-medium text-silver-bright">{r.beds}</td>
-                        <td className="px-4 py-3">
-                          <div className="space-y-0.5">
+                        </div>
+                      </div>
+
+                      <div className="sm:hidden px-4 py-4 text-left">
+                        <div className="flex items-start gap-2">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className={`flex-shrink-0 mt-0.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}>
+                            <path d="M4 6l4 4 4-4" />
+                          </svg>
+                          <div className="flex-1">
+                            <div className="font-bold text-snow">{r.name}</div>
+                            <div className="text-xs text-silver/50 mt-0.5">{r.location}</div>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="text-xs text-silver/60">{r.beds} beds</span>
+                              <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-semibold border ${c.bg} ${c.text}`}>
+                                <span className={`w-1 h-1 rounded-full ${c.dot}`} />
+                                {r.category}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-sm text-emerald-accent font-semibold mt-2">{priceStr}</div>
+                      </div>
+                    </button>
+
+                    {isExpanded && r.rooms.length > 0 && (
+                      <div className="px-4 sm:px-6 py-4 bg-midnight/50 border-t border-white/[0.04]">
+                        <div className="bg-midnight border border-white/[0.06] rounded-lg p-4">
+                          <h4 className="text-sm font-bold text-snow mb-3 uppercase tracking-wider">Room Types</h4>
+                          <div className="space-y-2">
                             {r.rooms.map((room, idx) => (
-                              <div key={idx} className="text-xs text-silver">{room.type}</div>
+                              <div key={idx} className="flex justify-between items-center py-2 border-b border-white/[0.04] last:border-b-0">
+                                <span className="text-sm text-silver">{room.type}</span>
+                                <span className="text-sm font-bold text-snow font-serif">{room.price}</span>
+                              </div>
                             ))}
                           </div>
-                        </td>
-                        <td className="px-4 py-3 text-right">
-                          <div className="space-y-0.5">
-                            {r.rooms.map((room, idx) => (
-                              <div key={idx} className="text-xs font-semibold text-emerald-accent">{room.price}</div>
-                            ))}
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          <a href={r.source} target="_blank" rel="noopener noreferrer" className="text-emerald-accent/70 hover:text-emerald-accent text-xs">Link</a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                          {r.source && (
+                            <a href={r.source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-3 text-xs text-emerald-accent/70 hover:text-emerald-accent transition-colors">
+                              Source <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 9L9 1M9 1H3M9 1v6" /></svg>
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-            <div className="px-4 py-2.5 border-t border-white/[0.06] text-[11px] text-silver/40">
-              {sorted.length} {sorted.length === 1 ? "property" : "properties"} &middot; Click column headers to sort
+
+            <div className="px-4 sm:px-6 py-2.5 border-t border-white/[0.06] text-[11px] text-silver/40">
+              {sorted.length} {sorted.length === 1 ? "property" : "properties"} &middot; Click rows to expand room details
             </div>
           </div>
         )}

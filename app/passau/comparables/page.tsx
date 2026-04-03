@@ -94,7 +94,8 @@ function PhotoCarousel({ photos, name }: { photos: string[]; name: string }) {
 
 export default function PassauComparablesPage() {
   const [filter, setFilter] = useState<Category>("All");
-  const [expanded, setExpanded] = useState<string | null>(null);
+  const [cardExpanded, setCardExpanded] = useState<string | null>(null);
+  const [tableExpanded, setTableExpanded] = useState<Set<string>>(new Set());
   const [view, setView] = useState<ViewMode>("cards");
   const [sortKey, setSortKey] = useState<SortKey>("name");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
@@ -120,6 +121,15 @@ export default function PassauComparablesPage() {
   function toggleSort(key: SortKey) {
     if (sortKey === key) setSortDir(d => d === "asc" ? "desc" : "asc");
     else { setSortKey(key); setSortDir("asc"); }
+  }
+
+  function toggleTableExpand(name: string) {
+    setTableExpanded(prev => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
   }
 
   const sortIcon = (key: SortKey) => sortKey === key ? (sortDir === "asc" ? " ▲" : " ▼") : "";
@@ -168,7 +178,7 @@ export default function PassauComparablesPage() {
             </button>
             <button onClick={() => setView("table")}
               className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1.5 ${view === "table" ? "bg-emerald-accent/15 text-emerald-accent" : "text-silver/60 hover:text-silver"}`}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="1" y1="3" x2="15" y2="3"/><line x1="1" y1="8" x2="15" y2="8"/><line x1="1" y1="13" x2="15" y2="13"/><line x1="5" y1="1" x2="5" y2="15"/><line x1="10" y1="1" x2="10" y2="15"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="1" y1="3" x2="15" y2="3"/><line x1="1" y1="8" x2="15" y2="8"/><line x1="1" y1="13" x2="15" y2="13"/></svg>
               Table
             </button>
           </div>
@@ -178,7 +188,7 @@ export default function PassauComparablesPage() {
           <div className="space-y-4">
             {filtered.map((r) => {
               const priceStr = extractPriceRange(r.rooms);
-              const isOpen = expanded === r.name;
+              const isOpen = cardExpanded === r.name;
               const c = catColors[r.category];
 
               return (
@@ -208,7 +218,7 @@ export default function PassauComparablesPage() {
                         <div><div className="text-[10px] text-silver/50 uppercase tracking-wider mb-1">Room Types</div><div className="text-sm font-medium text-silver-bright">{r.rooms.length}</div></div>
                       </div>
                       {r.rooms.length > 0 && (
-                        <button onClick={() => setExpanded(isOpen ? null : r.name)}
+                        <button onClick={() => setCardExpanded(isOpen ? null : r.name)}
                           className="text-emerald-accent text-[13px] font-semibold hover:text-emerald-glow transition-colors flex items-center gap-1.5">
                           {isOpen ? "Hide Details" : "View Details"}
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}><path d="M3 5l3 3 3-3" /></svg>
@@ -240,60 +250,93 @@ export default function PassauComparablesPage() {
           </div>
         ) : (
           <div className="bg-midnight-light border border-white/[0.06] rounded-2xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-white/[0.06]">
-                    <th onClick={() => toggleSort("name")} className="text-left px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Property{sortIcon("name")}</th>
-                    <th onClick={() => toggleSort("category")} className="text-left px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Category{sortIcon("category")}</th>
-                    <th onClick={() => toggleSort("beds")} className="text-right px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Beds{sortIcon("beds")}</th>
-                    <th className="text-left px-4 py-3 font-semibold text-silver whitespace-nowrap">Room Types</th>
-                    <th onClick={() => toggleSort("minPrice")} className="text-right px-4 py-3 font-semibold text-silver cursor-pointer hover:text-snow select-none whitespace-nowrap">Price Range{sortIcon("minPrice")}</th>
-                    <th className="text-center px-4 py-3 font-semibold text-silver whitespace-nowrap">Source</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sorted.map((r, i) => {
-                    const c = catColors[r.category];
-                    return (
-                      <tr key={r.name} className={`border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors ${i % 2 === 0 ? "" : "bg-white/[0.01]"}`}>
-                        <td className="px-4 py-3">
-                          <div className="font-medium text-snow">{r.name}</div>
-                        </td>
-                        <td className="px-4 py-3">
-                          <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${c.bg} ${c.text}`}>
-                            <span className={`w-1.5 h-1.5 rounded-full ${c.dot}`} />
-                            {r.category}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-right font-medium text-silver-bright">{r.beds}</td>
-                        <td className="px-4 py-3">
-                          <div className="space-y-0.5">
-                            {r.rooms.map((room, idx) => (
-                              <div key={idx} className="text-xs text-silver">{room.type}</div>
-                            ))}
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 text-right">
-                          <div className="space-y-0.5">
-                            {r.rooms.map((room, idx) => (
-                              <div key={idx} className="text-xs font-semibold text-emerald-accent">{room.priceRange}</div>
-                            ))}
-                          </div>
-                        </td>
-                        <td className="px-4 py-3 text-center">
-                          {r.website && (
-                            <a href={r.website} target="_blank" rel="noopener noreferrer" className="text-emerald-accent/70 hover:text-emerald-accent text-xs">Link</a>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            {/* Column Headers */}
+            <div className="hidden sm:grid grid-cols-[1fr_100px_150px_auto_44px] items-center px-5 py-3 border-b border-white/[0.08] bg-white/[0.02]">
+              <button onClick={() => toggleSort("name")} className="text-left text-[11px] font-semibold text-silver uppercase tracking-wider hover:text-snow transition-colors select-none">
+                Property{sortIcon("name")}
+              </button>
+              <button onClick={() => toggleSort("beds")} className="text-right text-[11px] font-semibold text-silver uppercase tracking-wider hover:text-snow transition-colors select-none pr-3">
+                Beds{sortIcon("beds")}
+              </button>
+              <button onClick={() => toggleSort("minPrice")} className="text-right text-[11px] font-semibold text-silver uppercase tracking-wider hover:text-snow transition-colors select-none">
+                Price Range{sortIcon("minPrice")}
+              </button>
+              <button onClick={() => toggleSort("category")} className="text-left text-[11px] font-semibold text-silver uppercase tracking-wider hover:text-snow transition-colors select-none pl-5">
+                Category{sortIcon("category")}
+              </button>
+              <div />
             </div>
-            <div className="px-4 py-2.5 border-t border-white/[0.06] text-[11px] text-silver/40">
-              {sorted.length} {sorted.length === 1 ? "property" : "properties"} &middot; Click column headers to sort
+
+            {/* Rows */}
+            {sorted.map((r) => {
+              const priceStr = extractPriceRange(r.rooms);
+              const isOpen = tableExpanded.has(r.name);
+              const c = catColors[r.category];
+
+              return (
+                <div key={r.name} className={`border-b border-white/[0.04] last:border-b-0 transition-colors ${isOpen ? "bg-white/[0.03]" : "hover:bg-white/[0.02]"}`}>
+                  <button onClick={() => toggleTableExpand(r.name)}
+                    className="w-full grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_100px_150px_auto_44px] items-center px-5 py-4 text-left cursor-pointer group gap-3 sm:gap-0">
+                    <div className="min-w-0 pr-4">
+                      <div className="text-[15px] font-semibold text-snow truncate group-hover:text-emerald-accent transition-colors">{r.name}</div>
+                    </div>
+                    <div className="hidden sm:block text-right pr-3">
+                      <span className="text-sm font-medium text-silver-bright">{r.beds}</span>
+                    </div>
+                    <div className="text-right sm:text-right">
+                      <span className="text-sm font-bold text-emerald-accent font-serif">{priceStr}</span>
+                    </div>
+                    <div className="hidden sm:block pl-5">
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold border whitespace-nowrap ${c.bg} ${c.text}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${c.dot}`} />
+                        {r.category}
+                      </span>
+                    </div>
+                    <div className="hidden sm:flex justify-center">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                        className={`text-silver/40 group-hover:text-silver transition-all duration-200 ${isOpen ? "rotate-180" : ""}`}>
+                        <path d="M4 6l4 4 4-4" />
+                      </svg>
+                    </div>
+                  </button>
+                  <div className="sm:hidden flex items-center gap-3 px-5 pb-3 -mt-1">
+                    <span className="text-xs text-silver/60">{r.beds} beds</span>
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${c.bg} ${c.text}`}>
+                      <span className={`w-1 h-1 rounded-full ${c.dot}`} />
+                      {r.category}
+                    </span>
+                  </div>
+                  {isOpen && (
+                    <div className="px-5 pb-5">
+                      <div className="bg-midnight/60 border border-white/[0.06] rounded-xl overflow-hidden">
+                        <div className="grid grid-cols-[1fr_auto] px-4 py-2.5 border-b border-white/[0.06]">
+                          <span className="text-[10px] font-semibold text-silver/50 uppercase tracking-wider">Room Type</span>
+                          <span className="text-[10px] font-semibold text-silver/50 uppercase tracking-wider">Rent</span>
+                        </div>
+                        {r.rooms.map((room, idx) => (
+                          <div key={idx} className={`grid grid-cols-[1fr_auto] px-4 py-3 items-center ${idx < r.rooms.length - 1 ? "border-b border-white/[0.04]" : ""} ${idx % 2 === 1 ? "bg-white/[0.015]" : ""}`}>
+                            <span className="text-sm text-silver">{room.type}</span>
+                            <span className="text-sm font-semibold font-serif text-snow">{room.priceRange}</span>
+                          </div>
+                        ))}
+                        {r.website && (
+                          <div className="px-4 py-2.5 border-t border-white/[0.06]">
+                            <a href={r.website} target="_blank" rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-[11px] text-emerald-accent/60 hover:text-emerald-accent transition-colors">
+                              View source
+                              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 9L9 1M9 1H3M9 1v6" /></svg>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <div className="px-5 py-3 border-t border-white/[0.06] text-[11px] text-silver/40">
+              {sorted.length} {sorted.length === 1 ? "property" : "properties"} &middot; Click any row to view room types &middot; Click column headers to sort
             </div>
           </div>
         )}
