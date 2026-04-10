@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 
 type Category = "All" | "University Subsidised" | "Non-Profit" | "Private PBSA";
@@ -53,12 +53,6 @@ function extractMinPrice(rooms: RoomOption[]): number {
 function PhotoCarousel({ photos, name }: { photos: string[]; name: string }) {
   const [idx, setIdx] = useState(0);
   const [hover, setHover] = useState(false);
-
-  useEffect(() => {
-    if (hover || photos.length <= 1) return;
-    const t = setInterval(() => setIdx((p) => (p + 1) % photos.length), 4000);
-    return () => clearInterval(t);
-  }, [hover, photos.length]);
 
   if (photos.length === 0) {
     return (
