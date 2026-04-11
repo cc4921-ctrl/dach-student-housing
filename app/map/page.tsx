@@ -30,7 +30,6 @@ const markers: MapMarker[] = [
   { lat: 47.27838, lng: 11.40280, type: "non-profit", city: "Innsbruck", name: "Studentenhaus Sillgraben", detail: "~50 beds · €380–€420/mo", detail2: "Rennweg 34, 6020 Innsbruck" },
   { lat: 47.27457, lng: 11.39893, type: "non-profit", city: "Innsbruck", name: "Canisianum", detail: "~80 beds · €344–€580/mo", detail2: "Tschurtschenthalerstraße 7, 6020 Innsbruck" },
   { lat: 47.26918, lng: 11.38445, type: "non-profit", city: "Innsbruck", name: "Frau Hitt-Campus (Akademikerhilfe)", detail: "Non-profit · €344–€580/mo", detail2: "Frau-Hitt-Straße 14, 6020 Innsbruck" },
-  { lat: 47.26803, lng: 11.39268, type: "non-profit", city: "Innsbruck", name: "Studentenheim Roter Adler (WIST)", detail: "Non-profit residence", detail2: "Seilergasse 4–6, 6020 Innsbruck" },
   { lat: 47.25809, lng: 11.35494, type: "non-profit", city: "Innsbruck", name: "Studentenheim Dr. Hertha Firnberg (WIST)", detail: "Non-profit residence", detail2: "Fürstenweg 174a, 6020 Innsbruck" },
   { lat: 47.25775, lng: 11.35520, type: "non-profit", city: "Innsbruck", name: "Studentenheim Panorama (WIST)", detail: "Non-profit residence", detail2: "Fürstenweg 174, 6020 Innsbruck" },
   { lat: 47.26501, lng: 11.33116, type: "non-profit", city: "Innsbruck", name: "Studentenheim Dr. Adolf Sollath (OeAD/WIST)", detail: "Non-profit residence", detail2: "Hans Untermüllerstr. 8, 6020 Innsbruck" },
