@@ -300,80 +300,15 @@ const CompTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ 
    PAGE
    ═══════════════════════════════════════════════════════════════ */
 
-const GATE_PASSWORD = "stonehill2026";
-
-function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
-  const [input, setInput] = useState("");
-  const [error, setError] = useState(false);
-  const [shake, setShake] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (input.trim().toLowerCase() === GATE_PASSWORD) {
-      if (typeof window !== "undefined") sessionStorage.setItem("pm_unlocked", "1");
-      onUnlock();
-    } else {
-      setError(true);
-      setShake(true);
-      setTimeout(() => setShake(false), 500);
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-midnight flex items-center justify-center px-6">
-      <div className={`max-w-sm w-full transition-transform ${shake ? "animate-[shake_0.4s_ease-in-out]" : ""}`}>
-        <div className="bg-midnight-light border border-white/[0.06] rounded-2xl p-8 text-center">
-          <div className="w-14 h-14 rounded-full bg-emerald-accent/10 border border-emerald-accent/20 flex items-center justify-center mx-auto mb-5">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-accent">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0110 0v4" />
-            </svg>
-          </div>
-          <h1 className="text-xl font-serif text-snow mb-1">Pricing Model</h1>
-          <p className="text-sm text-silver/60 mb-6">This page is password-protected while under development.</p>
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <input
-              type="password"
-              value={input}
-              onChange={(e) => { setInput(e.target.value); setError(false); }}
-              placeholder="Enter password"
-              className={`w-full px-4 py-3 rounded-xl bg-midnight border text-snow placeholder-silver/30 text-sm focus:outline-none focus:border-emerald-accent/50 transition-colors ${error ? "border-red-500/50" : "border-white/[0.08]"}`}
-              autoFocus
-            />
-            {error && <p className="text-red-400 text-xs">Incorrect password</p>}
-            <button type="submit" className="w-full py-3 rounded-xl bg-emerald-accent text-midnight font-bold text-sm hover:bg-emerald-accent/90 transition-colors">
-              Unlock
-            </button>
-          </form>
-        </div>
-        <p className="text-center text-silver/30 text-[11px] mt-4">Contact the team for access</p>
-      </div>
-      <style>{`
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          20%, 60% { transform: translateX(-8px); }
-          40%, 80% { transform: translateX(8px); }
-        }
-      `}</style>
-    </div>
-  );
-}
-
 export default function PricingModelPage() {
-  const [unlocked, setUnlocked] = useState(false);
   const [activeCity, setActiveCity] = useState<string>("Innsbruck");
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
   const [mapDark, setMapDark] = useState(true);
   const [activePricingCity, setActivePricingCity] = useState<string>("Innsbruck");
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && sessionStorage.getItem("pm_unlocked") === "1") setUnlocked(true);
-  }, []);
-
   const toggleRow = (name: string) => {
     setExpandedRows(prev => { const next = new Set(prev); next.has(name) ? next.delete(name) : next.add(name); return next; });
   };
-
-  if (!unlocked) return <PasswordGate onUnlock={() => setUnlocked(true)} />;
 
   const prs = prsBenchmarks[activeCity];
   const demand = demandByCity[activeCity];
